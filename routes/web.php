@@ -17,7 +17,7 @@ Route::prefix('admin')->group(function () {
     Route::get('login', [LoginController::class, 'loginView'])->name('loginView');
     Route::post('login', [LoginController::class, 'login'])->name('login');
 
-    Route::redirect('','language');
+    Route::redirect('','admin/language');
 
     Route::middleware('auth')->group(function () {
         Route::resource('language',LanguageController::class)
