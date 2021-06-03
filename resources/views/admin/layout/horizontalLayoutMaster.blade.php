@@ -42,16 +42,6 @@
   <!-- END: Page Main-->
 
 
-  @if($configData['isCustomizer'] === true && isset($configData['isCustomizer']))
-    <!-- Theme Customizer -->
-    @include('admin.pages.partials.customizer')
-    <!--/ Theme Customizer -->
-    {{-- buy now button section --}}
-    @include('admin.pages.partials.buy-now')
-  @endif
-
-
-
   {{-- main footer  --}}
   @include('admin.panels.footer')
 
