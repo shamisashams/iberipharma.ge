@@ -8,6 +8,7 @@
  */
 
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
     Route::get('login', [LoginController::class, 'loginView'])->name('loginView');
     Route::post('login', [LoginController::class, 'login'])->name('login');
+
+    Route::redirect('','language');
+
+    Route::middleware('auth')->group(function () {
+        Route::resource('language',LanguageController::class)
+            ->name('index','languageIndex');
+    });
 });
