@@ -39,9 +39,7 @@ class LanguageRequest extends FormRequest
 
         return [
             'title' => $isRequired . '|string|max:255',
-            'locale' => $isRequired . '|max:3|string',
-            'status' => $isRequired . '|boolean',
-            'default' => 'nullable|boolean',
+            'locale' => $isRequired . '|max:2|min:2',
         ];
     }
 }

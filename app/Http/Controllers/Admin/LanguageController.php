@@ -14,6 +14,7 @@ use App\Http\Requests\Admin\LanguageRequest;
 use App\Models\Language;
 use App\Repositories\LanguageRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 /**
  * Class LanguageController
@@ -48,23 +49,41 @@ class LanguageController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $language = $this->languageRepository->model;
+
+        $url = locale_route('language.store',[],false);
+        $method = 'POST';
+
+        return view('admin.pages.language.form', [
+            'language' => $language,
+            'url' => $url,
+            'method' => $method
+        ]);
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\Admin\LanguageRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(LanguageRequest $request)
     {
-        //
+        $attributes = [
+            'title' => $request['title'],
+            'locale' => $request['locale'],
+            'status' => (bool)$request['status']
+        ];
+
+        $this->languageRepository->create($attributes);
+
+        return redirect(locale_route('language.index'))->with('success','Language Created.');
     }
 
     /**
@@ -77,7 +96,7 @@ class LanguageController extends Controller
      */
     public function show(string $locale, Language $language)
     {
-        return view('admin.pages.language.show',[
+        return view('admin.pages.language.show', [
             'language' => $language
         ]);
     }

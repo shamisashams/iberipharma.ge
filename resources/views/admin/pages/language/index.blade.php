@@ -9,8 +9,12 @@
     <div class="row">
         <div class="col s12 m12 l12">
             <div id="button-trigger" class="card card card-default scrollspy">
+
                 <div class="card-content">
-                    <h4 class="card-title">Languages</h4>
+                    <a class="btn-floating btn-large primary-text gradient-shadow compose-email-trigger " href="{{locale_route('language.create')}}">
+                        <i class="material-icons">add</i>
+                    </a>
+                    <h4 class="card-title mt-2">Languages</h4>
                     <div class="row">
 
                         <div class="col s12">
@@ -66,7 +70,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="{{locale_route('languageShow',$language->id)}}">
+                                                    <a href="{{locale_route('language.show',$language->id)}}">
                                                         <i class="material-icons">remove_red_eye</i>
                                                     </a>
 

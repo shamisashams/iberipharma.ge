@@ -57,12 +57,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Status:</td>
-                            <td>
-                                <span class="chip red lighten-5 red-text">Not Active</span>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>@lang('admin.created_at')</td>
                             <td>{{\Carbon\Carbon::parse($language->created_at)}}</td>
                         </tr>
