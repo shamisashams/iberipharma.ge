@@ -11,7 +11,7 @@
             <div id="basic-form" class="card card card-default scrollspy">
                 <div class="card-content">
                     <h4 class="card-title">Language - {{$language->title ? 'Update' : 'Create'}}</h4>
-                    {!! Form::open(['url' => $url, 'method' => $method]) !!}
+                    {!! Form::model($language,['url' => $url, 'method' => $method]) !!}
                     <div class="row">
                         <div class="input-field col s12">
                             {!! Form::text('title',$language->title,['class' => 'validate '. $errors->has('title') ? '' : 'valid']) !!}
@@ -41,15 +41,15 @@
                     <div class="row">
                         <div class="col s12">
                             <label>
-                                <input type="checkbox" name="status"
-                                       value="true" {{$language->status ? 'checked' : ''}}>
+                                <input type="checkbox" name="status" {{$language->default ? 'disabled' : ''}}
+                                value="true" {{$language->status ? 'checked' : ''}}>
                                 <span>Status</span>
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            {!! Form::submit($language ? 'Update' : 'Create',['class' => 'btn cyan waves-effect waves-light right']) !!}
+                            {!! Form::submit($language->title ? 'Update' : 'Create',['class' => 'btn cyan waves-effect waves-light right']) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}

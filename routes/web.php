@@ -11,9 +11,8 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\LanguageController;
 use Illuminate\Support\Facades\Route;
 
-Route::pattern('locale', '[a-z]{2}');
 
-Route::prefix('{locale}')
+Route::prefix('{locale?}')
     ->middleware(['setlocale'])
     ->group(function () {
         Route::redirect('', 'admin');
@@ -29,7 +28,10 @@ Route::prefix('{locale}')
                     ->name('index', 'language.index')
                     ->name('create','language.create')
                     ->name('store','language.store')
-                    ->name('show', 'language.show');
+                    ->name('show', 'language.show')
+                    ->name('edit','language.edit')
+                    ->name('update','language.update')
+                ;
             });
         });
     });

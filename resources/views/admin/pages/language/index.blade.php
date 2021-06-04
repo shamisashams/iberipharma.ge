@@ -74,7 +74,7 @@
                                                         <i class="material-icons">remove_red_eye</i>
                                                     </a>
 
-                                                    <a href="" class="pl-3">
+                                                    <a href="{{locale_route('language.edit',$language->id)}}" class="pl-3">
                                                         <i class="material-icons">edit</i>
                                                     </a>
                                                     <a href="" class="pl-3">

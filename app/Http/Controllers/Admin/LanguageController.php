@@ -55,7 +55,7 @@ class LanguageController extends Controller
     {
         $language = $this->languageRepository->model;
 
-        $url = locale_route('language.store',[],false);
+        $url = locale_route('language.store', [], false);
         $method = 'POST';
 
         return view('admin.pages.language.form', [
@@ -83,7 +83,7 @@ class LanguageController extends Controller
 
         $this->languageRepository->create($attributes);
 
-        return redirect(locale_route('language.index'))->with('success','Language Created.');
+        return redirect(locale_route('language.index'))->with('success', 'Language Created.');
     }
 
     /**
@@ -104,26 +104,43 @@ class LanguageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param string $locale
+     * @param \App\Models\Language $language
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(string $locale, Language $language)
     {
-        //
+        $url = locale_route('language.update', $language->id, false);
+        $method = 'PUT';
+
+        return view('admin.pages.language.form', [
+            'language' => $language,
+            'url' => $url,
+            'method' => $method
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\Admin\LanguageRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(string $locale,Language $language,LanguageRequest $request)
     {
-        //
+        $attributes = [
+            'title' => $request['title'],
+            'locale' => $request['locale'],
+            'status' => $language->default || (bool)$request['status']
+        ];
+        $this->languageRepository->update($language->id, $attributes);
+
+        return redirect(locale_route('language.show',$language->id))->with('success', 'Language Updated.');
     }
 
     /**

@@ -10,6 +10,7 @@
 namespace App\Repositories\Eloquent\Base;
 
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class BaseRepository
@@ -56,5 +57,41 @@ class BaseRepository implements EloquentRepositoryInterface
         } catch (\Illuminate\Database\QueryException $exception) {
             return $exception->errorInfo;
         }
+    }
+
+    /**
+     * Update model by the given ID
+     *
+     * @param integer $id
+     * @param array $data
+     *
+     * @return mixed
+     */
+    public function update(int $id, array $data = []): Model
+    {
+        $this->model = $this->findOrFail($id);
+        try {
+            $this->model->update($data);
+            return $this->model;
+        } catch (\Illuminate\Database\QueryException $exception) {
+            return $exception->errorInfo;
+        }
+    }
+
+    /**
+     * Find model by the given ID
+     *
+     * @param integer $id
+     * @param array $columns
+     *
+     * @return mixed
+     */
+    public function findOrFail(int $id, array $columns = ['*'])
+    {
+        $data = $this->model->find($id, $columns);
+        if (!$data) {
+            throw new NotFoundHttpException();
+        }
+        return $data;
     }
 }

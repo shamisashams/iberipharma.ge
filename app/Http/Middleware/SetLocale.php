@@ -34,7 +34,6 @@ class SetLocale
         $segments = $request->segments();
         $language = Language::where('locale', $locale)->first();
         $defaultLocale = Language::where('default', true)->first();
-
         if ($language === null) {
             if (strlen($locale) === 2) {
                 array_shift($segments);
