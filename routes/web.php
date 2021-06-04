@@ -12,15 +12,23 @@ use App\Http\Controllers\Admin\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::prefix('{locale?}')
+    ->middleware(['setlocale'])
+    ->group(function () {
+        Route::redirect('','admin');
+        Route::prefix('admin')->group(function () {
+            Route::get('login', [LoginController::class, 'loginView'])->name('loginView');
+            Route::post('login', [LoginController::class, 'login'])->name('login');
 
-Route::prefix('admin')->group(function () {
-    Route::get('login', [LoginController::class, 'loginView'])->name('loginView');
-    Route::post('login', [LoginController::class, 'login'])->name('login');
+            Route::redirect('','admin/language');
 
-    Route::redirect('','admin/language');
-
-    Route::middleware('auth')->group(function () {
-        Route::resource('language',LanguageController::class)
-            ->name('index','languageIndex');
+            Route::middleware('auth')->group(function () {
+                // Language
+                Route::resource('language',LanguageController::class)
+                    ->name('index','languageIndex')
+                    ->name('show','languageShow')
+                ;
+            });
+        });
     });
-});
+
