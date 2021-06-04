@@ -66,7 +66,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="{{locale_route('languageIndex')}}">
+                                                    <a href="{{locale_route('languageShow',$language->id)}}">
                                                         <i class="material-icons">remove_red_eye</i>
                                                     </a>
 

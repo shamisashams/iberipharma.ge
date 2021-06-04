@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LanguageRequest;
+use App\Models\Language;
 use App\Repositories\LanguageRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -69,13 +70,16 @@ class LanguageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param string $locale
+     * @param \App\Models\Language $language
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(string $locale, Language $language)
     {
-        //
+        return view('admin.pages.language.show',[
+            'language' => $language
+        ]);
     }
 
     /**
