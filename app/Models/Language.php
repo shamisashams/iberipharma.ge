@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\ScopeFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -20,7 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Language extends Model
 {
-    use HasFactory, softDeletes;
+    use HasFactory, softDeletes, ScopeFilter;
 
     /**
      * The table associated with the model.
