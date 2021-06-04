@@ -3,9 +3,10 @@
  *  app/Http/Requests/Admin/LanguageRequest.php
  *
  * Date-Time: 04.06.21
- * Time: 10:01
+ * Time: 10:22
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -21,7 +22,7 @@ class LanguageRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -31,10 +32,16 @@ class LanguageRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
+        // Check if method is get,fields are nullable.
+        $isRequired = $this->method() === 'GET' ? 'nullable' : 'required';
+
         return [
-            //
+            'title' => $isRequired . '|string|max:255',
+            'locale' => $isRequired . '|max:3|string',
+            'status' => $isRequired . '|boolean',
+            'default' => 'nullable|boolean',
         ];
     }
 }
