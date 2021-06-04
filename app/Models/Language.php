@@ -29,4 +29,29 @@ class Language extends Model
      */
     protected $table = 'languages';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['title', 'locale', 'status'];
+
+    public function getFilterScopes(): array
+    {
+        return [
+            'id' => [
+                'hasParam' => true,
+                'scopeMethod' => 'id'
+            ],
+            'title' => [
+                'hasParam' => true,
+                'scopeMethod' => 'title'
+            ],
+            'status' => [
+                'hasParam' => true,
+                'scopeMethod' => 'status'
+            ]
+        ];
+    }
+
 }
