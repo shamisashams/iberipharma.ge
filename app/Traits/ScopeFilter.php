@@ -64,6 +64,16 @@ trait ScopeFilter
 
     /**
      * @param $query
+     * @param array $sortParams
+     * @return mixed
+     */
+    public function scopeSorted($query, array $sortParams)
+    {
+        return $query->orderBy($sortParams['sort'], $sortParams['order']);
+    }
+
+    /**
+     * @param $query
      * @param $id
      *
      * @return mixed
