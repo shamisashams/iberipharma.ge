@@ -9,6 +9,8 @@
 
 namespace App\Repositories\Eloquent\Base;
 
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * Interface EloquentRepositoryInterface
  * @package App\Repositories\Eloquent\Base
@@ -16,5 +18,17 @@ namespace App\Repositories\Eloquent\Base;
 interface EloquentRepositoryInterface
 {
 
+    /**
+     * @param $request
+     *
+     * @return mixed
+     */
     public function getData($request);
+
+    /**
+     * @param array $attributes
+     *
+     * @return Model
+     */
+    public function create(array $attributes): Model;
 }

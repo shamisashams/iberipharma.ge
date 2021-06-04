@@ -13,7 +13,6 @@ namespace App\Repositories\Eloquent;
 use App\Models\Language;
 use App\Repositories\Eloquent\Base\BaseRepository;
 use App\Repositories\LanguageRepositoryInterface;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class LanguageRepository

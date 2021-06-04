@@ -21,7 +21,7 @@ class BaseRepository implements EloquentRepositoryInterface
     /**
      * @var \Illuminate\Database\Eloquent\Model
      */
-    protected $model;
+    public $model;
 
     public function __construct(Model $model)
     {
@@ -39,5 +39,22 @@ class BaseRepository implements EloquentRepositoryInterface
         }
 
         return $data->paginate($perPage);
+    }
+
+    /**
+     * Create new model
+     *
+     * @param array $attributes
+     *
+     * @return Model
+     */
+    public function create(array $attributes = []): Model
+    {
+        try {
+            return $this->model->create($attributes);
+
+        } catch (\Illuminate\Database\QueryException $exception) {
+            return $exception->errorInfo;
+        }
     }
 }
