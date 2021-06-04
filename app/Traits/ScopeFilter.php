@@ -65,6 +65,7 @@ trait ScopeFilter
     /**
      * @param $query
      * @param array $sortParams
+     *
      * @return mixed
      */
     public function scopeSorted($query, array $sortParams)
@@ -103,6 +104,17 @@ trait ScopeFilter
     public function scopeTitle($query, $title)
     {
         return $query->where('title', 'like', '%' . $title . '%');
+    }
+
+    /**
+     * @param $query
+     * @param $locale
+     *
+     * @return mixed
+     */
+    public function scopeLocale($query, $locale)
+    {
+        return $query->where('locale', 'like', '%' . $locale . '%');
     }
 
     /**
