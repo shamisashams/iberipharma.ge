@@ -41,5 +41,8 @@ class MenuServiceProvider extends ServiceProvider
 
         // share all menuData to all the views
         \View::share('menuData', [$verticalMenuData, $horizontalMenuData]);
+
+
+        require_once(app()->basePath().'/app/Helpers/locale_route.php');
     }
 }
