@@ -25,6 +25,7 @@
       <div class="col s12">
         <div class="container">
           {{-- main page content  --}}
+          @include('admin.vendor.alerts')
           @yield('content')
           {{-- right sidebar  --}}
           @include('pages.sidebar.right-sidebar')

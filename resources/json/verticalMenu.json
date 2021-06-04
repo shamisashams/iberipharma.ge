@@ -35,7 +35,7 @@
       "icon": "more_horiz"
     },
     {
-      "url": "languageIndex",
+      "url": "language.index",
       "name": "Language",
       "i18n": "Language",
       "icon": "language",

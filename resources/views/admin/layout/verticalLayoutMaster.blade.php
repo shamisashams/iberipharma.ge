@@ -35,7 +35,9 @@
       @endif
       <div class="col s12">
         <div class="container">
-          {{-- main page content --}}
+            @include('admin.vendor.alerts')
+
+            {{-- main page content --}}
           @yield('content')
         </div>
         {{-- overlay --}}
