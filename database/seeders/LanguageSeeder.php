@@ -3,7 +3,7 @@
  *  database/seeders/LanguageSeeder.php
  *
  * Date-Time: 04.06.21
- * Time: 10:22
+ * Time: 10:28
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
 namespace Database\Seeders;
@@ -22,7 +22,7 @@ class LanguageSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         // Language array
         $languages = [
