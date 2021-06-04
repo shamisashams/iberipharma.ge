@@ -83,7 +83,7 @@
                                     </tbody>
                                 </table>
                             </form>
-
+                            {{ $languages->links('admin.vendor.pagination.material') }}
                         </div>
                     </div>
                 </div>

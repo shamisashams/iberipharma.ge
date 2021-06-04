@@ -34,8 +34,8 @@ class BaseRepository implements EloquentRepositoryInterface
 
         $perPage = 10;
 
-        if ($request->filled('page')) {
-            $perPage = $request->page;
+        if ($request->filled('per_page')) {
+            $perPage = $request->per_page;
         }
 
         return $data->paginate($perPage);
