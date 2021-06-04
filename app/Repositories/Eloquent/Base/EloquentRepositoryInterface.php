@@ -16,5 +16,5 @@ namespace App\Repositories\Eloquent\Base;
 interface EloquentRepositoryInterface
 {
 
-
+    public function getData($request);
 }

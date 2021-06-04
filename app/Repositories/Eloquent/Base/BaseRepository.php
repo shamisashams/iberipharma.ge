@@ -9,6 +9,8 @@
 
 namespace App\Repositories\Eloquent\Base;
 
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * Class BaseRepository
  * @package App\Repositories\Eloquent\Base
@@ -16,4 +18,19 @@ namespace App\Repositories\Eloquent\Base;
 class BaseRepository implements EloquentRepositoryInterface
 {
 
+    /**
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model;
+
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+
+    public function getData($request) {
+//        $data = $this->mode
+
+        return '';
+    }
 }
