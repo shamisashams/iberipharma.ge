@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TranslationRequest;
 use App\Models\Language;
+use App\Models\LanguageLine;
 use App\Repositories\TranslationRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -70,12 +71,17 @@ class TranslationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(string $locale, int $id)
     {
-        //
+        return view('admin.pages.translation.show', [
+            'translation' => $this->translationRepository->findOrFail($id),
+            'languages' => $this->activeLanguages
+        ]);
     }
 
     /**

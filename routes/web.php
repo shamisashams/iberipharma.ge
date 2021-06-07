@@ -37,6 +37,7 @@ Route::prefix('{locale?}')
 
                 Route::resource('translation',TranslationController::class)
                     ->name('index','translation.index')
+                    ->name('show','translation.show')
                     ;
             });
         });

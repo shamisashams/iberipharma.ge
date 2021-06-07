@@ -70,13 +70,15 @@
                                                                 @endforeach
                                                             </ul>
                                                         </div>
-                                                        @foreach($translation->text as $key => $text)
-                                                            @if(isset($languages[$key]))
-                                                                <div id="trans-{{$translation->id}}-{{$key}}" class="col s12">
-                                                                    {{$text}}
-                                                                </div>
-                                                            @endif
-                                                        @endforeach
+                                                        <div class="col sm12 mt-2">
+                                                            @foreach($translation->text as $key => $text)
+                                                                @if(isset($languages[$key]))
+                                                                    <div id="trans-{{$translation->id}}-{{$key}}" class="col s12">
+                                                                        {{$text}}
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </td>
                                                 <td>
