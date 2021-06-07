@@ -11,7 +11,7 @@
             <div id="button-trigger" class="card card card-default scrollspy">
 
                 <div class="card-content">
-                    <h4 class="card-title mt-2">translations</h4>
+                    <h4 class="card-title mt-2">@lang('admin.translations')</h4>
                     <div class="row">
 
                         <div class="col s12">
@@ -34,7 +34,7 @@
                                                    class="validate {{$errors->has('id') ? '' : 'valid'}}">
                                         </th>
                                         <th>
-                                            <input type="text" name="title" onchange="this.form.submit()"
+                                            <input type="text" name="group" onchange="this.form.submit()"
                                                    value="{{Request::get('group')}}"
                                                    class="validate {{$errors->has('group') ? '' : 'valid'}}">
                                         </th>

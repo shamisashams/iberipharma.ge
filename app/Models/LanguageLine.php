@@ -50,17 +50,39 @@ class LanguageLine extends \Spatie\TranslationLoader\LanguageLine
             ],
             'group' => [
                 'hasParam' => true,
-                'scopeMethod' => 'title'
+                'scopeMethod' => 'group'
             ],
             'key' => [
                 'hasParam' => true,
-                'scopeMethod' => 'locale'
+                'scopeMethod' => 'key'
             ],
             'text' => [
                 'hasParam' => true,
                 'scopeMethod' => 'text'
             ]
         ];
+    }
+
+    /**
+     * @param $query
+     * @param $group
+     *
+     * @return mixed
+     */
+    public function scopeGroup($query, $group)
+    {
+        return $query->where('group', 'like', '%' . $group . '%');
+    }
+
+    /**
+     * @param $query
+     * @param $key
+     *
+     * @return mixed
+     */
+    public function scopeKey($query, $key)
+    {
+        return $query->where('key', 'like', '%' . $key . '%');
     }
 
 }

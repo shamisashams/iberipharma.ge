@@ -127,4 +127,15 @@ trait ScopeFilter
     {
         return $query->where('status', $status);
     }
+
+    /**
+     * @param $query
+     * @param $text
+     *
+     * @return mixed
+     */
+    public function scopeText($query, $text)
+    {
+        return $query->where('text', 'like', '%' . $text . '%');
+    }
 }
