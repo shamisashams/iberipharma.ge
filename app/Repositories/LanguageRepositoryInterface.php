@@ -21,7 +21,7 @@ interface LanguageRepositoryInterface
 
     /**
      * @param LanguageRequest $request
-     *
+     * @param array $with
      */
-    public function getData(LanguageRequest $request);
+    public function getData(LanguageRequest $request, array $with = []);
 }

@@ -21,6 +21,7 @@ interface TranslationRepositoryInterface
 
     /**
      * @param \App\Http\Requests\Admin\TranslationRequest $request
+     * @param array $with
      */
-    public function getData(TranslationRequest $request);
+    public function getData(TranslationRequest $request, array $with = []);
 }

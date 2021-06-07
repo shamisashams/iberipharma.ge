@@ -29,9 +29,9 @@ class BaseRepository implements EloquentRepositoryInterface
         $this->model = $model;
     }
 
-    public function getData($request)
+    public function getData($request,array $with = [])
     {
-        $data = $this->model->filter($request);
+        $data = $this->model->filter($request)->with($with);
 
         $perPage = 10;
 
