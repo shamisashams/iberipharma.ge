@@ -9,8 +9,10 @@
 
 namespace App\Providers;
 
+use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\Eloquent\Base\BaseRepository;
 use App\Repositories\Eloquent\Base\EloquentRepositoryInterface;
+use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\Eloquent\LanguageRepository;
 use App\Repositories\Eloquent\TranslationRepository;
 use App\Repositories\LanguageRepositoryInterface;
@@ -43,6 +45,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(EloquentRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(LanguageRepositoryInterface::class, LanguageRepository::class);
-        $this->app->bind(TranslationRepositoryInterface::class,TranslationRepository::class);
+        $this->app->bind(TranslationRepositoryInterface::class, TranslationRepository::class);
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
     }
 }
