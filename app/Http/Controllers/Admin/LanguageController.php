@@ -131,7 +131,7 @@ class LanguageController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(string $locale,Language $language,LanguageRequest $request)
+    public function update(string $locale, Language $language, LanguageRequest $request)
     {
         $attributes = [
             'title' => $request['title'],
@@ -140,18 +140,25 @@ class LanguageController extends Controller
         ];
         $this->languageRepository->update($language->id, $attributes);
 
-        return redirect(locale_route('language.show',$language->id))->with('success', 'Language Updated.');
+        return redirect(locale_route('language.show', $language->id))->with('success', 'Language Updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param string $locale
+     * @param \App\Models\Language $language
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(string $locale, Language $language)
     {
-        //
+        if ($language->default) {
+            return redirect(locale_route('language.index'))->with('danger', 'Can not delete default language.');
+        }
+        if (!$this->languageRepository->delete($language->id)) {
+            return redirect(locale_route('language.index'))->with('danger', 'Language not deleted.');
+        }
+        return redirect(locale_route('language.index'))->with('success', 'Language Deleted.');
     }
 }

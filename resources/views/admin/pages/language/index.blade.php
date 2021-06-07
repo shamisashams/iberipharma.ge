@@ -11,7 +11,8 @@
             <div id="button-trigger" class="card card card-default scrollspy">
 
                 <div class="card-content">
-                    <a class="btn-floating btn-large primary-text gradient-shadow compose-email-trigger " href="{{locale_route('language.create')}}">
+                    <a class="btn-floating btn-large primary-text gradient-shadow compose-email-trigger "
+                       href="{{locale_route('language.create')}}">
                         <i class="material-icons">add</i>
                     </a>
                     <h4 class="card-title mt-2">Languages</h4>
@@ -74,10 +75,13 @@
                                                         <i class="material-icons">remove_red_eye</i>
                                                     </a>
 
-                                                    <a href="{{locale_route('language.edit',$language->id)}}" class="pl-3">
+                                                    <a href="{{locale_route('language.edit',$language->id)}}"
+                                                       class="pl-3">
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    <a href="" class="pl-3">
+
+                                                    <a href="{{locale_route('language.destroy',$language->id)}}"
+                                                       onclick="return confirm('Are you sure?')" class="pl-3">
                                                         <i class="material-icons">delete</i>
                                                     </a>
                                                 </td>

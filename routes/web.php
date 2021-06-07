@@ -30,8 +30,9 @@ Route::prefix('{locale?}')
                     ->name('store','language.store')
                     ->name('show', 'language.show')
                     ->name('edit','language.edit')
-                    ->name('update','language.update')
-                ;
+                    ->name('update','language.update');
+
+                Route::get('language/{language}/destroy',[LanguageController::class,'destroy'])->name('language.destroy');
             });
         });
     });

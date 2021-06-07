@@ -46,6 +46,7 @@ interface EloquentRepositoryInterface
      * @param integer $id
      *
      * @return \Illuminate\Database\Eloquent\Model|string
+
      */
     public function delete(int $id);
 
