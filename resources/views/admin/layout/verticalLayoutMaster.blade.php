@@ -27,12 +27,7 @@
         </div>
         @endif
       @endif
-
-
-      @if($configData["pageHeader"] === true && isset($breadcrumbs))
-      {{--  breadcrumb --}}
       @include('admin.panels.breadcrumb')
-      @endif
       <div class="col s12">
         <div class="container">
             @include('admin.vendor.alerts')

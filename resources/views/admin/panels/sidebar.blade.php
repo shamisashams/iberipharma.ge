@@ -47,7 +47,7 @@
             @foreach ($menuData[0]->menu as $menu)
                 @if(isset($menu->navheader))
                     <li class="navigation-header">
-                        <a class="navigation-header-text">{{ $menu->navheader }}</a>
+                        <a class="navigation-header-text">{{ __('admin.'.$menu->navheader) }}</a>
                         <i class="navigation-header-icon material-icons">{{$menu->icon }}</i>
                     </li>
                 @else

@@ -2,9 +2,8 @@
 /**
  *  app/Breadcrumbs/Breadcrumbs.php
  *
- * User:
- * Date-Time: 16.12.20
- * Time: 18:15
+ * Date-Time: 07.06.21
+ * Time: 15:23
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
 namespace App\Breadcrumbs;
@@ -12,17 +11,32 @@ namespace App\Breadcrumbs;
 
 use Illuminate\Http\Request;
 
+/**
+ * Class Breadcrumbs
+ * @package App\Breadcrumbs
+ */
 class Breadcrumbs
 {
 
+    /**
+     * @var \Illuminate\Http\Request
+     */
     protected $request;
 
+    /**
+     * Breadcrumbs constructor.
+     *
+     * @param \Illuminate\Http\Request $request
+     */
     public function __construct(Request $request)
     {
         $this->request = $request;
     }
 
-    public function segments()
+    /**
+     * @return array
+     */
+    public function segments(): array
     {
         return collect($this->request->segments())->map(function ($segment) {
             return new Segment($this->request, $segment);
