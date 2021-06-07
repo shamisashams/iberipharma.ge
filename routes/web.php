@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\TranslationController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::prefix('{locale?}')
+Route::prefix('{locale}')
     ->middleware(['setlocale'])
     ->group(function () {
         Route::redirect('', 'admin');

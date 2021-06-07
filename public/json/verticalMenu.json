@@ -36,10 +36,17 @@
     },
     {
       "url": "language.index",
-      "name": "Language",
-      "i18n": "Language",
+      "name": "language",
+      "i18n": "language",
       "icon": "language",
       "slug": "language"
+    },
+    {
+      "url": "translation.index",
+      "name": "translation",
+      "i18n": "translation",
+      "icon": "g_translate",
+      "slug": "translation"
     }
   ]
 }

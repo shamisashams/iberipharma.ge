@@ -37,29 +37,21 @@
       <!-- translation-button-->
       <ul class="dropdown-content" id="translation-dropdown">
         <li class="dropdown-item">
-          <a class="grey-text text-darken-1" href="{{url('lang/en')}}" data-language="en">
-            <i class="flag-icon flag-icon-gb"></i>
-            English
+          <a class="grey-text text-darken-1" href="" data-language="en">
+            <i class="flag-icon flag-icon-{{$localizations['current']['locale']}}"></i>
+            {{$localizations['current']['title']}}
           </a>
         </li>
-        <li class="dropdown-item">
-          <a class="grey-text text-darken-1" href="{{url('lang/fr')}}" data-language="fr">
-            <i class="flag-icon flag-icon-fr"></i>
-            French
-          </a>
-        </li>
-        <li class="dropdown-item">
-          <a class="grey-text text-darken-1" href="{{url('lang/pt')}}" data-language="pt">
-            <i class="flag-icon flag-icon-pt"></i>
-            Portuguese
-          </a>
-        </li>
-        <li class="dropdown-item">
-          <a class="grey-text text-darken-1" href="{{url('lang/de')}}" data-language="de">
-            <i class="flag-icon flag-icon-de"></i>
-            German
-          </a>
-        </li>
+        @if(isset($localizations['data']))
+          @foreach($localizations['data'] as $language)
+            <li class="dropdown-item">
+              <a class="grey-text text-darken-1" href="{{$language['url']}}" data-language="en">
+                <i class="flag-icon flag-icon-{{$language['locale']}}"></i>
+                {{$language['title']}}
+              </a>
+            </li>
+          @endforeach
+        @endif
       </ul>
       <!-- profile-dropdown-->
       <ul class="dropdown-content" id="profile-dropdown">
