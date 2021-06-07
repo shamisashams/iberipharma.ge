@@ -38,14 +38,18 @@ class TranslationRequest extends FormRequest
         // Check if method is get,fields are nullable.
         $isRequired = $this->method() === 'GET' ? 'nullable' : 'required';
 
-        return [
+        $defaultLanguage = Language::where('default', true)->firstOrFail();
+
+        $data = [
             'group' => $isRequired . '|string|max:255',
             'key' => $isRequired . '|max:2|min:2',
         ];
-    }
 
-    public function languages()
-    {
-        return $this->hasManyJson(Language::class, '');
+        if ($this->method !== 'GET') {
+            $data = [
+                'text.' . $defaultLanguage->id => 'required|string|max:255'
+            ];
+        }
+        return $data;
     }
 }

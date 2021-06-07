@@ -14,6 +14,7 @@ use App\Models\Language;
 use App\Models\LanguageLine;
 use App\Repositories\TranslationRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 /**
  * Class TranslationController
@@ -87,24 +88,43 @@ class TranslationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(string $locale, int $id)
     {
-        //
+        $url = locale_route('translation.update', $id, false);
+        $method = 'PUT';
+
+        return view('admin.pages.translation.form', [
+            'translation' => $this->translationRepository->findOrFail($id),
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param int $id
+     *
+     * @param \App\Http\Requests\Admin\TranslationRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(string $locale, int $id, TranslationRequest $request)
     {
-        //
+        $data = $request->only('text');
+        $this->translationRepository->update($id, $data);
+
+        // Clear cache
+        Artisan::call('cache:clear');
+
+        return redirect(locale_route('translation.show', $id))->with('success', 'Translation Updated.');
     }
 
     /**
