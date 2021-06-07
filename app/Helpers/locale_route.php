@@ -18,9 +18,12 @@ use Illuminate\Support\Arr;
  */
 function locale_route($name, $parameters = [], bool $absolute = true): string
 {
+    $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+
     $parameters = array_merge([
-        'locale' => app()->getLocale()
+        'locale' => $uriSegments[1]
     ], Arr::wrap($parameters));
+
 
     return route($name, $parameters, $absolute);
 }
