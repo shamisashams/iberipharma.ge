@@ -27,13 +27,11 @@ class TranslationController extends Controller
      * @var \App\Repositories\TranslationRepositoryInterface
      */
     private $translationRepository;
-    private $activeLanguages;
 
     public function __construct(TranslationRepositoryInterface $translationRepository)
     {
         // Initialize TranslationRepository
         $this->translationRepository = $translationRepository;
-        $this->activeLanguages = Language::where('status', true)->orderBy('default', 'DESC')->get()->keyBy('id');
     }
     /**
      * Display a listing of the resource.
@@ -44,7 +42,7 @@ class TranslationController extends Controller
     {
         return view('admin.pages.translation.index', [
             'translations' => $this->translationRepository->getData($request),
-            'languages' => $this->activeLanguages
+            'languages' => $this->activeLanguages()
         ]);
     }
 
@@ -81,7 +79,7 @@ class TranslationController extends Controller
     {
         return view('admin.pages.translation.show', [
             'translation' => $this->translationRepository->findOrFail($id),
-            'languages' => $this->activeLanguages
+            'languages' => $this->activeLanguages()
         ]);
     }
 
@@ -102,7 +100,7 @@ class TranslationController extends Controller
             'translation' => $this->translationRepository->findOrFail($id),
             'url' => $url,
             'method' => $method,
-            'languages' => $this->activeLanguages
+            'languages' => $this->activeLanguages()
         ]);
     }
 

@@ -9,6 +9,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryRequest;
+use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\Eloquent\CategoryRepository;
 use Illuminate\Http\Request;
 
 /**
@@ -17,14 +20,33 @@ use Illuminate\Http\Request;
  */
 class CategoryController extends Controller
 {
+
+    /**
+     * @var \App\Repositories\CategoryRepositoryInterface
+     */
+    private $categoryRepository;
+
+    /**
+     * CategoryController constructor.
+     *
+     * @param \App\Repositories\CategoryRepositoryInterface $categoryRepository
+     */
+    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    {
+        // Initialize categoryRepository
+        $this->categoryRepository = $categoryRepository;
+    }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(CategoryRequest $request)
     {
-        //
+        return view('admin.pages.category.index', [
+            'translations' => $this->categoryRepository->getData($request),
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**

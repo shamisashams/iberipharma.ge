@@ -8,6 +8,7 @@
  */
 
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\TranslationController;
 use Illuminate\Support\Facades\Route;
@@ -35,11 +36,16 @@ Route::prefix('{locale}')
 
                 Route::get('language/{language}/destroy',[LanguageController::class,'destroy'])->name('language.destroy');
 
+                // Translation
                 Route::resource('translation',TranslationController::class)
                     ->name('index','translation.index')
                     ->name('edit','translation.edit')
                     ->name('update','translation.update')
-                    ->name('show','translation.show')
+                    ->name('show','translation.show');
+
+                // Category
+                Route::resource('category',CategoryController::class)
+                    ->name('index','category.index')
                     ;
             });
         });

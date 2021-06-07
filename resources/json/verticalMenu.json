@@ -47,6 +47,13 @@
       "i18n": "translation",
       "icon": "g_translate",
       "slug": "translation"
+    },
+    {
+      "url": "category.index",
+      "name": "category",
+      "i18n": "category",
+      "icon": "filter_list",
+      "slug": "category"
     }
   ]
 }

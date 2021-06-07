@@ -13,8 +13,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LanguageRequest;
 use App\Models\Language;
 use App\Repositories\LanguageRepositoryInterface;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
 
 /**
  * Class LanguageController
