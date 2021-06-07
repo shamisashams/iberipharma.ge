@@ -62,6 +62,10 @@ class Category extends Model
             'active' => [
                 'hasParam' => true,
                 'scopeMethod' => 'active'
+            ],
+            'title' => [
+                'hasParam' => true,
+                'scopeMethod' => 'title'
             ]
         ];
     }
