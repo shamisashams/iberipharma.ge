@@ -79,6 +79,24 @@ class BaseRepository implements EloquentRepositoryInterface
     }
 
     /**
+     * Delete model by the given ID
+     *
+     * @param integer $id
+     *
+     * @return \Illuminate\Database\Eloquent\Model|string
+     */
+    public function delete(int $id)
+    {
+        $this->model = $this->findOrFail($id);
+        try {
+            $this->model->delete($id);
+            return $this->findTrash($id);
+        } catch (\Exception $exception) {
+            return $exception->getMessage();
+        }
+    }
+
+    /**
      * Find model by the given ID
      *
      * @param integer $id
@@ -93,5 +111,25 @@ class BaseRepository implements EloquentRepositoryInterface
             throw new NotFoundHttpException();
         }
         return $data;
+    }
+
+    /**
+     * Restore model by the given ID
+     *
+     * @param integer $id
+     *
+     * @return Model
+     */
+    public function findTrash(int $id): Model
+    {
+        $model = $this->model->withTrashed()->find($id);
+        if (null === $model) {
+            throw new NotFoundHttpException();
+        }
+
+        if (null === $model->deleted_at) {
+            throw new NotFoundHttpException();
+        }
+        return $model;
     }
 }

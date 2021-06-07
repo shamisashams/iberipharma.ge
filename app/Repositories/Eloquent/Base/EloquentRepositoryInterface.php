@@ -41,4 +41,18 @@ interface EloquentRepositoryInterface
      * @return mixed
      */
     public function update(int $id, array $data = []): Model;
+
+    /**
+     * @param integer $id
+     *
+     * @return \Illuminate\Database\Eloquent\Model|string
+     */
+    public function delete(int $id);
+
+    /**
+     * @param integer $id
+     *
+     * @return Model
+     */
+    public function findTrash(int $id): Model;
 }
