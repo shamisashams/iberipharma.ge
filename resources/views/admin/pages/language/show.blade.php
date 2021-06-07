@@ -20,7 +20,9 @@
             </div>
             <div class="col s12 m5 quick-action-btns display-flex justify-content-end align-items-center pt-2">
                 <a href="{{asset('page-users-edit')}}" class="btn-small indigo">Edit</a>
-                <a class="btn-small -settings waves-effect -light -btn right ml-3" href="#!" data-target="dropdown1">
+                <a class="btn-small -settings waves-effect -light -btn right ml-3"
+                   href="{{locale_route('language.destroy',$language->id)}}"
+                   onclick="return confirm('Are you sure?')">
                     <span class="hide-on-small-onl">Delete</span>
                 </a>
             </div>
