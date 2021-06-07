@@ -24,9 +24,12 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('set null');
+            $table->index('parent_id');
+            $table->string('slug')->unique();
             $table->string('position')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
 
     }
