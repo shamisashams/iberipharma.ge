@@ -42,7 +42,7 @@ class TranslationRequest extends FormRequest
 
         $data = [
             'group' => $isRequired . '|string|max:255',
-            'key' => $isRequired . '|max:2|min:2',
+            'key' => $isRequired . '|string|max:255',
         ];
 
         if ($this->method !== 'GET') {
