@@ -1,0 +1,33 @@
+<?php
+/**
+ *  app/Repositories/Eloquent/TranslationRepository.php
+ *
+ * Date-Time: 07.06.21
+ * Time: 09:47
+ * @author Vito Makhatadze <vitomaxatadze@gmail.com>
+ */
+
+namespace App\Repositories\Eloquent;
+
+
+use App\Models\Language;
+use App\Models\LanguageLine;
+use App\Repositories\Eloquent\Base\BaseRepository;
+use App\Repositories\LanguageRepositoryInterface;
+
+/**
+ * Class TranslationRepository
+ * @package App\Repositories\Eloquent
+ */
+class TranslationRepository extends BaseRepository implements LanguageRepositoryInterface
+{
+    /**
+     * LanguageRepository constructor.
+     *
+     * @param \App\Models\Language $model
+     */
+    public function __construct(LanguageLine $model)
+    {
+        parent::__construct($model);
+    }
+}
