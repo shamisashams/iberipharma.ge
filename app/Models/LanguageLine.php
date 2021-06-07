@@ -62,4 +62,5 @@ class LanguageLine extends \Spatie\TranslationLoader\LanguageLine
             ]
         ];
     }
+
 }

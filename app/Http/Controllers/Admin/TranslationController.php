@@ -9,6 +9,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TranslationRequest;
+use App\Models\Language;
+use App\Repositories\TranslationRepositoryInterface;
 use Illuminate\Http\Request;
 
 /**
@@ -17,14 +20,30 @@ use Illuminate\Http\Request;
  */
 class TranslationController extends Controller
 {
+
+    /**
+     * @var \App\Repositories\TranslationRepositoryInterface
+     */
+    private $translationRepository;
+    private $activeLanguages;
+
+    public function __construct(TranslationRepositoryInterface $translationRepository)
+    {
+        // Initialize TranslationRepository
+        $this->translationRepository = $translationRepository;
+        $this->activeLanguages = Language::where('status', true)->orderBy('default', 'DESC')->get()->keyBy('id');
+    }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(TranslationRequest $request)
     {
-        //
+        return view('admin.pages.translation.index', [
+            'translations' => $this->translationRepository->getData($request),
+            'languages' => $this->activeLanguages
+        ]);
     }
 
     /**

@@ -10,16 +10,15 @@
 namespace App\Repositories\Eloquent;
 
 
-use App\Models\Language;
 use App\Models\LanguageLine;
 use App\Repositories\Eloquent\Base\BaseRepository;
-use App\Repositories\LanguageRepositoryInterface;
+use App\Repositories\TranslationRepositoryInterface;
 
 /**
  * Class TranslationRepository
  * @package App\Repositories\Eloquent
  */
-class TranslationRepository extends BaseRepository implements LanguageRepositoryInterface
+class TranslationRepository extends BaseRepository implements TranslationRepositoryInterface
 {
     /**
      * LanguageRepository constructor.
