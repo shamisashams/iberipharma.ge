@@ -9,6 +9,7 @@
 
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\TranslationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,6 +34,10 @@ Route::prefix('{locale?}')
                     ->name('update','language.update');
 
                 Route::get('language/{language}/destroy',[LanguageController::class,'destroy'])->name('language.destroy');
+
+                Route::resource('translation',TranslationController::class)
+                    ->name('index','translation.index')
+                    ;
             });
         });
     });
