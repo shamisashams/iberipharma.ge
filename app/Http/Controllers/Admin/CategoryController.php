@@ -98,13 +98,19 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(string $locale,int $id)
     {
-        //
+        $category =  $this->categoryRepository->findOrFail($id);
+
+        return view('admin.pages.category.show', [
+            'category' => $category,
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
