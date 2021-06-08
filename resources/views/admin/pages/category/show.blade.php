@@ -22,6 +22,13 @@
                 <a href="{{locale_route('category.edit',$category->id)}}" class="btn-small indigo">
                     @lang('admin.edit')
                 </a>
+                <a class="btn-small -settings waves-effect -light -btn right ml-3"
+                   href="{{locale_route('category.destroy',$category->id)}}"
+                   onclick="return confirm('Are you sure?')">
+                    <span class="hide-on-small-onl">
+                        @lang('admin.delete')
+                    </span>
+                </a>
             </div>
         </div>
     </div>
