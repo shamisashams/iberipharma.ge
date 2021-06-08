@@ -163,4 +163,15 @@ trait ScopeFilter
             return $query->where('title', 'like', '%' . $title . '%');
         });
     }
+
+    /**
+     * @param $query
+     * @param $filter
+     *
+     * @return mixed
+     */
+    public function scopeFilter($query, $filter)
+    {
+        return $query->where('filter', $filter);
+    }
 }

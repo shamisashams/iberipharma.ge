@@ -49,4 +49,26 @@ class Feature extends Model
         'filter',
         'type'
     ];
+
+    public function getFilterScopes(): array
+    {
+        return [
+            'id' => [
+                'hasParam' => true,
+                'scopeMethod' => 'id'
+            ],
+            'filter' => [
+                'hasParam' => true,
+                'scopeMethod' => 'filter'
+            ],
+            'status' => [
+                'hasParam' => true,
+                'scopeMethod' => 'status'
+            ],
+            'title' => [
+                'hasParam' => true,
+                'scopeMethod' => 'titleLanguage'
+            ]
+        ];
+    }
 }

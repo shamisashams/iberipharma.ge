@@ -9,6 +9,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\FeatureRequest;
+use App\Repositories\FeatureRepositoryInterface;
 use Illuminate\Http\Request;
 
 /**
@@ -17,14 +19,34 @@ use Illuminate\Http\Request;
  */
 class FeatureController extends Controller
 {
+
+    /**
+     * @var \App\Repositories\FeatureRepositoryInterface
+     */
+    private $featureRepository;
+
+    /**
+     * FeatureController constructor.
+     *
+     * @param \App\Repositories\FeatureRepositoryInterface $featureRepository
+     */
+    public function __construct(FeatureRepositoryInterface $featureRepository)
+    {
+        // Initialize featureRepository
+        $this->featureRepository = $featureRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(FeatureRequest $request)
     {
-        //
+        return view('admin.pages.feature.index', [
+            'categories' => $this->featureRepository->getData($request, ['languages']),
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**

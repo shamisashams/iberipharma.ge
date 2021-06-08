@@ -6,6 +6,7 @@
  * Time: 14:26
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -39,7 +40,7 @@ class FeatureRequest extends FormRequest
         return [
             'title' => $isRequired . '|string|max:255',
             'position' => 'nullable|string|max:255',
-            'type' => 'required|in:input,textarea,checkbox,radio,select'
+            'type' => $isRequired . '|in:input,textarea,checkbox,radio,select'
         ];
     }
 }
