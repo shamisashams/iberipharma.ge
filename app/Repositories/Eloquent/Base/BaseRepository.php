@@ -43,6 +43,18 @@ class BaseRepository implements EloquentRepositoryInterface
     }
 
     /**
+     * Get all
+     *
+     * @param array $columns
+     *
+     * @return mixed
+     */
+    public function all(array $columns = ["*"])
+    {
+        return $this->model->get($columns);
+    }
+
+    /**
      * Create new model
      *
      * @param array $attributes

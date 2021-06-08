@@ -27,6 +27,11 @@ interface EloquentRepositoryInterface
     public function getData($request,array $with = []);
 
     /**
+     * @param array $columns
+     */
+    public function all(array $columns);
+
+    /**
      * @param array $attributes
      *
      */
