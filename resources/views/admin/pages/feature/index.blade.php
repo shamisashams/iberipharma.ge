@@ -24,7 +24,7 @@
                                     <tr>
                                         <th>@lang('admin.id')</th>
                                         <th>@lang('admin.status')</th>
-                                        <th>@lang('admin.filter')</th>
+                                        <th>@lang('admin.search')</th>
                                         <th>@lang('admin.title')</th>
                                         <th>@lang('admin.actions')</th>
                                     </tr>
@@ -36,10 +36,10 @@
                                                    class="validate {{$errors->has('id') ? '' : 'valid'}}">
                                         </th>
                                         <th>
-                                            <select class="form-control" name="filter" onchange="this.form.submit()">
-                                                <option value="" {{Request::get('filter') === '' ? 'selected' :''}}>@lang('admin.any')</option>
-                                                <option value="1" {{Request::get('filter') === '1' ? 'selected' :''}}>@lang('admin.active')</option>
-                                                <option value="0" {{Request::get('filter') === '0' ? 'selected' :''}}>@lang('admin.not_active')</option>
+                                            <select class="form-control" name="search" onchange="this.form.submit()">
+                                                <option value="" {{Request::get('search') === '' ? 'selected' :''}}>@lang('admin.any')</option>
+                                                <option value="1" {{Request::get('search') === '1' ? 'selected' :''}}>@lang('admin.active')</option>
+                                                <option value="0" {{Request::get('search') === '0' ? 'selected' :''}}>@lang('admin.not_active')</option>
                                             </select>
                                         </th>
                                         <th>
@@ -62,7 +62,7 @@
                                             <tr>
                                                 <td>{{$feature->id}}</td>
                                                 <td>
-                                                    @if($feature->filter)
+                                                    @if($feature->search)
                                                         <span class="green-text">Active</span>
                                                     @else
                                                         <span class="red-text">Not active</span>
@@ -82,7 +82,7 @@
                                                                 @foreach($feature->languages as $key => $language)
                                                                     @if(isset($languages[$language->language_id]))
                                                                         <li class="tab col s3">
-                                                                            <a href="#cat-{{$category->id}}-{{$language->language_id}}">
+                                                                            <a href="#cat-{{$feature->id}}-{{$language->language_id}}">
                                                                                 {{$languages[$language->language_id]->locale}}
                                                                             </a>
                                                                         </li>
@@ -93,7 +93,7 @@
                                                         <div class="col sm12 mt-2">
                                                             @foreach($feature->languages as $key => $language)
                                                                 @if(isset($languages[$language->language_id]))
-                                                                    <div id="cat-{{$category->id}}-{{$language->language_id}}"
+                                                                    <div id="cat-{{$feature->id}}-{{$language->language_id}}"
                                                                          class="col s12">
                                                                         {{$language->title}}
                                                                     </div>

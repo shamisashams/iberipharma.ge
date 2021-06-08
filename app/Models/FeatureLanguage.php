@@ -33,4 +33,15 @@ class FeatureLanguage extends Model
      * @var string
      */
     protected $table = 'feature_languages';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'category_id',
+        'language_id',
+        'title',
+    ];
 }

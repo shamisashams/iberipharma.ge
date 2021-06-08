@@ -23,7 +23,7 @@ class CreateFeaturesTable extends Migration
             $table->id();
             $table->string('position')->nullable();
             $table->boolean('status')->default(true);
-            $table->boolean('filter')->default(false);
+            $table->boolean('search')->default(false);
             $table->enum('type', ['input', 'textarea', 'checkbox', 'radio', 'select']);
             $table->timestamps();
             $table->softDeletes();

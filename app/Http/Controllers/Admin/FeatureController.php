@@ -6,10 +6,13 @@
  * Time: 14:23
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryRequest;
 use App\Http\Requests\Admin\FeatureRequest;
+use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\FeatureRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -24,16 +27,23 @@ class FeatureController extends Controller
      * @var \App\Repositories\FeatureRepositoryInterface
      */
     private $featureRepository;
+    /**
+     * @var \App\Repositories\CategoryRepositoryInterface
+     */
+    private $categoryRepository;
 
     /**
      * FeatureController constructor.
      *
      * @param \App\Repositories\FeatureRepositoryInterface $featureRepository
      */
-    public function __construct(FeatureRepositoryInterface $featureRepository)
+    public function __construct(FeatureRepositoryInterface $featureRepository, CategoryRepositoryInterface $categoryRepository)
     {
         // Initialize featureRepository
         $this->featureRepository = $featureRepository;
+
+        // Initialize categoryRepository
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -52,28 +62,54 @@ class FeatureController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $feature = $this->featureRepository->model;
+
+        $url = locale_route('feature.store', [], false);
+        $method = 'POST';
+
+        return view('admin.pages.feature.form', [
+            'feature' => $feature,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages(),
+            'categories' => $this->categoryRepository->all()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param \App\Http\Requests\Admin\FeatureRequest $request
+     *
      */
-    public function store(Request $request)
+    public function store(string $locale, FeatureRequest $request)
     {
-        //
+        $data = [
+            'type' => $request['type'],
+            'position' => $request['position'],
+            'status' => (bool)$request['status'],
+            'search' => (bool)$request['search'],
+            'title' => $request['title'],
+            'languages' => $this->activeLanguages(),
+            'categories' => $request['categories']
+        ];
+
+        $feature = $this->featureRepository->create($data);
+
+        return redirect(locale_route('feature.show', $feature->id))->with('success', 'Feature created.');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -84,7 +120,8 @@ class FeatureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -95,8 +132,9 @@ class FeatureController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -107,7 +145,8 @@ class FeatureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

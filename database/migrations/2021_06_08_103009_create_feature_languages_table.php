@@ -23,7 +23,7 @@ class CreateFeatureLanguagesTable extends Migration
             $table->id();
             $table->foreignId('feature_id')->constrained('features');
             $table->foreignId('language_id')->constrained('languages');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->index(['feature_id','language_id']);
             $table->timestamps();
             $table->softDeletes();

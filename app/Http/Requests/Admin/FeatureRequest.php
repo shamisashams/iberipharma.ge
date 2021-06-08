@@ -9,6 +9,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Models\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -36,11 +37,17 @@ class FeatureRequest extends FormRequest
     {
         // Check if method is get,fields are nullable.
         $isRequired = $this->method() === 'GET' ? 'nullable' : 'required';
+        $defaultLanguage = Language::where('default', true)->firstOrFail();
 
-        return [
-            'title' => $isRequired . '|string|max:255',
+        $data = [
             'position' => 'nullable|string|max:255',
-            'type' => $isRequired . '|in:input,textarea,checkbox,radio,select'
+            'type' => $isRequired . '|in:input,textarea,checkbox,radio,select',
+
         ];
+
+        if ($this->method !== 'GET') {
+            $data ['title.' . $defaultLanguage->id] = 'required|string|max:255';
+        }
+        return $data;
     }
 }

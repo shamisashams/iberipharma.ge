@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\Eloquent\CategoryRepository;
+use App\Repositories\FeatureRepositoryInterface;
 use Illuminate\Http\Request;
 
 /**
@@ -26,16 +27,21 @@ class CategoryController extends Controller
      * @var \App\Repositories\CategoryRepositoryInterface
      */
     private $categoryRepository;
+    /**
+     * @var \App\Repositories\FeatureRepositoryInterface
+     */
+    private $featureRepository;
 
     /**
      * CategoryController constructor.
      *
      * @param \App\Repositories\CategoryRepositoryInterface $categoryRepository
      */
-    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository, FeatureRepositoryInterface $featureRepository)
     {
         // Initialize categoryRepository
         $this->categoryRepository = $categoryRepository;
+        $this->featureRepository =  $featureRepository;
     }
 
     /**
@@ -67,7 +73,7 @@ class CategoryController extends Controller
             'category' => $category,
             'url' => $url,
             'method' => $method,
-            'languages' => $this->activeLanguages()
+            'languages' => $this->activeLanguages(),
         ]);
     }
 

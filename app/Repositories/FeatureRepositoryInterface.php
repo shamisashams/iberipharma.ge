@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 
 use App\Http\Requests\Admin\FeatureRequest;
+use App\Models\Feature;
 
 /**
  * Interface CategoryRepositoryInterface
@@ -24,5 +25,12 @@ interface FeatureRepositoryInterface
      * @param array $with
      */
     public function getData(FeatureRequest $request, array $with = []);
+
+    /**
+     * @param array $attributes
+     *
+     * @return \App\Models\Category
+     */
+    public function create(array $attributes): Feature;
 
 }

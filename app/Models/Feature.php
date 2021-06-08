@@ -12,6 +12,7 @@ namespace App\Models;
 use App\Traits\ScopeFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer $id
  * @property string $position
  * @property boolean $status
- * @property boolean $filter
+ * @property boolean $search
  * @property string $type
  * @property string $created_at
  * @property string $updated_at
@@ -47,7 +48,7 @@ class Feature extends Model
     protected $fillable = [
         'position',
         'status',
-        'filter',
+        'search',
         'type'
     ];
 
@@ -58,9 +59,9 @@ class Feature extends Model
                 'hasParam' => true,
                 'scopeMethod' => 'id'
             ],
-            'filter' => [
+            'search' => [
                 'hasParam' => true,
-                'scopeMethod' => 'filter'
+                'scopeMethod' => 'search'
             ],
             'status' => [
                 'hasParam' => true,
@@ -96,5 +97,13 @@ class Feature extends Model
             $locale = app()->getLocale();
         }
         return $this->languages()->where('language_id', $locale)->first();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'feature_categories');
     }
 }

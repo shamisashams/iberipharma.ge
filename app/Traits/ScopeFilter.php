@@ -166,12 +166,12 @@ trait ScopeFilter
 
     /**
      * @param $query
-     * @param $filter
+     * @param $search
      *
      * @return mixed
      */
-    public function scopeFilter($query, $filter)
+    public function scopeSearch($query, $search)
     {
-        return $query->where('filter', $filter);
+        return $query->where('search', $search);
     }
 }
