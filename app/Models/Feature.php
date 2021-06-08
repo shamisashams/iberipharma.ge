@@ -106,4 +106,14 @@ class Feature extends Model
     {
         return $this->belongsToMany(Category::class, 'feature_categories');
     }
+
+    /**
+     * @param $categoryId
+     *
+     * @return bool
+     */
+    public function hasCategory($categoryId):bool
+    {
+        return (bool)$this->categories()->where('category_id',$categoryId)->count();
+    }
 }

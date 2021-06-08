@@ -33,4 +33,13 @@ interface FeatureRepositoryInterface
      */
     public function create(array $attributes): Feature;
 
+    /**
+     * Update model by the given ID
+     *
+     * @param integer $id
+     * @param array $data
+     *
+     * @return Feature
+     */
+    public function update(int $id, array $data = []): Feature;
 }

@@ -76,7 +76,8 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     /**
      * Create new model
      *
-     * @param array $attributes
+     * @param int $id
+     * @param array $data
      *
      * @return Category
      */

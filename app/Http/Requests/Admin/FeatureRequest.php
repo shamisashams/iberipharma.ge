@@ -42,7 +42,8 @@ class FeatureRequest extends FormRequest
         $data = [
             'position' => 'nullable|string|max:255',
             'type' => $isRequired . '|in:input,textarea,checkbox,radio,select',
-
+            'categories' => 'nullable|array',
+            'categories.*' => 'exists:categories,id',
         ];
 
         if ($this->method !== 'GET') {
