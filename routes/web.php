@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\TranslationController;
+use App\Models\Feature;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,15 +28,17 @@ Route::prefix('{locale}')
             Route::middleware('auth')->group(function () {
                 // Language
                 Route::resource('language', LanguageController::class);
-
-                Route::get('language/{language}/destroy',[LanguageController::class,'destroy'])->name('language.destroy');
+                Route::get('language/{language}/destroy', [LanguageController::class, 'destroy'])->name('language.destroy');
 
                 // Translation
-                Route::resource('translation',TranslationController::class);
+                Route::resource('translation', TranslationController::class);
 
                 // Category
-                Route::resource('category',CategoryController::class);
-                Route::get('category/{category}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
+                Route::resource('category', CategoryController::class);
+                Route::get('category/{category}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+                // Feature
+                Route::resource('feature', Feature::class);
 
             });
         });
