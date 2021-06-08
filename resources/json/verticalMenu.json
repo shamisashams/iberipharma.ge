@@ -54,6 +54,13 @@
       "i18n": "category",
       "icon": "filter_list",
       "slug": "category"
+    },
+    {
+      "url": "feature.index",
+      "name": "feature",
+      "i18n": "feature",
+      "icon": "memory",
+      "slug": "feature"
     }
   ]
 }

@@ -9,9 +9,9 @@
 
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\TranslationController;
-use App\Models\Feature;
 use Illuminate\Support\Facades\Route;
 
 
@@ -38,7 +38,7 @@ Route::prefix('{locale}')
                 Route::get('category/{category}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
 
                 // Feature
-                Route::resource('feature', Feature::class);
+                Route::resource('feature', FeatureController::class);
 
             });
         });
