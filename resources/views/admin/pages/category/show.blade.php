@@ -47,6 +47,16 @@
                             <td>{{$category->position}}</td>
                         </tr>
                         <tr>
+                            <td>@lang('admin.status'):</td>
+                            <td>
+                                @if($category->status)
+                                    <span class="chip green lighten-5 green-text">@lang('admin.active')</span>
+                                @else
+                                    <span class="chip red lighten-5 red-text">@lang('admin.not_active')</span>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
                             <td>@lang('admin.created_at')</td>
                             <td>{{\Carbon\Carbon::parse($category->created_at)}}</td>
                         </tr>

@@ -40,7 +40,7 @@ interface EloquentRepositoryInterface
      *
      * @return mixed
      */
-    public function update(int $id, array $data = []): Model;
+    public function update(int $id, array $data = []);
 
     /**
      * @param integer $id

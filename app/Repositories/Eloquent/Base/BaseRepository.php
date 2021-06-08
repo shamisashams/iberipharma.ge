@@ -67,7 +67,7 @@ class BaseRepository implements EloquentRepositoryInterface
      *
      * @return mixed
      */
-    public function update(int $id, array $data = []): Model
+    public function update(int $id, array $data = [])
     {
         $this->model = $this->findOrFail($id);
         try {

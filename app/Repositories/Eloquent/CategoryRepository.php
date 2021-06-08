@@ -72,4 +72,42 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
             DB::connection()->rollBack();
         }
     }
+
+    /**
+     * Create new model
+     *
+     * @param array $attributes
+     *
+     * @return Category
+     */
+    public function update(int $id, array $data = []): Category
+    {
+        try {
+            DB::connection()->beginTransaction();
+            $attributes = [
+                'slug' => $data['slug'],
+                'position' => $data['position'],
+                'status' => $data['status'],
+            ];
+
+            $this->model = parent::update($id, $attributes);
+
+            foreach ($data['languages'] as $language) {
+                if (null !== $this->model->language($language['id'])) {
+                    $this->model->language($language['id'])->update([
+                        'title' => $data['title'][$language['id']],
+                        'description' => $data['description'][$language['id']]
+                    ]);
+                }
+            }
+
+            DB::connection()->commit();
+
+            return $this->model;
+
+
+        } catch (\PDOException $e) {
+            DB::connection()->rollBack();
+        }
+    }
 }

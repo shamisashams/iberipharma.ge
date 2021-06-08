@@ -35,4 +35,14 @@ interface CategoryRepositoryInterface
      * @return \App\Models\Category
      */
     public function create(array $attributes): Category;
+
+    /**
+     * Update model by the given ID
+     *
+     * @param integer $id
+     * @param array $data
+     *
+     * @return mixed
+     */
+    public function update(int $id, array $data = []): Category;
 }

@@ -41,8 +41,8 @@ class TranslationRequest extends FormRequest
         $defaultLanguage = Language::where('default', true)->firstOrFail();
 
         $data = [
-            'group' => $isRequired . '|string|max:255',
-            'key' => $isRequired . '|string|max:255',
+            'group' =>  'nullable|string|max:255',
+            'key' => 'nullable|string|max:255',
         ];
 
         if ($this->method !== 'GET') {

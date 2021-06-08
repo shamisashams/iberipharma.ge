@@ -1,6 +1,5 @@
 {{-- extend layout --}}
 @extends('admin.layout.contentLayoutMaster')
-
 {{-- page title --}}
 @section('title', $translation->group ? 'Translation - Update' : 'Translation - Create')
 @section('content')

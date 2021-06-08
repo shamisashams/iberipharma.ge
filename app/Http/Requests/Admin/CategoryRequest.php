@@ -11,6 +11,7 @@ namespace App\Http\Requests\Admin;
 
 use App\Models\Language;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * Class CategoryRequest
@@ -41,7 +42,7 @@ class CategoryRequest extends FormRequest
         $defaultLanguage = Language::where('default', true)->firstOrFail();
 
         $data = [
-            'slug' => $isRequired . '|unique:categories,slug|max:255',
+            'slug' => [$isRequired,'alpha_dash', Rule::unique('categories', 'slug')->ignore($this->category)],
         ];
 
         if ($this->method !== 'GET') {

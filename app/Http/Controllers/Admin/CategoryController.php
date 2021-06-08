@@ -103,9 +103,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(string $locale,int $id)
+    public function show(string $locale, int $id)
     {
-        $category =  $this->categoryRepository->findOrFail($id);
+        $category = $this->categoryRepository->findOrFail($id);
 
         return view('admin.pages.category.show', [
             'category' => $category,
@@ -116,39 +116,65 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(string $locale, int $id)
     {
-        //
+        $category = $this->categoryRepository->findOrFail($id);
+
+        $url = locale_route('category.update', $id, false);
+        $method = 'PUT';
+
+        return view('admin.pages.category.form', [
+            'category' => $category,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\Admin\CategoryRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(string $locale, int $id, CategoryRequest $request)
     {
-        //
+        $data = [
+            'slug' => $request['slug'],
+            'position' => $request['position'],
+            'status' => (bool)$request['status'],
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'languages' => $this->activeLanguages()
+        ];
+
+        $this->categoryRepository->update($id, $data);
+
+        return redirect(locale_route('category.show', $id))->with('success', 'Category Updated.');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(string $locale, int $id)
     {
         if (!$this->categoryRepository->delete($id)) {
-            return redirect(locale_route('category.show',$id))->with('danger', 'Category not deleted.');
+            return redirect(locale_route('category.show', $id))->with('danger', 'Category not deleted.');
         }
         return redirect(locale_route('category.index'))->with('success', 'Category Deleted.');
     }
