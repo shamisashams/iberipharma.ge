@@ -44,7 +44,7 @@ class FeatureController extends Controller
     public function index(FeatureRequest $request)
     {
         return view('admin.pages.feature.index', [
-            'categories' => $this->featureRepository->getData($request, ['languages']),
+            'features' => $this->featureRepository->getData($request, ['languages']),
             'languages' => $this->activeLanguages()
         ]);
     }
