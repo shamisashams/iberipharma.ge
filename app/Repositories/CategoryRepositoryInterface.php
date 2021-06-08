@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 
 use App\Http\Requests\Admin\CategoryRequest;
+use App\Models\Category;
 
 /**
  *  app/Repositories/CategoryRepositoryInterface.php
@@ -27,4 +28,11 @@ interface CategoryRepositoryInterface
      * @param array $with
      */
     public function getData(CategoryRequest $request, array $with = []);
+
+    /**
+     * @param array $attributes
+     *
+     * @return \App\Models\Category
+     */
+    public function create(array $attributes): Category;
 }

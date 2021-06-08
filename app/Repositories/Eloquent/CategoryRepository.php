@@ -13,6 +13,8 @@ namespace App\Repositories\Eloquent;
 use App\Models\Category;
 use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\Eloquent\Base\BaseRepository;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class LanguageRepository
@@ -28,5 +30,46 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     public function __construct(Category $model)
     {
         parent::__construct($model);
+    }
+
+    /**
+     * Create new model
+     *
+     * @param array $attributes
+     *
+     * @return Category
+     */
+    public function create(array $attributes = []): Category
+    {
+        try {
+            DB::connection()->beginTransaction();
+            $data = [
+                'slug' => $attributes['slug'],
+                'position' => $attributes['position'],
+                'status' => $attributes['status'],
+            ];
+
+            $this->model = parent::create($data);
+
+            $categoryLanguages = [];
+
+            foreach ($attributes['languages'] as $language) {
+                $categoryLanguages [] = [
+                    'language_id' => $language['id'],
+                    'title' => $attributes['title'][$language['id']],
+                    'description' => $attributes['description'][$language['id']]
+                ];
+            }
+
+            $this->model->languages()->createMany($categoryLanguages);
+
+            DB::connection()->commit();
+
+            return $this->model;
+
+        } catch (\PDOException $e) {
+            // Woopsy
+            DB::connection()->rollBack();
+        }
     }
 }

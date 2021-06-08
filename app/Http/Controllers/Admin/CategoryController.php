@@ -6,6 +6,7 @@
  * Time: 17:02
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -36,6 +37,7 @@ class CategoryController extends Controller
         // Initialize categoryRepository
         $this->categoryRepository = $categoryRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +46,7 @@ class CategoryController extends Controller
     public function index(CategoryRequest $request)
     {
         return view('admin.pages.category.index', [
-            'categories' => $this->categoryRepository->getData($request,['languages']),
+            'categories' => $this->categoryRepository->getData($request, ['languages']),
             'languages' => $this->activeLanguages()
         ]);
     }
@@ -52,28 +54,52 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $category = $this->categoryRepository->model;
+
+        $url = locale_route('category.store', [], false);
+        $method = 'POST';
+
+        return view('admin.pages.category.form', [
+            'category' => $category,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\Admin\CategoryRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $data = [
+            'slug' => $request['slug'],
+            'position' => $request['position'],
+            'status' => (bool)$request['status'],
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'languages' => $this->activeLanguages()
+        ];
+
+        $category = $this->categoryRepository->create($data);
+
+        return redirect(locale_route('category.show', $category->id))->with('success', 'Category created.');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -84,7 +110,8 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -95,8 +122,9 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -107,7 +135,8 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

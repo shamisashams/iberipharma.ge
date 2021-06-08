@@ -49,7 +49,7 @@ class BaseRepository implements EloquentRepositoryInterface
      *
      * @return Model
      */
-    public function create(array $attributes = []): Model
+    public function create(array $attributes = [])
     {
         try {
             return $this->model->create($attributes);

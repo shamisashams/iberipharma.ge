@@ -6,8 +6,10 @@
  * Time: 17:03
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Http\Requests\Admin;
 
+use App\Models\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -21,7 +23,7 @@ class CategoryRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -31,10 +33,21 @@ class CategoryRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            //
+        // Check if method is get,fields are nullable.
+        $isRequired = $this->method() === 'GET' ? 'nullable' : 'required';
+
+        $defaultLanguage = Language::where('default', true)->firstOrFail();
+
+        $data = [
+            'slug' => $isRequired . '|unique:categories,slug|max:255',
         ];
+
+        if ($this->method !== 'GET') {
+            $data ['title.' . $defaultLanguage->id] = 'required|string|max:255';
+            $data ['description.' . $defaultLanguage->id] = 'required|string|max:255';
+        }
+        return $data;
     }
 }

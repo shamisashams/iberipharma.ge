@@ -6,13 +6,16 @@
  * Time: 15:56
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Models;
 
 use App\Traits\ScopeFilter;
 use Collective\Html\Eloquent\FormAccessible;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -78,6 +81,21 @@ class Category extends Model
      */
     public function languages(): HasMany
     {
-        return $this->hasMany(CategoryLanguage::class,'category_id');
+        return $this->hasMany(CategoryLanguage::class, 'category_id');
+    }
+
+    /**
+     * Return relationship category language by language
+     *
+     * @param string|null $locale
+     *
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Relations\HasMany|object|null
+     */
+    public function language(string $locale = null)
+    {
+        if (null === $locale) {
+            $locale = app()->getLocale();
+        }
+        return $this->languages()->where('language_id', $locale)->first();
     }
 }
