@@ -1,5 +1,11 @@
 <?php
-
+/**
+ *  app/Models/Language.php
+ *
+ * Date-Time: 08.06.21
+ * Time: 14:16
+ * @author Vito Makhatadze <vitomaxatadze@gmail.com>
+ */
 namespace App\Models;
 
 use App\Traits\ScopeFilter;

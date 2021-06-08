@@ -26,6 +26,8 @@ class CreateFeaturesTable extends Migration
             $table->boolean('filter')->default(false);
             $table->enum('type', ['input', 'textarea', 'checkbox', 'radio', 'select']);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
