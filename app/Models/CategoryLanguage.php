@@ -32,7 +32,7 @@ class CategoryLanguage extends Model
      *
      * @var string
      */
-    protected $table = 'languages';
+    protected $table = 'category_languages';
 
     /**
      * The attributes that are mass assignable.

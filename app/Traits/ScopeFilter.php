@@ -138,4 +138,29 @@ trait ScopeFilter
     {
         return $query->where('text', 'like', '%' . $text . '%');
     }
+
+    /**
+     * @param $query
+     * @param $slug
+     *
+     * @return mixed
+     */
+    public function scopeSlug($query, $slug)
+    {
+        return $query->where('slug', 'like', '%' . $slug . '%');
+    }
+
+
+    /**
+     * @param $query
+     * @param $title
+     *
+     * @return mixed
+     */
+    public function scopeTitleLanguage($query, $title)
+    {
+        return $query->whereHas('languages', function ($query) use ($title) {
+            return $query->where('title', 'like', '%' . $title . '%');
+        });
+    }
 }

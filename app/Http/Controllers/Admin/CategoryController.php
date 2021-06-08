@@ -44,7 +44,7 @@ class CategoryController extends Controller
     public function index(CategoryRequest $request)
     {
         return view('admin.pages.category.index', [
-            'translations' => $this->categoryRepository->getData($request),
+            'categories' => $this->categoryRepository->getData($request,['languages']),
             'languages' => $this->activeLanguages()
         ]);
     }

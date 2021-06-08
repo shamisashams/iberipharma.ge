@@ -12,6 +12,7 @@ use App\Traits\ScopeFilter;
 use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -59,14 +60,24 @@ class Category extends Model
                 'hasParam' => true,
                 'scopeMethod' => 'slug'
             ],
-            'active' => [
+            'status' => [
                 'hasParam' => true,
-                'scopeMethod' => 'active'
+                'scopeMethod' => 'status'
             ],
             'title' => [
                 'hasParam' => true,
-                'scopeMethod' => 'title'
+                'scopeMethod' => 'titleLanguage'
             ]
         ];
+    }
+
+    /**
+     * Return relationship category languages
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function languages(): HasMany
+    {
+        return $this->hasMany(CategoryLanguage::class,'category_id');
     }
 }
