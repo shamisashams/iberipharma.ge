@@ -35,6 +35,8 @@ Route::prefix('{locale}')
 
                 // Category
                 Route::resource('category',CategoryController::class);
+                Route::get('category/{category}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
+
             });
         });
     });

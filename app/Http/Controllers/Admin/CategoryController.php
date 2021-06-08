@@ -143,10 +143,13 @@ class CategoryController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(string $locale, int $id)
     {
-        //
+        if (!$this->categoryRepository->delete($id)) {
+            return redirect(locale_route('category.show',$id))->with('danger', 'Category not deleted.');
+        }
+        return redirect(locale_route('category.index'))->with('success', 'Category Deleted.');
     }
 }

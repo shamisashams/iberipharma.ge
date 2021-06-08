@@ -102,6 +102,10 @@
                                                        class="pl-3">
                                                         <i class="material-icons">edit</i>
                                                     </a>
+                                                    <a href="{{locale_route('category.destroy',$category->id)}}"
+                                                       onclick="return confirm('Are you sure?')" class="pl-3">
+                                                        <i class="material-icons">delete</i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
