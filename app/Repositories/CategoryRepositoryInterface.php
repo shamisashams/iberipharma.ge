@@ -14,11 +14,8 @@ use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
 
 /**
- *  app/Repositories/CategoryRepositoryInterface.php
- *
- * Date-Time: 07.06.21
- * Time: 17:03
- * @author Vito Makhatadze <vitomaxatadze@gmail.com>
+ * Interface CategoryRepositoryInterface
+ * @package App\Repositories
  */
 interface CategoryRepositoryInterface
 {
