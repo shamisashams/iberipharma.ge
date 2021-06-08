@@ -26,27 +26,15 @@ Route::prefix('{locale}')
 
             Route::middleware('auth')->group(function () {
                 // Language
-                Route::resource('language', LanguageController::class)
-                    ->name('index', 'language.index')
-                    ->name('create','language.create')
-                    ->name('store','language.store')
-                    ->name('show', 'language.show')
-                    ->name('edit','language.edit')
-                    ->name('update','language.update');
+                Route::resource('language', LanguageController::class);
 
                 Route::get('language/{language}/destroy',[LanguageController::class,'destroy'])->name('language.destroy');
 
                 // Translation
-                Route::resource('translation',TranslationController::class)
-                    ->name('index','translation.index')
-                    ->name('edit','translation.edit')
-                    ->name('update','translation.update')
-                    ->name('show','translation.show');
+                Route::resource('translation',TranslationController::class);
 
                 // Category
-                Route::resource('category',CategoryController::class)
-                    ->name('index','category.index')
-                    ;
+                Route::resource('category',CategoryController::class);
             });
         });
     });
