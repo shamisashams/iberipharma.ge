@@ -6,6 +6,7 @@
  * Time: 16:13
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -49,7 +50,7 @@ class ProjectController extends Controller
     public function index(ProjectRequest $request)
     {
         return view('admin.pages.project.index', [
-            'projects' => $this->projectRepository->getData($request,['city']),
+            'projects' => $this->projectRepository->getData($request, ['city']),
             'languages' => $this->activeLanguages()
         ]);
     }
@@ -99,45 +100,83 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(string $locale, int $id)
     {
-        //
+        $project = $this->projectRepository->findOrFail($id);
+
+        return view('admin.pages.project.show', [
+            'project' => $project,
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(string $locale, int $id)
     {
-        //
+        $project = $this->projectRepository->findOrfail($id);
+
+        $url = locale_route('project.update', $id, false);
+
+        $method = 'PUT';
+
+        return view('admin.pages.project.form', [
+            'project' => $project,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages(),
+            'cities' => $this->cityRepository->all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param int $id
+     *
+     * @param \App\Http\Requests\Admin\ProjectRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(string $locale, int $id, ProjectRequest $request)
     {
-        //
+        $data = [
+            'city_id' => $request['city_id'],
+            'status' => (bool)$request['status'],
+            'title' => $request['title'],
+            'languages' => $this->activeLanguages(),
+        ];
+
+        $answer = $this->projectRepository->update($id, $data);
+
+        return redirect(locale_route('project.show', $answer->id))->with('success', 'Project updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(string $locale, int $id)
     {
-        //
+        if (!$this->projectRepository->delete($id)) {
+            return redirect(locale_route('project.show', $id))->with('danger', 'Project not deleted.');
+        }
+        return redirect(locale_route('project.index'))->with('success', 'Project Deleted.');
     }
 }
