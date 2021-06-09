@@ -6,10 +6,13 @@
  * Time: 11:01
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Models;
 
+use App\Traits\ScopeFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Answer
@@ -24,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Answer extends Model
 {
-    use HasFactory;
+    use HasFactory, softDeletes, ScopeFilter;
 
     /**
      * The table associated with the model.
@@ -43,4 +46,26 @@ class Answer extends Model
         'position',
         'status',
     ];
+
+    public function getFilterScopes(): array
+    {
+        return [
+            'id' => [
+                'hasParam' => true,
+                'scopeMethod' => 'id'
+            ],
+            'category' => [
+                'hasParam' => true,
+                'scopeMethod' => 'categoryLanguage'
+            ],
+            'status' => [
+                'hasParam' => true,
+                'scopeMethod' => 'status'
+            ],
+            'title' => [
+                'hasParam' => true,
+                'scopeMethod' => 'titleLanguage'
+            ]
+        ];
+    }
 }
