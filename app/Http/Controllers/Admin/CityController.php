@@ -104,23 +104,46 @@ class CityController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(string $locale, int $id)
     {
-        //
+        $city = $this->cityRepository->findOrfail($id);
+
+        $url = locale_route('city.update', $id, false);
+
+        $method = 'PUT';
+
+        return view('admin.pages.city.form', [
+            'city' => $city,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param int $id
+     *
+     * @param \App\Http\Requests\Admin\CityRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(string $locale,int $id,CityRequest $request)
     {
-        //
+        $data = [
+            'status' => (bool)$request['status'],
+            'title' => $request['title'],
+            'languages' => $this->activeLanguages(),
+        ];
+
+        $city = $this->cityRepository->update($id,$data);
+
+        return redirect(locale_route('city.show', $city->id))->with('success', 'City updated.');
     }
 
     /**
