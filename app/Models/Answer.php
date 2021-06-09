@@ -12,6 +12,8 @@ namespace App\Models;
 use App\Traits\ScopeFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -54,9 +56,9 @@ class Answer extends Model
                 'hasParam' => true,
                 'scopeMethod' => 'id'
             ],
-            'category' => [
+            'feature' => [
                 'hasParam' => true,
-                'scopeMethod' => 'categoryLanguage'
+                'scopeMethod' => 'featureLanguage'
             ],
             'status' => [
                 'hasParam' => true,
@@ -68,4 +70,41 @@ class Answer extends Model
             ]
         ];
     }
+
+    /**
+     * Return relationship answer feature
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function feature(): HasOne
+    {
+        return $this->hasOne(Feature::class, 'feature_id');
+    }
+
+    /**
+     * Return relationship answer languages
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function languages(): HasMany
+    {
+        return $this->hasMany(AnswerLanguage::class, 'answer_id');
+    }
+
+    /**
+     * Return relationship answer language by language
+     *
+     * @param string|null $locale
+     *
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Relations\HasMany|object|null
+     */
+    public function language(string $locale = null)
+    {
+        if (null === $locale) {
+            $locale = app()->getLocale();
+        }
+        return $this->languages()->where('language_id', $locale)->first();
+    }
+
+
 }
