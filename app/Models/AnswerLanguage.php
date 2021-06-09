@@ -1,9 +1,9 @@
 <?php
 /**
- *  app/Models/FeatureLanguage.php
+ *  app/Models/AnswerLanguage.php
  *
- * Date-Time: 08.06.21
- * Time: 14:32
+ * Date-Time: 09.06.21
+ * Time: 11:15
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
 
@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class FeatureLanguage
+ * Class AnswerLanguage
  * @package App\Models
  * @property integer $id
  * @property integer $feature_id
@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property string $deleted_at
  */
-class FeatureLanguage extends Model
+class AnswerLanguage extends Model
 {
     use HasFactory;
 
@@ -32,7 +32,7 @@ class FeatureLanguage extends Model
      *
      * @var string
      */
-    protected $table = 'feature_languages';
+    protected $table = 'answer_languages';
 
     /**
      * The attributes that are mass assignable.
@@ -40,7 +40,7 @@ class FeatureLanguage extends Model
      * @var array
      */
     protected $fillable = [
-        'feature_id',
+        'answer_id',
         'language_id',
         'title',
     ];
