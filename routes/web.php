@@ -10,6 +10,7 @@
 use App\Http\Controllers\Admin\AnswerController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\TranslationController;
@@ -45,6 +46,10 @@ Route::prefix('{locale}')
                 // Answer
                 Route::resource('answer', AnswerController::class);
                 Route::get('answer/{answer}/destroy', [AnswerController::class, 'destroy'])->name('answer.destroy');
+
+                // City
+                Route::resource('city',CityController::class);
+                Route::get('city/{city}/destroy', [CityController::class, 'destroy'])->name('city.destroy');
 
             });
         });
