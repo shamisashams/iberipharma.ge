@@ -106,13 +106,19 @@ class AnswerController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(string $locale, int $id)
     {
-        //
+        $answer = $this->answerRepository->findOrFail($id);
+
+        return view('admin.pages.answer.show',[
+            'answer' => $answer,
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
@@ -175,7 +181,7 @@ class AnswerController extends Controller
      */
     public function destroy(string $locale, int $id)
     {
-        if (!$this->featureRepository->delete($id)) {
+        if (!$this->answerRepository->delete($id)) {
             return redirect(locale_route('answer.show', $id))->with('danger', 'Answer not deleted.');
         }
         return redirect(locale_route('answer.index'))->with('success', 'Answer Deleted.');
