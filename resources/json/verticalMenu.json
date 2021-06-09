@@ -61,6 +61,13 @@
       "i18n": "feature",
       "icon": "memory",
       "slug": "feature"
+    },
+    {
+      "url": "answer.index",
+      "name": "answer",
+      "i18n": "answer",
+      "icon": "assistant",
+      "slug": "answer"
     }
   ]
 }
