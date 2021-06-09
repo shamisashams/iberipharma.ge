@@ -172,12 +172,16 @@ class FeatureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(string $locale, int $id)
     {
-        //
+        if (!$this->featureRepository->delete($id)) {
+            return redirect(locale_route('feature.show', $id))->with('danger', 'Feature not deleted.');
+        }
+        return redirect(locale_route('feature.index'))->with('success', 'Feature Deleted.');
     }
 }

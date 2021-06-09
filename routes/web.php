@@ -39,6 +39,7 @@ Route::prefix('{locale}')
 
                 // Feature
                 Route::resource('feature', FeatureController::class);
+                Route::get('feature/{feature}/destroy', [FeatureController::class, 'destroy'])->name('feature.destroy');
 
             });
         });
