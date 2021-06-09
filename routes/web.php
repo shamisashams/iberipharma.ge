@@ -7,6 +7,7 @@
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
 
+use App\Http\Controllers\Admin\AnswerController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\FeatureController;
@@ -40,6 +41,10 @@ Route::prefix('{locale}')
                 // Feature
                 Route::resource('feature', FeatureController::class);
                 Route::get('feature/{feature}/destroy', [FeatureController::class, 'destroy'])->name('feature.destroy');
+
+                // Answer
+                Route::resource('answer', AnswerController::class);
+                Route::get('answer/{answer}/destroy', [AnswerController::class, 'destroy'])->name('answer.destroy');
 
             });
         });
