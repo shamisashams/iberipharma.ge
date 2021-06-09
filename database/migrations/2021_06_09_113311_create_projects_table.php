@@ -1,16 +1,16 @@
 <?php
 /**
- *  database/migrations/2021_06_09_065930_create_answers_table.php
+ *  database/migrations/2021_06_09_113311_create_projects_table.php
  *
  * Date-Time: 09.06.21
- * Time: 10:59
+ * Time: 15:34
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnswersTable extends Migration
+class CreateProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,11 +19,10 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('feature_id')->constrained('features');
-            $table->index('feature_id');
-            $table->string('position')->nullable();
+            $table->foreignId('city_id')->constrained('cities');
+            $table->index('city_id');
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
@@ -37,6 +36,6 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('projects');
     }
 }
