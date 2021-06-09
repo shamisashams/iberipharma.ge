@@ -74,8 +74,21 @@
                             <td>@lang('admin.categories')</td>
                             <td>
                                 @foreach($feature->categories as $key =>$category)
-                                    {{$category->language(app()->getLocale())? substr($category->language(app()->getLocale())->title,0,15): substr($category->language()->title,0,15)}}
-                                    {{isset($feature->categories[$key +1]) ? ', ' : ''}}
+                                    <a href="{{locale_route('category.show',$category->id)}}">
+                                        {{$category->language(app()->getLocale())? substr($category->language(app()->getLocale())->title,0,15): substr($category->language()->title,0,15)}}
+                                        {{isset($feature->categories[$key +1]) ? ', ' : ''}}
+                                    </a>
+                                @endforeach
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>@lang('admin.answers')</td>
+                            <td>
+                                @foreach($feature->answers as $key =>$answer)
+                                    <a href="{{locale_route('answer.show',$answer->id)}}">
+                                        {{$answer->language(app()->getLocale())? substr($answer->language(app()->getLocale())->title,0,15): substr($answer->language()->title,0,15)}}
+                                        {{isset($feature->answers[$key +1]) ? ', ' : ''}}
+                                    </a>
                                 @endforeach
                             </td>
                         </tr>

@@ -68,8 +68,10 @@
                             <td>@lang('admin.features')</td>
                             <td>
                                 @foreach($category->features as $key =>$feature)
-                                    {{$feature->language(app()->getLocale())? substr($feature->language(app()->getLocale())->title,0,15): substr($feature->language()->title,0,15)}}
-                                    {{isset($category->features[$key +1]) ? ', ' : ''}}
+                                    <a href="{{locale_route('feature.show',$feature->id)}}">
+                                        {{$feature->language(app()->getLocale())? substr($feature->language(app()->getLocale())->title,0,15): substr($feature->language()->title,0,15)}}
+                                        {{isset($category->features[$key +1]) ? ', ' : ''}}
+                                    </a>
                                 @endforeach
                             </td>
                         </tr>

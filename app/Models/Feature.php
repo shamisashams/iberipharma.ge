@@ -108,6 +108,14 @@ class Feature extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function answers(): HasMany
+    {
+        return $this->hasMany(Answer::class, 'feature_id');
+    }
+
+    /**
      * @param $categoryId
      *
      * @return bool
