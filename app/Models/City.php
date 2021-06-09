@@ -8,8 +8,10 @@
  */
 namespace App\Models;
 
+use App\Traits\ScopeFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class City
@@ -22,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class City extends Model
 {
-    use HasFactory;
+    use HasFactory,softDeletes,ScopeFilter;
 
     /**
      * The table associated with the model.
@@ -39,4 +41,23 @@ class City extends Model
     protected $fillable = [
         'status',
     ];
+
+    public function getFilterScopes(): array
+    {
+        return [
+            'id' => [
+                'hasParam' => true,
+                'scopeMethod' => 'id'
+            ],
+            'status' => [
+                'hasParam' => true,
+                'scopeMethod' => 'status'
+            ],
+            'title' => [
+                'hasParam' => true,
+                'scopeMethod' => 'titleLanguage'
+            ]
+        ];
+    }
+
 }
