@@ -36,6 +36,7 @@ class FeatureController extends Controller
      * FeatureController constructor.
      *
      * @param \App\Repositories\FeatureRepositoryInterface $featureRepository
+     * @param \App\Repositories\CategoryRepositoryInterface $categoryRepository
      */
     public function __construct(FeatureRepositoryInterface $featureRepository, CategoryRepositoryInterface $categoryRepository)
     {

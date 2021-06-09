@@ -9,6 +9,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\AnswerRepositoryInterface;
+use App\Repositories\CategoryRepositoryInterface;
 use Illuminate\Http\Request;
 
 /**
@@ -17,6 +19,30 @@ use Illuminate\Http\Request;
  */
 class AnswerController extends Controller
 {
+
+    /**
+     * @var \App\Repositories\CategoryRepositoryInterface
+     */
+    private $categoryRepositoy;
+    /**
+     * @var \App\Repositories\AnswerRepositoryInterface
+     */
+    private $answerRepository;
+
+    /**
+     * AnswerController constructor.
+     *
+     * @param \App\Repositories\AnswerRepositoryInterface $answerRepository
+     * @param \App\Repositories\CategoryRepositoryInterface $categoryRepository
+     */
+    public function __construct(AnswerRepositoryInterface $answerRepository, CategoryRepositoryInterface $categoryRepository) {
+        // Initialize answerRepository
+        $this->answerRepository = $answerRepository;
+
+        // Initialize categoryRepository
+        $this->categoryRepositoy = $categoryRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
