@@ -108,13 +108,19 @@ class FeatureController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(string $locale, int $id)
     {
-        //
+        $feature = $this->featureRepository->findOrFail($id);
+
+        return view('admin.pages.feature.show', [
+            'feature' => $feature,
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
