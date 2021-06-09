@@ -91,7 +91,7 @@
                                     </tbody>
                                 </table>
                             </form>
-                            {{ $languages->links('admin.vendor.pagination.material') }}
+                            {{ $languages->appends(request()->input())->links('admin.vendor.pagination.material') }}
                         </div>
                     </div>
                 </div>

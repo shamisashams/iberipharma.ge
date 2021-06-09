@@ -121,7 +121,7 @@
                                     </tbody>
                                 </table>
                             </form>
-                            {{ $features->links('admin.vendor.pagination.material') }}
+                            {{ $features->appends(request()->input())->links('admin.vendor.pagination.material') }}
                         </div>
                     </div>
                 </div>

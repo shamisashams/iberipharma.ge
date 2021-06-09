@@ -113,7 +113,7 @@
                                     </tbody>
                                 </table>
                             </form>
-                            {{ $categories->links('admin.vendor.pagination.material') }}
+                            {{ $categories->appends(request()->input())->links('admin.vendor.pagination.material') }}
                         </div>
                     </div>
                 </div>
