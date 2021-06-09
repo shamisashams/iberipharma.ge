@@ -9,6 +9,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CityRequest;
+use App\Repositories\CityRepositoryInterface;
 use Illuminate\Http\Request;
 
 /**
@@ -17,14 +19,34 @@ use Illuminate\Http\Request;
  */
 class CityController extends Controller
 {
+
+
+    /**
+     * @var \App\Repositories\CityRepositoryInterface
+     */
+    private $cityRepository;
+
+    /**
+     * CityController constructor.
+     *
+     * @param \App\Repositories\CityRepositoryInterface $cityRepository
+     */
+    public function __construct(CityRepositoryInterface $cityRepository) {
+        // initialize cityRepository
+        $this->cityRepository = $cityRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(CityRequest $request)
     {
-        //
+        return view('admin.pages.city.index', [
+            'cities' => $this->cityRepository->getData($request),
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
