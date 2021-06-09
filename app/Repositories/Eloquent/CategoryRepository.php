@@ -63,6 +63,8 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
 
             $this->model->languages()->createMany($categoryLanguages);
 
+            $this->model->features()->attach($attributes['features']);
+
             DB::connection()->commit();
 
             return $this->model;
@@ -101,6 +103,11 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
                     ]);
                 }
             }
+
+            // Remove all features
+            $this->model->features()->detach();
+            // Add new features
+            $this->model->features()->attach($data['features']);
 
             DB::connection()->commit();
 

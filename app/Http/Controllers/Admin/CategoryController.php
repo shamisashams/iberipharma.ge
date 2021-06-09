@@ -74,6 +74,7 @@ class CategoryController extends Controller
             'url' => $url,
             'method' => $method,
             'languages' => $this->activeLanguages(),
+            'features' => $this->featureRepository->all()
         ]);
     }
 
@@ -92,7 +93,8 @@ class CategoryController extends Controller
             'status' => (bool)$request['status'],
             'title' => $request['title'],
             'description' => $request['description'],
-            'languages' => $this->activeLanguages()
+            'languages' => $this->activeLanguages(),
+            'features' => $request['features']
         ];
 
         $category = $this->categoryRepository->create($data);
@@ -138,7 +140,8 @@ class CategoryController extends Controller
             'category' => $category,
             'url' => $url,
             'method' => $method,
-            'languages' => $this->activeLanguages()
+            'languages' => $this->activeLanguages(),
+            'features' => $this->featureRepository->all()
         ]);
     }
 
@@ -160,7 +163,8 @@ class CategoryController extends Controller
             'status' => (bool)$request['status'],
             'title' => $request['title'],
             'description' => $request['description'],
-            'languages' => $this->activeLanguages()
+            'languages' => $this->activeLanguages(),
+            'features' => $request['features']
         ];
 
         $this->categoryRepository->update($id, $data);

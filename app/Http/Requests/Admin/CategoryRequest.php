@@ -43,6 +43,8 @@ class CategoryRequest extends FormRequest
 
         $data = [
             'slug' => [$isRequired,'alpha_dash', Rule::unique('categories', 'slug')->ignore($this->category)],
+            'features' => 'nullable|array',
+            'features.*' => 'exists:features,id',
         ];
 
         if ($this->method !== 'GET') {
