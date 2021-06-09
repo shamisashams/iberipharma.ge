@@ -6,8 +6,10 @@
  * Time: 16:14
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Http\Requests\Admin;
 
+use App\Models\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -33,8 +35,19 @@ class ProjectRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        // Check if method is get,fields are nullable.
+        $isRequired = $this->method() === 'GET' ? 'nullable' : 'required';
+        $defaultLanguage = Language::where('default', true)->firstOrFail();
+
+        $data = [
+
         ];
+
+        if ($this->method !== 'GET') {
+            $data ['title.' . $defaultLanguage->id] = 'required|string|max:255';
+            $data['city_id'] = 'required|numeric|exists:cities,id';
+
+        }
+        return $data;
     }
 }

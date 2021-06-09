@@ -57,22 +57,43 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $project = $this->projectRepository->model;
+
+        $url = locale_route('project.store', [], false);
+        $method = 'POST';
+
+        return view('admin.pages.project.form', [
+            'project' => $project,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages(),
+            'cities' => $this->cityRepository->all()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\Admin\ProjectRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
-        //
+        $data = [
+            'city_id' => $request['city_id'],
+            'status' => (bool)$request['status'],
+            'title' => $request['title'],
+            'languages' => $this->activeLanguages(),
+        ];
+
+        $project = $this->projectRepository->create($data);
+
+        return redirect(locale_route('project.show', $project->id))->with('success', 'Project created.');
     }
 
     /**
