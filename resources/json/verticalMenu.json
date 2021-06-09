@@ -68,6 +68,13 @@
       "i18n": "answer",
       "icon": "assistant",
       "slug": "answer"
+    },
+    {
+      "url": "city.index",
+      "name": "city",
+      "i18n": "city",
+      "icon": "location_city",
+      "slug": "city"
     }
   ]
 }
