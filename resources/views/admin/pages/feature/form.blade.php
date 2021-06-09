@@ -84,7 +84,9 @@
                                 id="select2-customize-result" name="categories[]">
                             <optgroup label="@lang('admin.categories')">
                                 @foreach($categories as $category)
-                                    <option value="{{$category->id}}" {{$feature->hasCategory($category->id) ? 'selected' : ''}}>{{$category->language()->title}}</option>
+                                    <option value="{{$category->id}}" {{$feature->hasCategory($category->id) ? 'selected' : ''}}>
+                                        {{$category->language(app()->getLocale()) ? $category->language(app()->getLocale())->title : $category->language()->title}}
+                                    </option>
                                 @endforeach
                             </optgroup>
                         </select>
