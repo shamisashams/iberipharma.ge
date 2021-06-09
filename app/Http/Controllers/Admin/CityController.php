@@ -52,22 +52,41 @@ class CityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $city = $this->cityRepository->model;
+
+        $url = locale_route('city.store', [], false);
+        $method = 'POST';
+
+        return view('admin.pages.city.form', [
+            'city' => $city,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\Admin\CityRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(CityRequest $request)
     {
-        //
+        $data = [
+            'status' => (bool)$request['status'],
+            'title' => $request['title'],
+            'languages' => $this->activeLanguages(),
+        ];
+
+        $city = $this->cityRepository->create($data);
+
+        return redirect(locale_route('city.show', $city->id))->with('success', 'City created.');
     }
 
     /**

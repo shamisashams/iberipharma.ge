@@ -8,6 +8,7 @@
  */
 namespace App\Http\Requests\Admin;
 
+use App\Models\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -33,8 +34,17 @@ class CityRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        // Check if method is get,fields are nullable.
+        $isRequired = $this->method() === 'GET' ? 'nullable' : 'required';
+        $defaultLanguage = Language::where('default', true)->firstOrFail();
+
+        $data = [
+
         ];
+
+        if ($this->method !== 'GET') {
+            $data ['title.' . $defaultLanguage->id] = 'required|string|max:255';
+        }
+        return $data;
     }
 }

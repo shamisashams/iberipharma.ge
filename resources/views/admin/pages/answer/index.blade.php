@@ -24,7 +24,7 @@
                                     <tr>
                                         <th>@lang('admin.id')</th>
                                         <th>@lang('admin.feature')</th>
-                                        <th>@lang('admin.search')</th>
+                                        <th>@lang('admin.status')</th>
                                         <th>@lang('admin.title')</th>
                                         <th>@lang('admin.actions')</th>
                                     </tr>
