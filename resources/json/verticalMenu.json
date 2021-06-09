@@ -75,6 +75,13 @@
       "i18n": "city",
       "icon": "location_city",
       "slug": "city"
+    },
+    {
+      "url": "project.index",
+      "name": "project",
+      "i18n": "project",
+      "icon": "apps",
+      "slug": "project"
     }
   ]
 }
