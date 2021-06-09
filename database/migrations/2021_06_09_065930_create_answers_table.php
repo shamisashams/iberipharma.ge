@@ -21,6 +21,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('feature_id')->constrained('features');
             $table->string('position')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
