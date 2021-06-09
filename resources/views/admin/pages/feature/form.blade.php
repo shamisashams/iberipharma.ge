@@ -2,6 +2,7 @@
 @extends('admin.layout.contentLayoutMaster')
 {{-- page title --}}
 @section('title', $feature->type ? __('admin.feature-update') : 'admin.feature-create')
+
 @section('vendor-style')
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/select2/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/select2/select2-materialize.css')}}">
@@ -10,6 +11,7 @@
 @section('page-style')
     <link rel="stylesheet" type="text/css" href="{{asset('css/pages/form-select2.css')}}">
 @endsection
+
 @section('content')
     <div class="row">
         <div class="col s12 m6 l6">
@@ -85,7 +87,7 @@
                             <optgroup label="@lang('admin.categories')">
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}" {{$feature->hasCategory($category->id) ? 'selected' : ''}}>
-                                        {{$category->language(app()->getLocale()) ? $category->language(app()->getLocale())->title : $category->language()->title}}
+                                        {{$category->language(app()->getLocale()) ? substr($category->language(app()->getLocale())->title,0,25) : substr($category->language()->title,0,25)}}
                                     </option>
                                 @endforeach
                             </optgroup>

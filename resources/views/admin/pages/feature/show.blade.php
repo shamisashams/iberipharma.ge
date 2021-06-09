@@ -74,11 +74,7 @@
                             <td>@lang('admin.categories')</td>
                             <td>
                                 @foreach($feature->categories as $key =>$category)
-                                    {{
-                                        $category->language(app()->getLocale())
-                                            ? $category->language(app()->getLocale())->title
-                                            : $category->language()->title
-                                    }}
+                                    {{$category->language(app()->getLocale())? substr($category->language(app()->getLocale())->title,0,15): substr($category->language()->title,0,15)}}
                                     {{isset($feature->categories[$key +1]) ? ', ' : ''}}
                                 @endforeach
                             </td>
@@ -105,7 +101,7 @@
                     @foreach($feature->languages as $key => $language)
                         @if(isset($languages[$language->language_id]))
                             <div id="cat-{{$feature->id}}-{{$language->language_id}}"
-                                 class="col s12">
+                                 class="">
                                 <table class="striped">
                                     <tbody>
                                     <tr>

@@ -64,16 +64,25 @@
                             <td>@lang('admin.updated_at')</td>
                             <td>{{\Carbon\Carbon::parse($category->updated_at)}}</td>
                         </tr>
+                        <tr>
+                            <td>@lang('admin.features')</td>
+                            <td>
+                                @foreach($category->features as $key =>$feature)
+                                    {{$feature->language(app()->getLocale())? substr($feature->language(app()->getLocale())->title,0,15): substr($feature->language()->title,0,15)}}
+                                    {{isset($category->features[$key +1]) ? ', ' : ''}}
+                                @endforeach
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col s12">
                     <ul class="tabs">
                         @foreach($category->languages as $key => $language)
                             @if(isset($languages[$language->language_id]))
-                                <li class="tab col s3">
+                                <li class="tab">
                                     <a href="#cat-{{$category->id}}-{{$language->language_id}}">
                                         {{$languages[$language->language_id]->locale}}
                                     </a>
@@ -86,7 +95,7 @@
                     @foreach($category->languages as $key => $language)
                         @if(isset($languages[$language->language_id]))
                             <div id="cat-{{$category->id}}-{{$language->language_id}}"
-                                 class="col s12">
+                                 class="">
                                 <table class="striped">
                                     <tbody>
                                     <tr>

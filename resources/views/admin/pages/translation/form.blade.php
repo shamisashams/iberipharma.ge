@@ -14,7 +14,7 @@
                         <div class="col s12">
                             <ul class="tabs">
                                 @foreach($languages as $key => $language)
-                                    <li class="tab col s3">
+                                    <li class="tab ">
                                         <a href="#lang-{{$key}}">{{$language->locale}}</a>
                                     </li>
                                 @endforeach
@@ -22,7 +22,7 @@
                         </div>
                         @foreach($languages as $key => $language)
                             <div id="lang-{{$key}}" class="col s12  mt-5">
-                                <div class="input-field col s12">
+                                <div class="input-field ">
                                     {!! Form::text('text['.$key.']',isset($translation->text[$key]) ? $translation->text[$key]:  '',['class' => 'validate '. $errors->has('text.*') ? '' : 'valid']) !!}
                                     {!! Form::label('text['.$key.']',__('admin.text')) !!}
                                     @error('text.*')

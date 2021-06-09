@@ -73,7 +73,7 @@
                                                             <ul class="tabs">
                                                                 @foreach($category->languages as $key => $language)
                                                                     @if(isset($languages[$language->language_id]))
-                                                                        <li class="tab col s3">
+                                                                        <li class="tab ">
                                                                             <a href="#cat-{{$category->id}}-{{$language->language_id}}">
                                                                                 {{$languages[$language->language_id]->locale}}
                                                                             </a>
@@ -86,7 +86,7 @@
                                                             @foreach($category->languages as $key => $language)
                                                                 @if(isset($languages[$language->language_id]))
                                                                     <div id="cat-{{$category->id}}-{{$language->language_id}}"
-                                                                         class="col s12">
+                                                                         class="">
                                                                         {{$language->title}}
                                                                     </div>
                                                                 @endif

@@ -52,12 +52,12 @@
                     </table>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col s12">
                     <ul class="tabs">
                         @foreach($translation->text as $key => $text)
                             @if(isset($languages[$key]))
-                                <li class="tab col s3">
+                                <li class="tab ">
                                     <a href="#trans-{{$translation->id}}-{{$key}}">{{$languages[$key]->locale}}</a>
                                 </li>
                             @endif
@@ -67,7 +67,7 @@
                 <div class="col s12 mt-2">
                     @foreach($translation->text as $key => $text)
                         @if(isset($languages[$key]))
-                            <div id="trans-{{$translation->id}}-{{$key}}" class="col s12">
+                            <div id="trans-{{$translation->id}}-{{$key}}" class="">
                                 {{$text}}
                             </div>
                         @endif
