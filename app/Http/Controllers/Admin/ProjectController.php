@@ -9,6 +9,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProjectRequest;
+use App\Repositories\CityRepositoryInterface;
+use App\Repositories\ProjectRepositoryInterface;
 use Illuminate\Http\Request;
 
 /**
@@ -17,14 +20,38 @@ use Illuminate\Http\Request;
  */
 class ProjectController extends Controller
 {
+
+    /**
+     * @var \App\Repositories\ProjectRepositoryInterface
+     */
+    private $projectRepository;
+    /**
+     * @var \App\Repositories\CityRepositoryInterface
+     */
+    private $cityRepository;
+
+    public function __construct(ProjectRepositoryInterface $projectRepository, CityRepositoryInterface $cityRepository)
+    {
+        // Initialize projectRepository
+        $this->projectRepository = $projectRepository;
+
+        // Initialize cityRepository
+        $this->cityRepository = $cityRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\Admin\ProjectRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(ProjectRequest $request)
     {
-        //
+        return view('admin.pages.project.index', [
+            'projects' => $this->projectRepository->getData($request,['city']),
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
