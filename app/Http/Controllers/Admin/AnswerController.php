@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AnswerRequest;
 use App\Repositories\AnswerRepositoryInterface;
 use App\Repositories\CategoryRepositoryInterface;
 use Illuminate\Http\Request;
@@ -46,11 +47,14 @@ class AnswerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(AnswerRequest $request)
     {
-        //
+        return view('admin.pages.answer.index',[
+           'answers' => $this->answerRepository->getData($request,['category']),
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**

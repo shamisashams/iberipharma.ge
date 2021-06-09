@@ -22,11 +22,11 @@ use App\Repositories\Eloquent\Base\BaseRepository;
 class AnswerRepository extends BaseRepository implements AnswerRepositoryInterface
 {
     /**
-     * FeatureRepository constructor.
+     * AnswerRepository constructor.
      *
-     * @param \App\Models\Feature $model
+     * @param \App\Models\Answer $model
      */
-    public function __construct(Feature $model)
+    public function __construct(Answer $model)
     {
         parent::__construct($model);
     }

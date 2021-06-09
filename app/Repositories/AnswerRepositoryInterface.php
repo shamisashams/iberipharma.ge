@@ -10,7 +10,7 @@
 namespace App\Repositories;
 
 
-use App\Http\Requests\Admin\FeatureRequest;
+use App\Http\Requests\Admin\AnswerRequest;
 use App\Models\Answer;
 
 /**
@@ -21,10 +21,10 @@ interface AnswerRepositoryInterface
 {
 
     /**
-     * @param \App\Http\Requests\Admin\FeatureRequest $request
+     * @param \App\Http\Requests\Admin\AnswerRequest $request
      * @param array $with
      */
-    public function getData(FeatureRequest $request, array $with = []);
+    public function getData(AnswerRequest $request, array $with = []);
 
     /**
      * @param array $attributes
