@@ -90,6 +90,7 @@ class CityController extends Controller
     }
 
     /**
+     *
      * Display the specified resource.
      *
      * @param string $locale
@@ -156,11 +157,15 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $locale
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(string $locale, int $id)
     {
-        //
-    }
+        if (!$this->cityRepository->delete($id)) {
+            return redirect(locale_route('city.show', $id))->with('danger', 'City not deleted.');
+        }
+        return redirect(locale_route('city.index'))->with('success', 'City Deleted.');    }
 }
