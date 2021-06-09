@@ -100,7 +100,7 @@ class AnswerController extends Controller
 
         $answer = $this->answerRepository->create($data);
 
-        return redirect(locale_route('answer.show',$answer->id))->with('success', 'Answer created.');
+        return redirect(locale_route('answer.show', $answer->id))->with('success', 'Answer created.');
     }
 
     /**
@@ -118,37 +118,66 @@ class AnswerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(string $locale, int $id)
     {
-        //
+        $answer = $this->answerRepository->findOrfail($id);
+
+        $url = locale_route('answer.update', $id, false);
+
+        $method = 'PUT';
+
+        return view('admin.pages.answer.form', [
+            'answer' => $answer,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages(),
+            'features' => $this->featureRepository->all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\Admin\AnswerRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(string $locale, int $id, AnswerRequest $request)
     {
-        //
+        $data = [
+            'feature_id' => $request['feature_id'],
+            'position' => $request['position'],
+            'status' => (bool)$request['status'],
+            'title' => $request['title'],
+            'languages' => $this->activeLanguages(),
+        ];
+
+        $answer = $this->answerRepository->update($id,$data);
+
+        return redirect(locale_route('answer.show', $answer->id))->with('success', 'Answer updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(string $locale, int $id)
     {
-        //
+        if (!$this->featureRepository->delete($id)) {
+            return redirect(locale_route('answer.show', $id))->with('danger', 'Answer not deleted.');
+        }
+        return redirect(locale_route('answer.index'))->with('success', 'Answer Deleted.');
     }
 }

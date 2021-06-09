@@ -10,6 +10,7 @@
 namespace App\Repositories\Eloquent;
 
 
+use App\Http\Requests\Admin\AnswerRequest;
 use App\Models\Answer;
 use App\Models\Feature;
 use App\Repositories\AnswerRepositoryInterface;
@@ -81,6 +82,32 @@ class AnswerRepository extends BaseRepository implements AnswerRepositoryInterfa
      */
     public function update(int $id, array $data = []): Answer
     {
+        try {
+            DB::connection()->beginTransaction();
 
+            $attributes = [
+                'feature_id' => $data['feature_id'],
+                'position' => $data['position'],
+                'status' => $data['status'],
+            ];
+
+            $this->model = parent::update($id, $attributes);
+
+            $answerLanguages = [];
+
+            foreach ($data['languages'] as $language) {
+                if (null !== $this->model->language($language['id'])) {
+                    $this->model->language($language['id'])->update([
+                        'title' => $data['title'][$language['id']],
+                    ]);
+                }
+            }
+
+            DB::connection()->commit();
+
+            return $this->model;
+        } catch (\PDOException $e) {
+            DB::connection()->rollBack();
+        }
     }
 }
