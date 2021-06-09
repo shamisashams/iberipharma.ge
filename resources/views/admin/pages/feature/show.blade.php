@@ -55,7 +55,7 @@
                         <tr>
                             <td>@lang('admin.search'):</td>
                             <td>
-                                @if($feature->status)
+                                @if($feature->search)
                                     <span class="chip green lighten-5 green-text">@lang('admin.active')</span>
                                 @else
                                     <span class="chip red lighten-5 red-text">@lang('admin.not_active')</span>
