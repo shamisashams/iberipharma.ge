@@ -25,6 +25,7 @@ class CreateAnswerLanguagesTable extends Migration
             $table->foreignId('answer_id')->constrained('answers');
             $table->foreignId('language_id')->constrained('languages');
             $table->string('title')->nullable();
+            $table->index(['answer_id','language_id']);
             $table->timestamps();
             $table->softDeletes();
         });
