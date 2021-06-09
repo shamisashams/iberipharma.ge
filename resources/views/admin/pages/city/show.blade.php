@@ -1,7 +1,7 @@
 {{-- extend layout --}}
 @extends('admin.layout.contentLayoutMaster')
 {{-- page title --}}
-@section('title', $answer->language()->title)
+@section('title', $city->language()->title)
 
 
 
@@ -13,17 +13,17 @@
                 <div class="display-flex media">
                     <div class="media-body">
                         <h6 class="media-heading">
-                            <span class="users-view-name">{{$answer->language()->title}} </span>
+                            <span class="users-view-name">{{$city->language()->title}} </span>
                         </h6>
                     </div>
                 </div>
             </div>
             <div class="col s12 m5 quick-action-btns display-flex justify-content-end align-items-center pt-2">
-                <a href="{{locale_route('answer.edit',$answer->id)}}" class="btn-small indigo">
+                <a href="{{locale_route('city.edit',$city->id)}}" class="btn-small indigo">
                     @lang('admin.edit')
                 </a>
                 <a class="btn-small -settings waves-effect -light -btn right ml-3"
-                   href="{{locale_route('answer.destroy',$answer->id)}}"
+                   href="{{locale_route('city.destroy',$city->id)}}"
                    onclick="return confirm('Are you sure?')">
                     <span class="hide-on-small-onl">
                         @lang('admin.delete')
@@ -39,21 +39,9 @@
                     <table class="striped">
                         <tbody>
                         <tr>
-                            <td>@lang('admin.feature'):</td>
-                            <td>
-                                <a href="{{locale_route('feature.show',$answer->feature->id)}}">
-                                    {{$answer->feature->language(app()->getLocale())? substr($answer->feature->language(app()->getLocale())->title,0,15): substr($answer->feature->language()->title,0,15)}}
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>@lang('admin.position'):</td>
-                            <td>{{$answer->position}}</td>
-                        </tr>
-                        <tr>
                             <td>@lang('admin.status'):</td>
                             <td>
-                                @if($answer->status)
+                                @if($city->status)
                                     <span class="chip green lighten-5 green-text">@lang('admin.active')</span>
                                 @else
                                     <span class="chip red lighten-5 red-text">@lang('admin.not_active')</span>
@@ -62,11 +50,11 @@
                         </tr>
                         <tr>
                             <td>@lang('admin.created_at')</td>
-                            <td>{{\Carbon\Carbon::parse($answer->created_at)}}</td>
+                            <td>{{\Carbon\Carbon::parse($city->created_at)}}</td>
                         </tr>
                         <tr>
                             <td>@lang('admin.updated_at')</td>
-                            <td>{{\Carbon\Carbon::parse($answer->updated_at)}}</td>
+                            <td>{{\Carbon\Carbon::parse($city->updated_at)}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -75,10 +63,10 @@
             <div class="row mt-2">
                 <div class="col s12">
                     <ul class="tabs">
-                        @foreach($answer->languages as $key => $language)
+                        @foreach($city->languages as $key => $language)
                             @if(isset($languages[$language->language_id]))
                                 <li class="tab">
-                                    <a href="#cat-{{$answer->id}}-{{$language->language_id}}">
+                                    <a href="#cat-{{$city->id}}-{{$language->language_id}}">
                                         {{$languages[$language->language_id]->locale}}
                                     </a>
                                 </li>
@@ -87,9 +75,9 @@
                     </ul>
                 </div>
                 <div class="col sm12 mt-2">
-                    @foreach($answer->languages as $key => $language)
+                    @foreach($city->languages as $key => $language)
                         @if(isset($languages[$language->language_id]))
-                            <div id="cat-{{$answer->id}}-{{$language->language_id}}"
+                            <div id="cat-{{$city->id}}-{{$language->language_id}}"
                                  class="">
                                 <table class="striped">
                                     <tbody>
