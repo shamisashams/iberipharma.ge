@@ -14,6 +14,7 @@ use App\Models\Answer;
 use App\Models\Feature;
 use App\Repositories\AnswerRepositoryInterface;
 use App\Repositories\Eloquent\Base\BaseRepository;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class FeatureRepository
@@ -40,7 +41,34 @@ class AnswerRepository extends BaseRepository implements AnswerRepositoryInterfa
      */
     public function create(array $attributes = []): Answer
     {
+        try {
+            DB::connection()->beginTransaction();
 
+            $data = [
+                'feature_id' => $attributes['feature_id'],
+                'position' => $attributes['position'],
+                'status' => $attributes['status'],
+            ];
+
+            $this->model = parent::create($data);
+
+            $answerLanguages = [];
+
+            foreach ($attributes['languages'] as $language) {
+                $answerLanguages [] = [
+                    'language_id' => $language['id'],
+                    'title' => $attributes['title'][$language['id']],
+                ];
+            }
+
+            $this->model->languages()->createMany($answerLanguages);
+
+            DB::connection()->commit();
+
+            return $this->model;
+        } catch (\PDOException $e) {
+            DB::connection()->rollBack();
+        }
     }
 
     /**

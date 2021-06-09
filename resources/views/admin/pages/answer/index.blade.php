@@ -23,7 +23,7 @@
                                     <thead>
                                     <tr>
                                         <th>@lang('admin.id')</th>
-                                        <th>@lang('admin.category')</th>
+                                        <th>@lang('admin.feature')</th>
                                         <th>@lang('admin.search')</th>
                                         <th>@lang('admin.title')</th>
                                         <th>@lang('admin.actions')</th>
@@ -36,9 +36,9 @@
                                                    class="validate {{$errors->has('id') ? '' : 'valid'}}">
                                         </th>
                                         <th>
-                                            <input type="text" name="category" onchange="this.form.submit()"
-                                                   value="{{Request::get('category')}}"
-                                                   class="validate {{$errors->has('category') ? '' : 'valid'}}">
+                                            <input type="text" name="feature" onchange="this.form.submit()"
+                                                   value="{{Request::get('feature')}}"
+                                                   class="validate {{$errors->has('feature') ? '' : 'valid'}}">
                                         </th>
                                         <th>
                                             <select class="form-control" name="status" onchange="this.form.submit()">
@@ -60,8 +60,8 @@
                                             <tr>
                                                 <td>{{$answer->id}}</td>
                                                 <td>
-                                                    @if($answer->category)
-                                                        {{$answer->category->language(app()->getLocale())? substr($answer->category->language(app()->getLocale())->title,0,15): substr($answer->category->language()->title,0,15)}}
+                                                    @if($answer->feature)
+                                                        {{$answer->feature->language(app()->getLocale())? substr($answer->feature->language(app()->getLocale())->title,0,15): substr($answer->feature->language()->title,0,15)}}
                                                     @endif
                                                 </td>
                                                 <td>

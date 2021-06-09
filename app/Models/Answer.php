@@ -78,7 +78,7 @@ class Answer extends Model
      */
     public function feature(): HasOne
     {
-        return $this->hasOne(Feature::class, 'feature_id');
+        return $this->hasOne(Feature::class, 'id', 'feature_id');
     }
 
     /**
@@ -107,4 +107,16 @@ class Answer extends Model
     }
 
 
+    /**
+     * @param $query
+     * @param $title
+     *
+     * @return mixed
+     */
+    public function scopeFeatureLanguage($query, $title)
+    {
+        return $query->whereHas('feature', function ($query) use ($title) {
+            return $query->titleLanguage($title);
+        });
+    }
 }
