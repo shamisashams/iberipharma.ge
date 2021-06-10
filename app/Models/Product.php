@@ -12,6 +12,7 @@ namespace App\Models;
 use App\Traits\ScopeFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -48,4 +49,14 @@ class Product extends Model
         'status',
         'price'
     ];
+
+    /**
+     * Return relationship product category
+     *
+     * @return HasOne
+     */
+    public function category(): HasOne
+    {
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
 }
