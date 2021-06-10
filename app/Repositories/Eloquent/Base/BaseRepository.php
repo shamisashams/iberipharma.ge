@@ -51,9 +51,9 @@ class BaseRepository implements EloquentRepositoryInterface
      *
      * @return mixed
      */
-    public function all(array $columns = ["*"])
+    public function all(array $columns = ["*"],array $with = [])
     {
-        return $this->model->get($columns);
+        return $this->model->with($with)->get($columns);
     }
 
     /**

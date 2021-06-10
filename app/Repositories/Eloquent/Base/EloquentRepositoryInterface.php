@@ -28,8 +28,9 @@ interface EloquentRepositoryInterface
 
     /**
      * @param array $columns
+     * @param array $with
      */
-    public function all(array $columns);
+    public function all(array $columns, array $with = []);
 
     /**
      * @param array $attributes
