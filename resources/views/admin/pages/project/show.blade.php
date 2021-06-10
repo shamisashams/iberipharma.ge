@@ -110,6 +110,27 @@
             </div>
         </div>
     </div>
+
+    <div class="section">
+        <div class="section">
+            <div class="masonry-gallery-wrapper">
+                <div class="popup-gallery">
+                    <div class="gallery-sizer"></div>
+                    <div class="row">
+                        @foreach($project->files as $file)
+                            <div class="col s12 m6 l4 xl2">
+                                <div>
+                                    <a href="{{asset($file->path.'/'.$file->title)}}" target="_blank" title="$file->title">
+                                        <img src="{{asset($file->path.'/'.$file->title)}}" class="responsive-img mb-10" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 
