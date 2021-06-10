@@ -49,6 +49,13 @@
       "slug": "translation"
     },
     {
+      "url": "product.index",
+      "name": "product",
+      "i18n": "product",
+      "icon": "shopping_cart",
+      "slug": "product"
+    },
+    {
       "url": "category.index",
       "name": "category",
       "i18n": "category",
