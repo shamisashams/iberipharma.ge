@@ -67,7 +67,19 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $product = $this->productRepository->model;
 
+        $url = locale_route('product.store', [], false);
+        $method = 'POST';
+
+        return view('admin.pages.product.form', [
+            'product' => $product,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages(),
+            'categories' => $this->categoryRepository->all(),
+            'features' => $this->featureRepository->all(['*'],['answers'])
+        ]);
     }
 
     /**
