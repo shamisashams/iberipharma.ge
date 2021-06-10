@@ -43,4 +43,12 @@ interface ProjectRepositoryInterface
      * @return \App\Models\Project
      */
     public function update(int $id, array $data = []): Project;
+
+    /**
+     * @param int $id
+     * @param \App\Http\Requests\Admin\ProjectRequest $request
+     *
+     * @return \App\Models\Project
+     */
+    public function saveFiles(int $id,ProjectRequest $request);
 }

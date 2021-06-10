@@ -61,4 +61,13 @@ interface EloquentRepositoryInterface
      * @return Model
      */
     public function findTrash(int $id): Model;
+
+    /**
+     * @param int $id
+     * @param $request
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function saveFiles(int $id,$request): Model;
+
 }

@@ -9,7 +9,9 @@
 
 namespace App\Repositories\Eloquent\Base;
 
+use App\Models\File;
 use Illuminate\Database\Eloquent\Model;
+use ReflectionClass;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -143,5 +145,38 @@ class BaseRepository implements EloquentRepositoryInterface
             throw new NotFoundHttpException();
         }
         return $model;
+    }
+
+    /**
+     * Create new model
+     *
+     * @param int $id
+     * @param $request
+     *
+     * @return Model
+     */
+    public function saveFiles(int $id,$request): Model
+    {
+       $this->model =  $this->findOrFail($id);
+
+        if ($request->hasFile('images')) {
+            // Get Name Of model
+            $reflection = new ReflectionClass(get_class($this->model));
+            $modelName = $reflection->getShortName();
+
+            foreach ($request->file('images') as $key => $file) {
+                $imagename = date('Ymhs') . str_replace(' ','',$file->getClientOriginalName());
+                $destination = base_path() . '/storage/app/public/'.$modelName.'/' . $this->model->id;
+                $request->file('images')[$key]->move($destination, $imagename);
+                $this->model->files()->create([
+                    'title' => $imagename,
+                    'path' => 'storage/'.$modelName.'/' . $this->model->id,
+                    'format' => $file->getClientOriginalExtension(),
+                    'type' => File::FILE_DEFAULT
+                ]);
+            }
+        }
+
+       return $this->model;
     }
 }
