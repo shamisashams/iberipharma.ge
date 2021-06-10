@@ -18,7 +18,7 @@
             <div id="basic-form" class="card card card-default scrollspy">
                 <div class="card-content">
                     <h4 class="card-title">{{$project->city_id ? __('admin.project-update') : __('admin.project-create')}}</h4>
-                    {!! Form::model($project,['url' => $url, 'method' => $method]) !!}
+                    {!! Form::model($project,['url' => $url, 'method' => $method,'files' => true]) !!}
                     <div class="row">
                         <div class="input-field col s12">
                             <select name="city_id" class="select2 js-example-programmatic browser-default"
