@@ -45,11 +45,14 @@ class ProductLanguage extends Model
      * @var array
      */
     protected $fillable = [
-        'feature_id',
         'product_id',
-        'answers'
+        'language_id',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+        'title',
+        'description',
+        'content',
     ];
 
-    /** @var array */
-    protected $casts = ['answers' => 'array'];
 }
