@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -115,5 +116,13 @@ class Project extends Model
         return $query->whereHas('city', function ($query) use ($title) {
             return $query->titleLanguage($title);
         });
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function files(): MorphMany
+    {
+        return $this->morphMany(File::class, 'fileable');
     }
 }

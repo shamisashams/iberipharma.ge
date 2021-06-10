@@ -17,6 +17,7 @@
         <div class="col s12 m6 l6">
             <div id="basic-form" class="card card card-default scrollspy">
                 <div class="card-content">
+                    <input name="old-images[]" id="old_images" hidden disabled value="{{$project->files}}">
                     <h4 class="card-title">{{$project->city_id ? __('admin.project-update') : __('admin.project-create')}}</h4>
                     {!! Form::model($project,['url' => $url, 'method' => $method,'files' => true]) !!}
                     <div class="row">

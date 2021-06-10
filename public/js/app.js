@@ -18,17 +18,13 @@ $(document).ready(function () {
     oldImages.forEach(function (el, key) {
       var directory = '';
 
-      if (el.fileable_type === "App\\Models\\User") {
-        directory = 'user';
-      }
-
-      if (el.fileable_type === 'App\\Models\\Product') {
-        directory = 'product';
+      if (el.fileable_type === 'App\\Models\\Project') {
+        directory = 'project';
       }
 
       imagedata.push({
         id: el.id,
-        src: "".concat(baseUrl, "storage/").concat(directory, "/").concat(el.fileable_id, "/").concat(el.name)
+        src: "".concat(baseUrl).concat(el.path, "/").concat(el.title)
       });
     });
     $('.input-images').imageUploader({

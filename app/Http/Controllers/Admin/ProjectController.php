@@ -94,6 +94,11 @@ class ProjectController extends Controller
 
         $project = $this->projectRepository->create($data);
 
+        // Save Files
+        if ($request->hasFile('images')) {
+            $project = $this->projectRepository->saveFiles($project->id,$request);
+        }
+
         return redirect(locale_route('project.show', $project->id))->with('success', 'Project created.');
     }
 
