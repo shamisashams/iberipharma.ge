@@ -96,7 +96,7 @@ class ProjectController extends Controller
 
         // Save Files
         if ($request->hasFile('images')) {
-            $project = $this->projectRepository->saveFiles($project->id,$request);
+            $project = $this->projectRepository->saveFiles($project->id, $request);
         }
 
         return redirect(locale_route('project.show', $project->id))->with('success', 'Project created.');
@@ -165,6 +165,9 @@ class ProjectController extends Controller
         ];
 
         $answer = $this->projectRepository->update($id, $data);
+
+        // Update Files
+        $this->projectRepository->saveFiles($id, $request);
 
         return redirect(locale_route('project.show', $answer->id))->with('success', 'Project updated.');
     }

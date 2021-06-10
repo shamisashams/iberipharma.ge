@@ -167,7 +167,8 @@ class BaseRepository implements EloquentRepositoryInterface
                     $file->delete();
                     continue;
                 }
-                if (!in_array($file->id, $request->old_images, true)) {
+
+                if (!in_array((string)$file->id, $request->old_images, true)) {
                     $file->delete();
                 }
             }
