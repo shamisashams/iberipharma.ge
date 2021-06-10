@@ -50,11 +50,14 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(ProductRequest $request)
     {
-        //
+        return view('admin.pages.product.index', [
+            'products' => $this->productRepository->getData($request, ['category']),
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
@@ -62,12 +65,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create(ProductRequest $request)
+    public function create()
     {
-        return view('admin.pages.product.index', [
-            'projects' => $this->productRepository->getData($request, ['category']),
-            'languages' => $this->activeLanguages()
-        ]);
+
     }
 
     /**
