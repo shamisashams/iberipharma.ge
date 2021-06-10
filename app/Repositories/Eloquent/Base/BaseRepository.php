@@ -31,7 +31,7 @@ class BaseRepository implements EloquentRepositoryInterface
         $this->model = $model;
     }
 
-    public function getData($request,array $with = [])
+    public function getData($request, array $with = [])
     {
         $data = $this->model->filter($request)->with($with);
 
@@ -154,10 +154,24 @@ class BaseRepository implements EloquentRepositoryInterface
      * @param $request
      *
      * @return Model
+     * @throws \ReflectionException
      */
-    public function saveFiles(int $id,$request): Model
+    public function saveFiles(int $id, $request): Model
     {
-       $this->model =  $this->findOrFail($id);
+        $this->model = $this->findOrFail($id);
+
+        // Delete old files if exist
+        if ($request->old_images && count($this->model->files)) {
+            foreach ($this->model->files as $file) {
+                if (!count($request->old_images)) {
+                    $file->delete();
+                    continue;
+                }
+                if (!in_array($file->id, $request->old_images, true)) {
+                    $file->delete();
+                }
+            }
+        }
 
         if ($request->hasFile('images')) {
             // Get Name Of model
@@ -165,18 +179,18 @@ class BaseRepository implements EloquentRepositoryInterface
             $modelName = $reflection->getShortName();
 
             foreach ($request->file('images') as $key => $file) {
-                $imagename = date('Ymhs') . str_replace(' ','',$file->getClientOriginalName());
-                $destination = base_path() . '/storage/app/public/'.$modelName.'/' . $this->model->id;
+                $imagename = date('Ymhs') . str_replace(' ', '', $file->getClientOriginalName());
+                $destination = base_path() . '/storage/app/public/' . $modelName . '/' . $this->model->id;
                 $request->file('images')[$key]->move($destination, $imagename);
                 $this->model->files()->create([
                     'title' => $imagename,
-                    'path' => 'storage/'.$modelName.'/' . $this->model->id,
+                    'path' => 'storage/' . $modelName . '/' . $this->model->id,
                     'format' => $file->getClientOriginalExtension(),
                     'type' => File::FILE_DEFAULT
                 ]);
             }
         }
 
-       return $this->model;
+        return $this->model;
     }
 }
