@@ -1,5 +1,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{ asset('vendors/vendors.min.css') }}">
+<link href="{{asset('../uploader/image-uploader.css')}}" rel="stylesheet">
+
 <!-- BEGIN: VENDOR CSS-->
 @yield('vendor-style')
 <!-- END: VENDOR CSS-->

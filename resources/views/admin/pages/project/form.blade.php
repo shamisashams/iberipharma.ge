@@ -60,8 +60,15 @@
                                     @enderror
                                 </div>
                             </div>
-
                         @endforeach
+                    </div>
+                    <div class="form-group">
+                        <div class="input-images"></div>
+                        @if ($errors->has('images'))
+                            <span class="help-block">
+                                            {{ $errors->first('images') }}
+                                        </span>
+                        @endif
                     </div>
 
                     <div class="row">

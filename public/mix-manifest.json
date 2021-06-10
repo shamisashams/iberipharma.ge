@@ -2,6 +2,7 @@
     "/js/materialize.js": "/js/materialize.js",
     "/js/plugins.js": "/js/plugins.js",
     "/js/search.js": "/js/search.js",
+    "/js/app.js": "/js/app.js",
     "/css/themes/vertical-modern-menu-template/style.css": "/css/themes/vertical-modern-menu-template/style.css",
     "/css/themes/vertical-modern-menu-template/materialize.css": "/css/themes/vertical-modern-menu-template/materialize.css",
     "/css/themes/vertical-menu-nav-dark-template/style.css": "/css/themes/vertical-menu-nav-dark-template/style.css",

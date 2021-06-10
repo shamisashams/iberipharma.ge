@@ -1,5 +1,10 @@
+
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('js/vendors.min.js')}}"></script>
+<!-- Custom Js-->
+<script src="{{asset('../uploader/image-uploader.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
+
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
 @yield('vendor-script')

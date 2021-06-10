@@ -47,6 +47,41 @@
       "i18n": "translation",
       "icon": "g_translate",
       "slug": "translation"
+    },
+    {
+      "url": "category.index",
+      "name": "category",
+      "i18n": "category",
+      "icon": "filter_list",
+      "slug": "category"
+    },
+    {
+      "url": "feature.index",
+      "name": "feature",
+      "i18n": "feature",
+      "icon": "memory",
+      "slug": "feature"
+    },
+    {
+      "url": "answer.index",
+      "name": "answer",
+      "i18n": "answer",
+      "icon": "assistant",
+      "slug": "answer"
+    },
+    {
+      "url": "city.index",
+      "name": "city",
+      "i18n": "city",
+      "icon": "location_city",
+      "slug": "city"
+    },
+    {
+      "url": "project.index",
+      "name": "project",
+      "i18n": "project",
+      "icon": "apps",
+      "slug": "project"
     }
   ]
 }
