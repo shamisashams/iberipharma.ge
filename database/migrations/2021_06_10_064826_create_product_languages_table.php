@@ -3,7 +3,7 @@
  *  database/migrations/2021_06_10_064826_create_product_languages_table.php
  *
  * Date-Time: 10.06.21
- * Time: 10:52
+ * Time: 10:54
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
 use Illuminate\Database\Migrations\Migration;
