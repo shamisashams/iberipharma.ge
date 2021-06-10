@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TranslationController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,11 @@ Route::prefix('{locale}')
                 // Project
                 Route::resource('project', ProjectController::class);
                 Route::get('project/{project}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
+
+                // Product
+                Route::resource('product',ProductController::class);
+                Route::get('product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');
+
 
             });
         });
