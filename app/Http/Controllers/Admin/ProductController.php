@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProductRequest;
+use App\Models\Product;
 use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\FeatureRepositoryInterface;
 use App\Repositories\ProductRepositoryInterface;
@@ -117,13 +118,19 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param string $locale
+     * @param \App\Models\Product $product
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(string $locale, Product $product)
     {
-        //
+        $product = Product::where('id',$product->id)->with(['features','features.answers','languages','category'])->first();
+
+        return view('admin.pages.product.show', [
+            'product' => $product,
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
