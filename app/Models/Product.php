@@ -95,6 +95,20 @@ class Product extends Model
     }
 
     /**
+     *  Return if has answer to product
+     * @param array|string $answers
+     *
+     * @return bool
+     */
+    public function hasFeatureAnswers($answers): bool
+    {
+        if (!$answers) {
+            return false;
+        }
+        return (bool)$this->features()->whereJsonContains('answers', $answers)->count();
+    }
+
+    /**
      * Return relationship product languages
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

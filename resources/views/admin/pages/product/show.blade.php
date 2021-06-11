@@ -127,8 +127,8 @@
                                         <td>{{$language->meta_description}}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('admin.meta_keyword'):</td>
-                                        <td>{{$language->meta_keyword}}</td>
+                                        <td>@lang('admin.meta_keywords'):</td>
+                                        <td>{{$language->meta_keywords}}</td>
                                     </tr>
                                     <tr>
                                         <td>@lang('admin.title'):</td>

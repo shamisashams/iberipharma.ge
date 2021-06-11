@@ -94,7 +94,7 @@ class ProductController extends Controller
         $data = [
             'meta_title' => $request['meta_title'],
             'meta_description' => $request['meta_description'],
-            'meta_keyword' => $request['meta_keyword'],
+            'meta_keyword' => $request['meta_keywords'],
             'title' => $request['title'],
             'description' => $request['description'],
             'price' => $request['price'],
@@ -138,11 +138,31 @@ class ProductController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(string $locale, Product $product)
     {
-        //
+        $product = Product::where('id',$product->id)
+            ->with([
+                'features',
+                'features.answers',
+                'languages',
+                'category',
+                'category.features',
+                'category.features.answers'
+            ])->first();
+
+        $url = locale_route('product.update', $product->id, false);
+
+        $method = 'PUT';
+
+        return view('admin.pages.product.form', [
+            'product' => $product,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages(),
+            'categories' => $this->categoryRepository->all(['*'],['features.languages','features.answers.languages']),
+        ]);
     }
 
     /**
@@ -151,11 +171,32 @@ class ProductController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(string $locale, int $id, ProductRequest $request)
     {
-        //
+        $data = [
+            'meta_title' => $request['meta_title'],
+            'meta_description' => $request['meta_description'],
+            'meta_keywords' => $request['meta_keywords'],
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'price' => $request['price'],
+            'slug' => $request['slug'],
+            'category_id' => $request['category_id'],
+            'feature' => $request['feature'],
+            'status' => (bool)$request['status'],
+            'languages' => $this->activeLanguages(),
+        ];
+
+        $product = $this->productRepository->update($id,$data);
+
+        // Save Files
+        if ($request->hasFile('images')) {
+            $product = $this->productRepository->saveFiles($product->id, $request);
+        }
+
+        return redirect(locale_route('product.show', $product->id))->with('success', 'Product updated.');
     }
 
     /**

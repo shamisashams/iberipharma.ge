@@ -6,6 +6,7 @@
  * Time: 15:13
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
+
 namespace App\Repositories\Eloquent;
 
 
@@ -59,7 +60,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                     'language_id' => $language['id'],
                     'meta_title' => $attributes['meta_title'][$language['id']],
                     'meta_description' => $attributes['meta_description'][$language['id']],
-                    'meta_keyword' => $attributes['meta_keyword'][$language['id']],
+                    'meta_keywords' => $attributes['meta_keywords'][$language['id']],
                     'title' => $attributes['title'][$language['id']],
                     'description' => $attributes['description'][$language['id']],
                 ];
@@ -72,7 +73,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                     if (count($feature)) {
                         $this->model->features()->create([
                             'feature_id' => $key,
-                            'answers' => array_map('intval',$feature)
+                            'answers' => array_map('intval', $feature)
                         ]);
                     }
                 }
@@ -100,8 +101,10 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             DB::connection()->beginTransaction();
 
             $attributes = [
-                'city_id' => $data['city_id'],
-                'status' => $data['status']
+                'category_id' => $data['category_id'],
+                'status' => $data['status'],
+                'slug' => $data['slug'],
+                'price' => $data['price']
             ];
 
             $this->model = parent::update($id, $attributes);
@@ -109,8 +112,26 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             foreach ($data['languages'] as $language) {
                 if (null !== $this->model->language($language['id'])) {
                     $this->model->language($language['id'])->update([
+                        'meta_title' => $data['meta_title'][$language['id']],
+                        'meta_description' => $data['meta_description'][$language['id']],
+                        'meta_keywords' => $data['meta_keywords'][$language['id']],
                         'title' => $data['title'][$language['id']],
+                        'description' => $data['description'][$language['id']],
                     ]);
+                }
+            }
+
+            // deletes features
+            $this->model->features()->delete();
+
+            if ($data['feature']) {
+                foreach ($data['feature'] as $key => $feature) {
+                    if (count($feature)) {
+                        $this->model->features()->create([
+                            'feature_id' => $key,
+                            'answers' => array_map('intval', $feature)
+                        ]);
+                    }
                 }
             }
 

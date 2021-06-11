@@ -48,7 +48,7 @@ class ProductRequest extends FormRequest
         if ($this->method !== 'GET') {
             $data ['meta_title.' . $defaultLanguage->id] = 'required|string|max:255';
             $data ['meta_description.' . $defaultLanguage->id] = 'required|string|max:255';
-            $data ['meta_keyword.' . $defaultLanguage->id] = 'required|string|max:1024';
+            $data ['meta_keywords.' . $defaultLanguage->id] = 'required|string|max:1024';
             $data ['title.' . $defaultLanguage->id] = 'required|string|max:255';
             $data ['description.' . $defaultLanguage->id] = 'nullable|string|max:255';
             $data['category_id'] = 'required|numeric|exists:categories,id';
