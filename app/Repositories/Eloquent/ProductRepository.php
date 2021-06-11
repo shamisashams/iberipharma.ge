@@ -44,22 +44,39 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             DB::connection()->beginTransaction();
 
             $data = [
-                'city_id' => $attributes['city_id'],
-                'status' => $attributes['status']
+                'category_id' => $attributes['category_id'],
+                'status' => $attributes['status'],
+                'slug' => $attributes['slug'],
+                'price' => $attributes['price']
             ];
 
             $this->model = parent::create($data);
 
-            $projectLanguages = [];
+            $productLanguages = [];
 
             foreach ($attributes['languages'] as $language) {
-                $projectLanguages [] = [
+                $productLanguages [] = [
                     'language_id' => $language['id'],
+                    'meta_title' => $attributes['meta_title'][$language['id']],
+                    'meta_description' => $attributes['meta_description'][$language['id']],
+                    'meta_keyword' => $attributes['meta_keyword'][$language['id']],
                     'title' => $attributes['title'][$language['id']],
+                    'description' => $attributes['description'][$language['id']],
                 ];
             }
 
-            $this->model->languages()->createMany($projectLanguages);
+            $this->model->languages()->createMany($productLanguages);
+
+            if ($attributes['feature']) {
+                foreach ($attributes['feature'] as $key => $feature) {
+                    if (count($feature)) {
+                        $this->model->features()->create([
+                            'feature_id' => $key,
+                            'answers' => array_map('intval',$feature)
+                        ]);
+                    }
+                }
+            }
 
             DB::connection()->commit();
 

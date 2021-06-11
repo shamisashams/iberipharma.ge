@@ -91,20 +91,27 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = [
-            'city_id' => $request['city_id'],
-            'status' => (bool)$request['status'],
+            'meta_title' => $request['meta_title'],
+            'meta_description' => $request['meta_description'],
+            'meta_keyword' => $request['meta_keyword'],
             'title' => $request['title'],
+            'description' => $request['description'],
+            'price' => $request['price'],
+            'slug' => $request['slug'],
+            'category_id' => $request['category_id'],
+            'feature' => $request['feature'],
+            'status' => (bool)$request['status'],
             'languages' => $this->activeLanguages(),
         ];
 
-        $project = $this->productRepository->create($data);
+        $product = $this->productRepository->create($data);
 
         // Save Files
         if ($request->hasFile('images')) {
-            $project = $this->productRepository->saveFiles($project->id, $request);
+            $product = $this->productRepository->saveFiles($product->id, $request);
         }
 
-        return redirect(locale_route('project.show', $project->id))->with('success', 'Product created.');
+        return redirect(locale_route('product.show', $product->id))->with('success', 'Product created.');
     }
 
     /**

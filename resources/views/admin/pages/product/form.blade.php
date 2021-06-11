@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="input-field ">
                                             <textarea
-                                                      name="description['{{$key}}']"
+                                                      name="description[{{$key}}]"
                                                       value="{{$product->language($language->id) !== null ? $product->language($language->id)->description:  ''}}"
                                                       class="materialize-textarea validate {{ $errors->has('description.*') ? '' : 'valid'}}"></textarea>
                                             <label for="description['{{$key}}']">{{__('admin.description')}}</label>

@@ -12,6 +12,7 @@ namespace App\Models;
 use App\Traits\ScopeFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -84,11 +85,21 @@ class Product extends Model
     }
 
     /**
-     * Return relationship project languages
+     * Return relationship product features
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function languages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function features(): HasMany
+    {
+        return $this->hasMany(ProductFeature::class, 'product_id');
+    }
+
+    /**
+     * Return relationship product languages
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function languages(): HasMany
     {
         return $this->hasMany(ProductLanguage::class, 'product_id');
     }
