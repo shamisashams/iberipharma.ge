@@ -11,7 +11,8 @@
   <!-- BEGIN: SideNav-->
   @include('admin.panels.sidebar')
   <!-- END: SideNav-->
-
+  <meta name="active_language" content="{{$activeLanguage}}" />
+  <meta name="default_language" content="{{$defaultLanguage}}" />
   <!-- BEGIN: Page Main-->
   <div id="main">
     <div class="row">
