@@ -77,8 +77,7 @@ class ProductController extends Controller
             'url' => $url,
             'method' => $method,
             'languages' => $this->activeLanguages(),
-            'categories' => $this->categoryRepository->all(),
-            'features' => $this->featureRepository->all(['*'],['answers'])
+            'categories' => $this->categoryRepository->all(['*'],['features.languages','features.answers.languages']),
         ]);
     }
 
