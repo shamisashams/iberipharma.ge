@@ -87,11 +87,25 @@ class ProductController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $data = [
+            'city_id' => $request['city_id'],
+            'status' => (bool)$request['status'],
+            'title' => $request['title'],
+            'languages' => $this->activeLanguages(),
+        ];
+
+        $project = $this->productRepository->create($data);
+
+        // Save Files
+        if ($request->hasFile('images')) {
+            $project = $this->productRepository->saveFiles($project->id, $request);
+        }
+
+        return redirect(locale_route('project.show', $project->id))->with('success', 'Product created.');
     }
 
     /**
