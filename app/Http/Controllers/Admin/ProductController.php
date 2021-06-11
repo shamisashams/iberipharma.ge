@@ -94,7 +94,7 @@ class ProductController extends Controller
         $data = [
             'meta_title' => $request['meta_title'],
             'meta_description' => $request['meta_description'],
-            'meta_keyword' => $request['meta_keywords'],
+            'meta_keywords' => $request['meta_keywords'],
             'title' => $request['title'],
             'description' => $request['description'],
             'price' => $request['price'],
