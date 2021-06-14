@@ -117,26 +117,53 @@ class SliderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(string $locale, int $id)
     {
-        //
+        $slider = $this->sliderRepository->findOrfail($id);
+
+        $url = locale_route('slider.update', $id, false);
+
+        $method = 'PUT';
+
+        return view('admin.pages.slider.form', [
+            'slider' => $slider,
+            'url' => $url,
+            'method' => $method,
+            'languages' => $this->activeLanguages(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\Admin\SliderRequest $request
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(string $locale, int $id, SliderRequest $request)
     {
-        //
+        $data = [
+            'url' => $request['url'],
+            'status' => (bool)$request['status'],
+            'description' => $request['description'],
+            'title' => $request['title'],
+            'languages' => $this->activeLanguages(),
+        ];
+
+        $slider = $this->sliderRepository->update($id, $data);
+
+        // Update Files
+        $this->sliderRepository->saveFiles($id, $request);
+
+        return redirect(locale_route('slider.show', $slider->id))->with('success', 'Slider updated.');
     }
 
     /**

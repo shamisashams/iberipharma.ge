@@ -43,5 +43,6 @@ class SliderLanguage extends Model
         'slider_id',
         'language_id',
         'title',
+        'description',
     ];
 }

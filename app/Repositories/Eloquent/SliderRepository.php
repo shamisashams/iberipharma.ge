@@ -90,12 +90,11 @@ class SliderRepository extends BaseRepository implements SliderRepositoryInterfa
             ];
 
             $this->model = parent::update($id, $attributes);
-
             foreach ($data['languages'] as $language) {
                 if (null !== $this->model->language($language['id'])) {
                     $this->model->language($language['id'])->update([
                         'title' => $data['title'][$language['id']],
-                        'description' => $data['title'][$language['description']],
+                        'description' => $data['description'][$language['id']],
                     ]);
                 }
             }

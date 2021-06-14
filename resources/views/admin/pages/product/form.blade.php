@@ -79,8 +79,11 @@
                                         <div class="input-field ">
                                             <textarea
                                                     name="description[{{$key}}]"
-                                                    value="{{$product->language($language->id) !== null ? $product->language($language->id)->description:  ''}}"
-                                                    class="materialize-textarea validate {{ $errors->has('description.*') ? '' : 'valid'}}"></textarea>
+
+                                                    class="materialize-textarea validate {{ $errors->has('description.*') ? '' : 'valid'}}">
+                                                                                                {!! $product->language($language->id) !== null ? $product->language($language->id)->description:  '' !!}
+
+                                            </textarea>
                                             <label for="description['{{$key}}']">{{__('admin.description')}}</label>
                                             @error('description.*')
                                             <small class="errorTxt4">
@@ -194,40 +197,40 @@
                                 @else
                                     <div class="features" id="features-container">
                                         @if(count($product->category->features))
-                                        @foreach($product->category->features as $feature)
-                                            @if(!count($feature->answers))
-                                                @continue;
-                                            @endif
-                                            <div class="col">
-                                                <label for="feature[{{$feature->id}}][]">
-                                                    {{$feature->language(app()->getLocale()) ? substr($feature->language(app()->getLocale())->title,0,25) : substr($feature->language()->title,0,25)}}
-                                                </label>
-                                            </div>
-                                            <div class="input-field col s12">
-                                                <select class="select2-customize-result browser-default"
-                                                        multiple="multiple"
-                                                        id="select2-customize-result-{{$feature->id}}"
-                                                        name="feature[{{$feature->id}}][]">
-                                                    <optgroup>
-                                                        @foreach($feature->answers as $answer)
-                                                            <option
-                                                                    value="{{$answer->id}}"
-                                                                    {{$product->hasFeatureAnswers($answer->id) ? 'selected' : ''}}
-                                                            >
-                                                                {{$answer->language(app()->getLocale()) ? substr($answer->language(app()->getLocale())->title,0,25) : substr($answer->language()->title,0,25)}}
-                                                            </option>
-                                                        @endforeach
-                                                    </optgroup>
-                                                </select>
-                                                @error('feature['.$feature->id.'].*')
-                                                <small class="errorTxt4">
-                                                    <div class="error">
-                                                        {{$message}}
-                                                    </div>
-                                                </small>
-                                                @enderror
-                                            </div>
-                                        @endforeach
+                                            @foreach($product->category->features as $feature)
+                                                @if(!count($feature->answers))
+                                                    @continue;
+                                                @endif
+                                                <div class="col">
+                                                    <label for="feature[{{$feature->id}}][]">
+                                                        {{$feature->language(app()->getLocale()) ? substr($feature->language(app()->getLocale())->title,0,25) : substr($feature->language()->title,0,25)}}
+                                                    </label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <select class="select2-customize-result browser-default"
+                                                            multiple="multiple"
+                                                            id="select2-customize-result-{{$feature->id}}"
+                                                            name="feature[{{$feature->id}}][]">
+                                                        <optgroup>
+                                                            @foreach($feature->answers as $answer)
+                                                                <option
+                                                                        value="{{$answer->id}}"
+                                                                        {{$product->hasFeatureAnswers($answer->id) ? 'selected' : ''}}
+                                                                >
+                                                                    {{$answer->language(app()->getLocale()) ? substr($answer->language(app()->getLocale())->title,0,25) : substr($answer->language()->title,0,25)}}
+                                                                </option>
+                                                            @endforeach
+                                                        </optgroup>
+                                                    </select>
+                                                    @error('feature['.$feature->id.'].*')
+                                                    <small class="errorTxt4">
+                                                        <div class="error">
+                                                            {{$message}}
+                                                        </div>
+                                                    </small>
+                                                    @enderror
+                                                </div>
+                                            @endforeach
                                         @endif
                                     </div>
 
