@@ -50,5 +50,5 @@ interface SliderRepositoryInterface
      *
      * @return \App\Models\Slider
      */
-    public function saveFiles(int $id,SliderRequest $request): Slider;
+    public function saveFiles(int $id,SliderRequest $request);
 }

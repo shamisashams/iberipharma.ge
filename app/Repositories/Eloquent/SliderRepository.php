@@ -13,14 +13,14 @@ namespace App\Repositories\Eloquent;
 use App\Models\Project;
 use App\Models\Slider;
 use App\Repositories\Eloquent\Base\BaseRepository;
-use App\Repositories\ProjectRepositoryInterface;
+use App\Repositories\SliderRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
 /**
  * Class SliderRepository
  * @package App\Repositories\Eloquent
  */
-class SliderRepository extends BaseRepository implements ProjectRepositoryInterface
+class SliderRepository extends BaseRepository implements SliderRepositoryInterface
 {
     /**
      * SliderRepository constructor.
@@ -39,7 +39,7 @@ class SliderRepository extends BaseRepository implements ProjectRepositoryInterf
      *
      * @return \App\Models\City
      */
-    public function create(array $attributes = []): Project
+    public function create(array $attributes = []): Slider
     {
         try {
             DB::connection()->beginTransaction();
@@ -79,7 +79,7 @@ class SliderRepository extends BaseRepository implements ProjectRepositoryInterf
      *
      * @return \App\Models\City
      */
-    public function update(int $id, array $data = []): Project
+    public function update(int $id, array $data = []): Slider
     {
         try {
             DB::connection()->beginTransaction();
