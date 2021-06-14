@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TranslationController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,10 @@ Route::prefix('{locale}')
                 Route::resource('product',ProductController::class);
                 Route::get('product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');
 
+
+                // Slider
+                Route::resource('slider',SliderController::class);
+                Route::get('slider/{slider}/destroy',[SliderController::class,'destroy'])->name('slider.destroy');
 
             });
         });
