@@ -122,7 +122,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             }
 
             // deletes features
-            $this->model->features()->delete();
+            $this->model->features()->forceDelete();
 
             if ($data['feature']) {
                 foreach ($data['feature'] as $key => $feature) {
