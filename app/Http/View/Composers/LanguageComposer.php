@@ -28,13 +28,12 @@ class LanguageComposer
      */
     public function compose(View $view)
     {
-        $defaultLanguage = Language::where('default',true)->first();
-        $activeLanguage = Language::where('locale',$this->languageSlug())->first();
+        $defaultLanguage = Language::where('default', true)->first();
+        $activeLanguage = Language::where('locale', $this->languageSlug())->first();
 
         $view->with('localizations', $this->languageItems())
-                ->with('activeLanguage',$activeLanguage->id)
-                ->with('defaultLanguage',$defaultLanguage->id)
-        ;
+            ->with('activeLanguage', $activeLanguage ? $activeLanguage->id : null)
+            ->with('defaultLanguage', $defaultLanguage ? $defaultLanguage->id : null);
     }
 
     /**
@@ -88,7 +87,8 @@ class LanguageComposer
         return $this->languageSlug() === $lang;
     }
 
-    protected function languageSlug() {
-        return explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))[1] ;
+    protected function languageSlug()
+    {
+        return explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))[1];
     }
 }
