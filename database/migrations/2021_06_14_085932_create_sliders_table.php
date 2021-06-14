@@ -1,5 +1,11 @@
 <?php
-
+/**
+ *  database/migrations/2021_06_14_085932_create_sliders_table.php
+ *
+ * Date-Time: 14.06.21
+ * Time: 15:14
+ * @author Vito Makhatadze <vitomaxatadze@gmail.com>
+ */
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +21,8 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
+            $table->boolean('status')->default(true);
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
