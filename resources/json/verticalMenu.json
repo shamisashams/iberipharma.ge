@@ -89,6 +89,13 @@
       "i18n": "project",
       "icon": "apps",
       "slug": "project"
+    },
+    {
+      "url": "slider.index",
+      "name": "slider",
+      "i18n": "slider",
+      "icon": "slideshow",
+      "slug": "slider"
     }
   ]
 }
