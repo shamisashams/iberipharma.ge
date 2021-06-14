@@ -36,7 +36,8 @@ $configData = Helper::applClasses();
   <div class="row">
     <div class="col s12">
       <div class="container">
-        <!--  main content -->
+      @include('admin.vendor.alerts')
+      <!--  main content -->
         @yield('content')
       </div>
       {{-- overlay --}}
