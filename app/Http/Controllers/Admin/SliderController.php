@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SliderRequest;
+use App\Repositories\SliderRepositoryInterface;
 use Illuminate\Http\Request;
 
 /**
@@ -18,14 +19,32 @@ use Illuminate\Http\Request;
  */
 class SliderController extends Controller
 {
+
+    /**
+     * @var \App\Repositories\SliderRepositoryInterface
+     */
+    private $sliderRepository;
+
+    /**
+     * SliderController constructor.
+     *
+     * @param \App\Repositories\SliderRepositoryInterface $sliderRepository
+     */
+    public function __construct(SliderRepositoryInterface $sliderRepository) {
+        $this->sliderRepository = $sliderRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index(SliderRequest $request)
     {
-        //
+        return view('admin.pages.slider.index',[
+           'sliders' => $this->sliderRepository->getData($request,['languages']),
+            'languages' => $this->activeLanguages()
+        ]);
     }
 
     /**
