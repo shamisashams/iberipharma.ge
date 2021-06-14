@@ -50,7 +50,7 @@ class ProjectController extends Controller
     public function index(ProjectRequest $request)
     {
         return view('admin.pages.project.index', [
-            'projects' => $this->projectRepository->getData($request, ['city']),
+            'projects' => $this->projectRepository->getData($request, ['city','languages']),
             'languages' => $this->activeLanguages()
         ]);
     }
