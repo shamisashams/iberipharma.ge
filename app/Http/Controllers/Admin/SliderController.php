@@ -169,12 +169,16 @@ class SliderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param string $locale
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(string $locale, int $id)
     {
-        //
+        if (!$this->sliderRepository->delete($id)) {
+            return redirect(locale_route('slider.show', $id))->with('danger', 'Slider not deleted.');
+        }
+        return redirect(locale_route('slider.index'))->with('success', 'Slider Deleted.');
     }
 }
