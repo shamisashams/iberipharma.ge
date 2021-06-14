@@ -21,11 +21,13 @@ use App\Repositories\Eloquent\FeatureRepository;
 use App\Repositories\Eloquent\LanguageRepository;
 use App\Repositories\Eloquent\ProductRepository;
 use App\Repositories\Eloquent\ProjectRepository;
+use App\Repositories\Eloquent\SliderRepository;
 use App\Repositories\Eloquent\TranslationRepository;
 use App\Repositories\FeatureRepositoryInterface;
 use App\Repositories\LanguageRepositoryInterface;
 use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\ProjectRepositoryInterface;
+use App\Repositories\SliderRepositoryInterface;
 use App\Repositories\TranslationRepositoryInterface;
 use Carbon\Laravel\ServiceProvider;
 
@@ -62,5 +64,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
         $this->app->bind(ProjectRepositoryInterface::class, ProjectRepository::class);
         $this->app->bind(ProductRepositoryInterface::class,ProductRepository::class);
+        $this->app->bind(SliderRepositoryInterface::class,SliderRepository::class);
     }
 }
