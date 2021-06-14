@@ -3,7 +3,7 @@
  *  database/migrations/2021_06_14_111550_create_slider_languages_table.php
  *
  * Date-Time: 14.06.21
- * Time: 15:16
+ * Time: 15:18
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
 use Illuminate\Database\Migrations\Migration;
@@ -27,6 +27,7 @@ class CreateSliderLanguagesTable extends Migration
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

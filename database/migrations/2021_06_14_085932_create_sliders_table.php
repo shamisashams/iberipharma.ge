@@ -3,7 +3,7 @@
  *  database/migrations/2021_06_14_085932_create_sliders_table.php
  *
  * Date-Time: 14.06.21
- * Time: 15:14
+ * Time: 15:18
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
 use Illuminate\Database\Migrations\Migration;
@@ -24,6 +24,7 @@ class CreateSlidersTable extends Migration
             $table->boolean('status')->default(true);
             $table->string('url')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
