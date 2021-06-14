@@ -61,4 +61,14 @@ class LoginController extends Controller
 
         return redirect('admin/');
     }
+
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout()
+    {
+        \Auth::logout();
+        return redirect(locale_route('loginView'));
+    }
 }

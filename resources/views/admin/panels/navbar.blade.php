@@ -3,9 +3,6 @@
     class="{{$configData['navbarMainClass']}} @if($configData['isNavbarDark']=== true) {{'navbar-dark'}} @elseif($configData['isNavbarDark']=== false) {{'navbar-light'}} @elseif(!empty($configData['navbarBgColor'])) {{$configData['navbarBgColor']}} @else {{$configData['navbarMainColor']}} @endif">
     <div class="nav-wrapper">
       <div class="header-search-wrapper hide-on-med-and-down">
-        <i class="material-icons">search</i>
-        <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Search ..."
-          data-search="template-list">
         <ul class="search-list collection display-none"></ul>
       </div>
       <ul class="navbar-list right">
@@ -56,53 +53,13 @@
       <!-- profile-dropdown-->
       <ul class="dropdown-content" id="profile-dropdown">
         <li>
-          <a class="grey-text text-darken-1" href="{{asset('user-profile-page')}}">
-            <i class="material-icons">person_outline</i>
-            Profile
-          </a>
-        </li>
-        <li>
-          <a class="grey-text text-darken-1" href="{{asset('app-chat')}}">
-            <i class="material-icons">chat_bubble_outline</i>
-            Chat
-          </a>
-        </li>
-        <li>
-          <a class="grey-text text-darken-1" href="{{asset('page-faq')}}">
-            <i class="material-icons">help_outline</i>
-            Help
-          </a>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <a class="grey-text text-darken-1" href="{{asset('user-lock-screen')}}">
-            <i class="material-icons">lock_outline</i>
-            Lock
-          </a>
-        </li>
-        <li>
-          <a class="grey-text text-darken-1" href="{{asset('user-login')}}">
+          <a class="grey-text text-darken-1" href="{{locale_route('logout')}}">
             <i class="material-icons">keyboard_tab</i>
             Logout
           </a>
         </li>
       </ul>
     </div>
-    <nav class="display-none search-sm">
-      <div class="nav-wrapper">
-        <form id="navbarForm">
-          <div class="input-field search-input-sm">
-            <input class="search-box-sm mb-0" type="search" required="" placeholder='Search ...' id="search"
-              data-search="template-list">
-            <label class="label-icon" for="search">
-              <i class="material-icons search-sm-icon">search</i>
-            </label>
-            <i class="material-icons search-sm-close">close</i>
-            <ul class="search-list collection search-list-sm display-none"></ul>
-          </div>
-        </form>
-      </div>
-    </nav>
   </nav>
 </div>
 <!-- search ul  -->

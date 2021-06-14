@@ -31,6 +31,9 @@ Route::prefix('{locale}')
             Route::redirect('', 'admin/language');
 
             Route::middleware('auth')->group(function () {
+                Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+
                 // Language
                 Route::resource('language', LanguageController::class);
                 Route::get('language/{language}/destroy', [LanguageController::class, 'destroy'])->name('language.destroy');
