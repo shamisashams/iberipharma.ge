@@ -1,16 +1,16 @@
 <?php
 /**
- *  database/migrations/2021_06_15_110039_create_settings_table.php
+ *  database/migrations/2021_06_15_110259_create_setting_languages_table.php
  *
  * Date-Time: 15.06.21
- * Time: 15:02
+ * Time: 15:03
  * @author Vito Makhatadze <vitomaxatadze@gmail.com>
  */
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSettingsTable extends Migration
+class CreateSettingLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,9 +19,12 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('setting_languages', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
+            $table->foreignId('setting_id')->constrained('settings');
+            $table->foreignId('language_id')->constrained('languages');
+            $table->index(['setting_id','language_id']);
+            $table->string('value');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,6 +37,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('setting_languages');
     }
 }
