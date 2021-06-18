@@ -17,13 +17,13 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TranslationController;
+use App\Http\Controllers\Client\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('{locale}')
     ->middleware(['setlocale'])
     ->group(function () {
-        Route::redirect('', 'admin');
         Route::prefix('admin')->group(function () {
             Route::get('login', [LoginController::class, 'loginView'])->name('loginView');
             Route::post('login', [LoginController::class, 'login'])->name('login');
@@ -72,5 +72,7 @@ Route::prefix('{locale}')
 
             });
         });
+
+        Route::get('',[HomeController::class,'index'])->name('home.index');
     });
 
