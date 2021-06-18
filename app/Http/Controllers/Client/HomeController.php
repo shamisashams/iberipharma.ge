@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::where('status',true)->with('languages')->get();
+        $sliders = Slider::where('status', true)->with('languages')->get();
 
-        return view('client.pages.home.index',[
-            'sliders' => $sliders
+        $projects = Project::where('status', true)->with(['city' => function ($query) {
+            $query->where('status', true);
+        }])->groupBy('city_id')->limit(6)->get();
+
+        return view('client.pages.home.index', [
+            'sliders' => $sliders,
+            'projects' => $projects
         ]);
     }
 }

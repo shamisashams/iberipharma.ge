@@ -84,65 +84,33 @@
 
     <section class="finished_projects wrapper flex">
         <div class="left">
-            <div class="head roboto">Finished <span>Projects</span></div>
+            <div class="head roboto">@lang('client.finished') <span>@lang('client.projects')</span></div>
             <div class="view_all">
-                <img src="img/projetcs/5.png" alt=""/>
+                <img src="/client/img/projetcs/5.png" alt=""/>
                 <div class="the_frame"></div>
                 <div class="box_shadow"></div>
                 <a href="#">
-                    <button class="main_btn">View All</button>
+                    <button class="main_btn">@lang('client.view_all')</button>
                 </a>
             </div>
         </div>
-        <div class="grid">
-            <div class="finished_grid">
-                <img src="img/projetcs/6.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <a href="#">
-                    <button class="main_btn large">Moscow</button>
-                </a>
+        @if(count($projects))
+            <div class="grid">
+
+            @foreach($projects as $project)
+                <div class="finished_grid">
+                    <img src="{{count($project->files) ? $project->files[0]->path . '/'. $project->files[0]->title : ''}}" alt=""/>
+                    <div class="the_frame"></div>
+                    <div class="box_shadow"></div>
+                    <a href="#">
+                        <button class="main_btn large">
+                            {{$project->city->language(app()->getLocale())? $project->city->language(app()->getLocale())->title: $project->city->language()->title}}
+                        </button>
+                    </a>
+                </div>
+            @endforeach
             </div>
-            <div class="finished_grid">
-                <img src="img/projetcs/7.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <a href="#">
-                    <button class="main_btn large">Ekaterinburg</button>
-                </a>
-            </div>
-            <div class="finished_grid">
-                <img src="img/projetcs/8.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <a href="#">
-                    <button class="main_btn large">Krasnodar</button>
-                </a>
-            </div>
-            <div class="finished_grid">
-                <img src="img/projetcs/9.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <a href="#">
-                    <button class="main_btn large">Saratov</button>
-                </a>
-            </div>
-            <div class="finished_grid">
-                <img src="img/projetcs/10.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <a href="#">
-                    <button class="main_btn large">Omsk</button>
-                </a>
-            </div>
-            <div class="finished_grid">
-                <img src="img/projetcs/11.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <a href="#">
-                    <button class="main_btn large">Sochi</button>
-                </a>
-            </div>
-        </div>
+        @endif
+
     </section>
 @endsection
