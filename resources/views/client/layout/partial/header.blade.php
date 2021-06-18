@@ -1,10 +1,10 @@
 <header class="header">
     <div class="header_content flex wrapper">
-        <a href="index.html" class="logo">
-            <img src="img/logo/logo.png" alt="" />
+        <a href="{{locale_route('home.index')}}" class="logo">
+            <img src="/client/img/logo/logo.png" alt="" />
         </a>
         <div class="navbar">
-            <a href="index.html" class="nav_link">Home</a>
+            <a href="index.html" class="nav_link">@lang('client.home')</a>
             <div class="nav_link drop">
                 <a href="#" class="cat">Category</a>
                 <div class="dropdown">
