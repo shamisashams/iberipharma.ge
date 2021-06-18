@@ -159,7 +159,6 @@ class BaseRepository implements EloquentRepositoryInterface
     public function saveFiles(int $id, $request): Model
     {
         $this->model = $this->findOrFail($id);
-
         // Delete old files if exist
         if ($request->old_images && count($this->model->files)) {
             foreach ($this->model->files as $file) {
@@ -167,7 +166,6 @@ class BaseRepository implements EloquentRepositoryInterface
                     $file->delete();
                     continue;
                 }
-
                 if (!in_array((string)$file->id, $request->old_images, true)) {
                     $file->delete();
                 }

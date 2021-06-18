@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,6 +14,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('client.pages.home.index');
+        $sliders = Slider::where('status',true)->with('languages')->get();
+
+        return view('client.pages.home.index',[
+            'sliders' => $sliders
+        ]);
     }
 }
