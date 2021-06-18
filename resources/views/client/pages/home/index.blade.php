@@ -27,11 +27,9 @@
                 <img src="/client/img/icons/slide/next.png" alt=""/>
             </button>
             <div class="dots" id="dot_on_sliders">
-                <button class="hero_dot clicked"></button>
-                <button class="hero_dot"></button>
-                <button class="hero_dot"></button>
-                <button class="hero_dot"></button>
-                <button class="hero_dot"></button>
+                @foreach($sliders as $key => $slider)
+                    <button class="hero_dot {{$key === 0 ? 'clicked' : ''}}"></button>
+                @endforeach
             </div>
         </section>
     @endif
