@@ -10,6 +10,7 @@
 namespace App\Http\View\Composers;
 
 
+use App\Models\Category;
 use App\Models\Language;
 use Illuminate\View\View;
 
@@ -30,9 +31,10 @@ class LanguageComposer
     {
         $defaultLanguage = Language::where('default', true)->first();
         $activeLanguage = Language::where('locale', $this->languageSlug())->first();
-
+        $categories = Category::where('status',true)->get();
         $view->with('localizations', $this->languageItems())
             ->with('activeLanguage', $activeLanguage ? $activeLanguage->id : null)
+            ->with('gcategories', $categories)
             ->with('defaultLanguage', $defaultLanguage ? $defaultLanguage->id : null);
     }
 

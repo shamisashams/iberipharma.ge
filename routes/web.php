@@ -79,5 +79,22 @@ Route::prefix('{locale}')
 
         Route::get('catalog/{category}',[\App\Http\Controllers\Client\CatalogController::class,'index'])->name('catalog.index');
 
+        Route::get('contact',[\App\Http\Controllers\Client\ContactController::class,'index'])->name('contact.index');
+
+        Route::get('about-us',[\App\Http\Controllers\Client\AboutController::class,'index'])->name('about.index');
+
+        Route::get('portfolio',[\App\Http\Controllers\Client\PorfolioController::class,'index'])->name('portfolio.index');
+
+        Route::get('salon',[\App\Http\Controllers\Client\SalonController::class,'index'])->name('salon.index');
+
+        Route::get('sitemap',[\App\Http\Controllers\Client\SitemapController::class,'index'])->name('sitemap.index');
+
+        Route::get('timeline',[\App\Http\Controllers\Client\TimelineController::class,'index'])->name('timeline.index');
+
+        Route::get('principle',[\App\Http\Controllers\Client\PrincipleController::class,'index'])->name('principle.index');
+
+        Route::get('certificate',[\App\Http\Controllers\Client\CertificateController::class,'index'])->name('certificate.index');
+
+
     });
 
