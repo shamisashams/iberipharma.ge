@@ -24,7 +24,7 @@ class ProjectController extends Controller
         $cities = City::where('status',true)->get();
 
         return view('client.pages.project.index', [
-            'projects' => $projects->paginate(12),
+            'projects' => $projects->paginate(1),
             'cities' => $cities
         ]);
     }

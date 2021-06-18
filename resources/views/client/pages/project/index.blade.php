@@ -16,10 +16,10 @@
     <section class="projects_page wrapper flex">
         <div class="filters">
             <div class="city">@lang('client.city')</div>
-            <button onclick="location.href = '{{locale_route('project.index')}}'"
+            <button onclick="location.href = '{{locale_route('client.project.index')}}'"
                     class="project_filter {{Request::get('city') ? '' : 'active'}}">@lang('client.all')</button>
             @foreach($cities as $city)
-                <button onclick="location.href = '{{locale_route('project.index')}}?city={{$city->id}}'"
+                <button onclick="location.href = '{{locale_route('client.project.index')}}?city={{$city->id}}'"
                         class="project_filter {{Request::get('city') == $city->id ? 'active' : ''}}">
                     {{$city->language(app()->getLocale())? $city->language(app()->getLocale())->title: $city->language()->title}}
                 </button>
@@ -43,19 +43,7 @@
 
 
             </div>
-            <div class="pagination flex">
-                <button class="btn" id="prev_pag">Previous</button>
-                <div class="pagination_slider">
-                    <button class="page_num ">1</button>
-                    <button class="page_num">2</button>
-                    <button class="page_num active">3</button>
-                    <button class="page_num">4</button>
-                    <button class="page_num">5</button>
-                    <button class="page_num">6</button>
-                    <button class="page_num">7</button>
-                </div>
-                <button class="btn" id="next_pag">Next</button>
-            </div>
+            {{ $projects->appends(request()->input())->links('client.pagination') }}
         </div>
     </section>
 
