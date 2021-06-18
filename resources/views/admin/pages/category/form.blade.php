@@ -17,8 +17,9 @@
         <div class="col s12 m6 l6">
             <div id="basic-form" class="card card card-default scrollspy">
                 <div class="card-content">
+                    <input name="old-images[]" id="old_images" hidden disabled value="{{$category->files}}">
                     <h4 class="card-title">{{$category->slug ? __('admin.category-update') : __('admin.category-create')}}</h4>
-                    {!! Form::model($category,['url' => $url, 'method' => $method]) !!}
+                    {!! Form::model($category,['url' => $url, 'method' => $method,'files' => true]) !!}
                     <div class="row">
                         <div class="input-field col s12">
                             {!! Form::text('slug',$category->slug,['class' => 'validate '. $errors->has('slug') ? '' : 'valid']) !!}
@@ -102,6 +103,14 @@
                             </div>
                         </small>
                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <div class="input-images"></div>
+                        @if ($errors->has('images'))
+                            <span class="help-block">
+                                            {{ $errors->first('images') }}
+                                        </span>
+                        @endif
                     </div>
                     <div class="row">
                         <div class="input-field col s12">

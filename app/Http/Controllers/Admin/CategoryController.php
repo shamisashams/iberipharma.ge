@@ -99,6 +99,12 @@ class CategoryController extends Controller
 
         $category = $this->categoryRepository->create($data);
 
+        // Save Files
+        if ($request->hasFile('images')) {
+            $category = $this->categoryRepository->saveFiles($category->id, $request);
+        }
+
+
         return redirect(locale_route('category.show', $category->id))->with('success', 'Category created.');
 
     }
@@ -168,6 +174,9 @@ class CategoryController extends Controller
         ];
 
         $this->categoryRepository->update($id, $data);
+
+        // Update Files
+        $this->categoryRepository->saveFiles($id, $request);
 
         return redirect(locale_route('category.show', $id))->with('success', 'Category Updated.');
 
