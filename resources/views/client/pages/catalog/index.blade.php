@@ -13,29 +13,31 @@
     </section>
 
     <section class="catalog_section flex wrapper">
-        <div class="filter_bar">
-            <div class="box">
-                <div class="title">Lorem Ipsum</div>
-                <div class="option">Lorem Ipsum</div>
-                <div class="option">Lorem Ipsum</div>
-                <div class="option">Lorem Ipsum</div>
-                <button class="show_more">Show more</button>
-            </div>
-            <div class="box">
-                <div class="title">Lorem Ipsum</div>
-                <div class="option">Lorem Ipsum</div>
-                <div class="option">Lorem Ipsum</div>
-                <div class="option">Lorem Ipsum</div>
-                <button class="show_more">Show more</button>
-            </div>
-            <div class="box">
-                <div class="title">Lorem Ipsum</div>
-                <div class="option">Lorem Ipsum</div>
-                <div class="option">Lorem Ipsum</div>
-                <div class="option">Lorem Ipsum</div>
-                <button class="show_more">Show more</button>
-            </div>
-        </div>
+        <form class="filter_bar">
+            @foreach($category->features as $feature)
+                <div class="box">
+                    <div class="title">
+                        {{$feature->language(app()->getLocale())? $feature->language(app()->getLocale())->title: $feature->language()->title}}
+                    </div>
+                    @foreach($feature->answers as $answer)
+                        <div class="option">
+                            <input type="checkbox"
+                                   onchange="this.form.submit()" name="feature[{{$feature->id}}][{{$answer->id}}]"
+                                   id="box{{$feature->id}}_{{$answer->id}}"
+                                   value="{{$answer->id}}"
+                            @if(isset(Request::get('feature')[$feature->id]))
+                                {{in_array($answer->id,Request::get('feature')[$feature->id]) ? 'checked' : ''}}
+                                    @endif
+                            >
+                            <label for="box{{$feature->id}}_{{$answer->id}}">
+                                {{$answer->language(app()->getLocale())? $answer->language(app()->getLocale())->title: $answer->language()->title}}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        </form>
+
         <div class="cgsec">
             <div class="catalog_grid">
                 @foreach($products as $product)

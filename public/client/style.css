@@ -558,7 +558,7 @@ img {
 .finished_projects .view_all .main_btn:hover {
   transform: translateX(-50%) scale(0.9);
 }
-/* 
+/*
 .finished_projects .view_all .img {
   object-fit: cover;
   width: 100%;
@@ -1096,8 +1096,16 @@ img {
   width: 69%;
   height: 777px;
   margin-right: 20px;
+  position: relative;
 }
 
+.map_city .map_city_flex .map .derufa-map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 .map_city .map_city_flex .map iframe {
   width: 100%;
   height: 100%;
@@ -1309,6 +1317,25 @@ img {
 .catalog_section .filter_bar .box .option {
   color: #808080;
   margin-bottom: 7px;
+  position: relative;
+}
+.catalog_section .filter_bar .box .option input {
+  width: 0;
+  height: 0;
+}
+.catalog_section .filter_bar .box .option label {
+  cursor: pointer;
+}
+
+.catalog_section .filter_bar .box .option input:checked + label {
+  color: blue;
+}
+
+.catalog_section .filter_bar .box .extra_cat_options {
+  display: none;
+}
+.catalog_section .filter_bar .box .extra_cat_options.show {
+  display: block;
 }
 
 .catalog_section .filter_bar .box .show_more {
@@ -1316,6 +1343,9 @@ img {
   font-size: 12px;
   margin-top: 20px;
   text-decoration: underline;
+}
+.catalog_section .filter_bar .box .show_more.hide {
+  display: none;
 }
 
 .catalog_section .head .title {
