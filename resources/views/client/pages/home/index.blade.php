@@ -7,7 +7,7 @@
         <section class="hero_section" id="slider_on_hero">
             @foreach($sliders as $key =>$slider)
                 <div class="slides hero_slide {{$key === 0 ? 'current' : ''}} {{!isset($sliders[$key+1]) ? 'last' : ''}}"
-                    style="{{$slider->file ? 'background: url('. $slider->file->path.'/'.$slider->file->title.')': 'background: url()'}}"
+                     style="{{$slider->file ? 'background: url('. $slider->file->path.'/'.$slider->file->title.')': 'background: url()'}}"
                 >
                     <div class="slide_content wrapper">
                         <div class="title roboto">
@@ -97,18 +97,18 @@
         @if(count($projects))
             <div class="grid">
 
-            @foreach($projects as $project)
-                <div class="finished_grid">
-                    <img src="{{count($project->files) ? $project->files[0]->path . '/'. $project->files[0]->title : ''}}" alt=""/>
-                    <div class="the_frame"></div>
-                    <div class="box_shadow"></div>
-                    <a href="#">
-                        <button class="main_btn large">
-                            {{$project->city->language(app()->getLocale())? $project->city->language(app()->getLocale())->title: $project->city->language()->title}}
-                        </button>
-                    </a>
-                </div>
-            @endforeach
+                @foreach($projects as $project)
+                    <div class="finished_grid">
+                        <img src="{{count($project->files) ? $project->files[0]->path . '/'. $project->files[0]->title : ''}}" alt=""/>
+                        <div class="the_frame"></div>
+                        <div class="box_shadow"></div>
+                        <a href="#">
+                            <button class="main_btn large">
+                                {{$project->city->language(app()->getLocale())? $project->city->language(app()->getLocale())->title: $project->city->language()->title}}
+                            </button>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         @endif
 

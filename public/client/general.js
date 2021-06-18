@@ -13,19 +13,19 @@ const burgerMenu = document.querySelector(".burger_menu");
 
 // project filter
 
-projectFilter.forEach((el, i) => {
-  el.addEventListener("click", () => {
-    projectFilter.forEach((el) => {
-      el.classList.remove("active");
-    });
-    projectTab.forEach((el) => {
-      el.classList.remove("active");
-    });
-
-    projectFilter[i].classList.add("active");
-    projectTab[i].classList.add("active");
-  });
-});
+// projectFilter.forEach((el, i) => {
+//   el.addEventListener("click", () => {
+//     projectFilter.forEach((el) => {
+//       el.classList.remove("active");
+//     });
+//     projectTab.forEach((el) => {
+//       el.classList.remove("active");
+//     });
+//
+//     projectFilter[i].classList.add("active");
+//     projectTab[i].classList.add("active");
+//   });
+// });
 
 // product popup
 

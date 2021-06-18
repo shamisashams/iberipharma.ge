@@ -74,5 +74,7 @@ Route::prefix('{locale}')
         });
 
         Route::get('',[HomeController::class,'index'])->name('home.index');
+
+        Route::get('projects',[App\Http\Controllers\Client\ProjectController::class,'index'])->name('project.index');
     });
 
