@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Project;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -21,9 +22,12 @@ class HomeController extends Controller
             $query->where('status', true);
         }])->groupBy('city_id')->limit(6)->get();
 
+        $categories = Category::where('status',true)->orderBy('position')->limit(4)->get();
+
         return view('client.pages.home.index', [
             'sliders' => $sliders,
-            'projects' => $projects
+            'projects' => $projects,
+            'categories' => $categories
         ]);
     }
 }

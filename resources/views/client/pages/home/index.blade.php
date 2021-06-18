@@ -33,54 +33,30 @@
             </div>
         </section>
     @endif
-    <section class="secsec_grid">
-        <div class="wrapper grid">
-            <div class="item_img">
-                <img src="img/projetcs/1.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <div class="item_content">
-                    <div class="color">Colors</div>
-                    <a href="#">
-                        <button class="main_btn">See All Collections</button>
-                    </a>
-                </div>
+    @if(count($categories))
+        <section class="secsec_grid">
+            <div class="wrapper grid">
+                @foreach($categories as $category)
+                    <div class="item_img">
+                        <img src="{{url($category->files? $category->files[0]->path.'/'.$category->files[0]->title : '')}}"
+                             alt=""/>
+                        <div class="the_frame"></div>
+                        <div class="box_shadow"></div>
+                        <div class="item_content">
+                            <div class="color">
+                                {{$category->language(app()->getLocale())? $category->language(app()->getLocale())->title: $category->language()->title}}
+                            </div>
+                            <a href="{{locale_route('catalog.index',$category->slug)}}">
+                                <button class="main_btn">
+                                    @lang('client.see_all_collection')
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="item_img">
-                <img src="img/projetcs/2.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <div class="item_content">
-                    <div class="color">Colors</div>
-                    <a href="#">
-                        <button class="main_btn">See All Collections</button>
-                    </a>
-                </div>
-            </div>
-            <div class="item_img">
-                <img src="img/projetcs/3.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <div class="item_content">
-                    <div class="color">Colors</div>
-                    <a href="#">
-                        <button class="main_btn">See All Collections</button>
-                    </a>
-                </div>
-            </div>
-            <div class="item_img">
-                <img src="img/projetcs/4.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <div class="item_content">
-                    <div class="color">Colors</div>
-                    <a href="#">
-                        <button class="main_btn">See All Collections</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="finished_projects wrapper flex">
         <div class="left">
@@ -99,7 +75,8 @@
 
                 @foreach($projects as $project)
                     <div class="finished_grid">
-                        <img src="{{count($project->files) ? $project->files[0]->path . '/'. $project->files[0]->title : ''}}" alt=""/>
+                        <img src="{{count($project->files) ? $project->files[0]->path . '/'. $project->files[0]->title : ''}}"
+                             alt=""/>
                         <div class="the_frame"></div>
                         <div class="box_shadow"></div>
                         <a href="#">
