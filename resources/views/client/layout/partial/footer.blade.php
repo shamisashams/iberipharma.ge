@@ -3,9 +3,6 @@
         <div class="footer_grid">
             <div class="categories">
                 <div class="title">@lang('client.about_us')</div>
-                <a href="{{locale_route('sitemap.index')}}" class="link">
-                    @lang('client.sitemap')
-                </a>
                 <a href="{{locale_route('timeline.index')}}" class="link">
                     @lang('client.timeline')
                 </a>

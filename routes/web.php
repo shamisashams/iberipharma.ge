@@ -95,9 +95,9 @@ Route::prefix('{locale?}')
 
         Route::get('portfolio', [\App\Http\Controllers\Client\PorfolioController::class, 'index'])->name('portfolio.index');
 
-        Route::get('salon', [\App\Http\Controllers\Client\SalonController::class, 'index'])->name('salon.index');
+//        Route::get('salon', [\App\Http\Controllers\Client\SalonController::class, 'index'])->name('salon.index');
 
-        Route::get('sitemap', [\App\Http\Controllers\Client\SitemapController::class, 'index'])->name('sitemap.index');
+//        Route::get('sitemap', [\App\Http\Controllers\Client\SitemapController::class, 'index'])->name('sitemap.index');
 
         Route::get('timeline', [\App\Http\Controllers\Client\TimelineController::class, 'index'])->name('timeline.index');
 

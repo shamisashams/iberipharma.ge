@@ -4,8 +4,9 @@
             <img src="/client/img/logo/logo.png" alt=""/>
         </a>
         <div class="navbar">
-            <a href="{{locale_route('home.index')}}" class="nav_link">@lang('client.home')</a>
-            <div class="nav_link drop">
+            <a href="{{locale_route('home.index')}}"
+               class="nav_link {{Request::route()->getName()  === 'home.index'? 'on' : ''}}">@lang('client.home')</a>
+            <div class="nav_link drop {{Request::route()->getName()  === 'catalog.index'? 'on' : ''}}">
                 <a href="" onclick="return false;" class="cat">@lang('client.category')</a>
                 <div class="dropdown">
                     @foreach($gcategories as $category)
@@ -15,19 +16,15 @@
                     @endforeach
                 </div>
             </div>
-            <a href="{{locale_route('client.project.index')}}" class="nav_link">@lang('client.projects')</a>
-            <a href="{{locale_route('portfolio.index')}}" class="nav_link">
+            <a href="{{locale_route('client.project.index')}}"
+               class="nav_link {{Request::route()->getName()  === 'client.project.index'? 'on' : ''}}">@lang('client.projects')</a>
+            <a href="{{locale_route('portfolio.index')}}"
+               class="nav_link {{Request::route()->getName()  === 'portfolio.index'? 'on' : ''}}">
                 @lang('client.portfolios')
             </a>
-            <div class="nav_link drop">
+            <div class="nav_link drop {{Request::route()->getName()  === 'about.index'? 'on' : ''}}">
                 <a href="{{locale_route('about.index')}}" class="cat">@lang('client.about_us')</a>
                 <div class="dropdown">
-                    <a href="{{locale_route('salon.index')}}" class="link">
-                        @lang('client.salons')
-                    </a>
-                    <a href="{{locale_route('sitemap.index')}}" class="link">
-                        @lang('client.sitemap')
-                    </a>
                     <a href="{{locale_route('timeline.index')}}" class="link">
                         @lang('client.timeline')
                     </a>
@@ -39,7 +36,8 @@
                     </a>
                 </div>
             </div>
-            <a href="{{locale_route('contact.index')}}" class="nav_link">
+            <a href="{{locale_route('contact.index')}}"
+               class="nav_link {{Request::route()->getName()  === 'contact.index'? 'on' : ''}}">
                 @lang('client.contact_us')
             </a>
         </div>
