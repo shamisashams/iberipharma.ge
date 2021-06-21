@@ -96,6 +96,13 @@
       "i18n": "slider",
       "icon": "slideshow",
       "slug": "slider"
+    },
+    {
+      "url": "setting.index",
+      "name": "setting",
+      "i18n": "setting",
+      "icon": "slideshow",
+      "slug": "setting"
     }
   ]
 }
