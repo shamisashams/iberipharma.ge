@@ -34,8 +34,17 @@ class CatalogController extends Controller
         }
 
         return view('client.pages.catalog.index', [
-            'products' => $products->paginate(245),
+            'products' => $products->paginate(12),
             'category' => $category
         ]);
     }
+
+    public function show(Request $request, string $locale, string $slug) {
+        $product = Product::with('features')->where(['status' => true,'slug' => $slug])->firstOrFail();
+
+        return view('client.pages.catalog.show', [
+            'product' => $product,
+        ]);
+    }
+
 }

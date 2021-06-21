@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certificate;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -12,8 +13,10 @@ class AboutController extends Controller
      */
     public function index()
     {
+        $certificates = Certificate::where('status',true)->limit(12)->get();
 
         return view('client.pages.about.index', [
+            'certificates' => $certificates
         ]);
     }
 }

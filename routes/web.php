@@ -87,6 +87,7 @@ Route::prefix('{locale}')
         Route::get('projects', [App\Http\Controllers\Client\ProjectController::class, 'index'])->name('client.project.index');
 
         Route::get('catalog/{category}', [\App\Http\Controllers\Client\CatalogController::class, 'index'])->name('catalog.index');
+        Route::get('catalog/{product}/show}', [\App\Http\Controllers\Client\CatalogController::class, 'show'])->name('catalog.show');
 
         Route::get('contact', [\App\Http\Controllers\Client\ContactController::class, 'index'])->name('contact.index');
 

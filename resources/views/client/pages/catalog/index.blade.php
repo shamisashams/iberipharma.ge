@@ -44,7 +44,7 @@
         <div class="cgsec">
             <div class="catalog_grid">
                 @foreach($products as $product)
-                    <a href="" class="catalog_item">
+                    <a href="{{locale_route('catalog.show',$product->slug)}}" class="catalog_item">
                         <div class="img flex">
                             <img src="{{url(count($product->files)? $product->files[0]->path.'/'.$product->files[0]->title : '')}}"
                                  alt="">
