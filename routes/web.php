@@ -89,7 +89,7 @@ Route::prefix('{locale}')
         Route::get('catalog/{category}', [\App\Http\Controllers\Client\CatalogController::class, 'index'])->name('catalog.index');
         Route::get('catalog/{product}/show}', [\App\Http\Controllers\Client\CatalogController::class, 'show'])->name('catalog.show');
 
-        Route::get('contact', [\App\Http\Controllers\Client\ContactController::class, 'index'])->name('contact.index');
+        Route::match(['get','post'],'contact', [\App\Http\Controllers\Client\ContactController::class, 'index'])->name('contact.index');
 
         Route::get('about-us', [\App\Http\Controllers\Client\AboutController::class, 'index'])->name('about.index');
 
