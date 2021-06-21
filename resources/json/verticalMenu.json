@@ -1,54 +1,6 @@
 {
   "menu": [
     {
-      "url": "javascript:void(0)",
-      "name": "Dashboard",
-      "i18n": "Dashboard",
-      "class": "collapsible-header waves-effect waves-cyan",
-      "slug": "dashboard",
-      "icon": "settings_input_svideo",
-      "tag": "3",
-      "tagcustom": "badge pill orange float-right mr-10",
-      "submenu": [
-        {
-          "url": "/",
-          "name": "Modern",
-          "i18n": "Modern",
-          "slug": "dashboard-modern"
-        },
-        {
-          "url": "ecommerce",
-          "name": "eCommerce",
-          "i18n": "eCommerce",
-          "slug": "dashboard-ecommerce"
-        },
-        {
-          "url": "analytics",
-          "name": "Analytics",
-          "i18n": "Analytics",
-          "slug": "dashboard-analytics"
-        }
-      ]
-    },
-    {
-      "navheader": "Localizations",
-      "icon": "more_horiz"
-    },
-    {
-      "url": "language.index",
-      "name": "language",
-      "i18n": "language",
-      "icon": "language",
-      "slug": "language"
-    },
-    {
-      "url": "translation.index",
-      "name": "translation",
-      "i18n": "translation",
-      "icon": "g_translate",
-      "slug": "translation"
-    },
-    {
       "url": "product.index",
       "name": "product",
       "i18n": "product",
@@ -77,13 +29,6 @@
       "slug": "answer"
     },
     {
-      "url": "city.index",
-      "name": "city",
-      "i18n": "city",
-      "icon": "location_city",
-      "slug": "city"
-    },
-    {
       "url": "project.index",
       "name": "project",
       "i18n": "project",
@@ -98,6 +43,20 @@
       "slug": "slider"
     },
     {
+      "url": "certificate.index",
+      "name": "certificate",
+      "i18n": "certificate",
+      "icon": "message",
+      "slug": "certificate"
+    },
+    {
+      "url": "city.index",
+      "name": "city",
+      "i18n": "city",
+      "icon": "location_city",
+      "slug": "city"
+    },
+    {
       "url": "setting.index",
       "name": "setting",
       "i18n": "setting",
@@ -105,11 +64,18 @@
       "slug": "setting"
     },
     {
-      "url": "certificate.index",
-      "name": "certificate",
-      "i18n": "certificate",
-      "icon": "message",
-      "slug": "certificate"
+      "url": "language.index",
+      "name": "language",
+      "i18n": "language",
+      "icon": "language",
+      "slug": "language"
+    },
+    {
+      "url": "translation.index",
+      "name": "translation",
+      "i18n": "translation",
+      "icon": "g_translate",
+      "slug": "translation"
     }
   ]
 }

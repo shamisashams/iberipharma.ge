@@ -34,10 +34,8 @@ class ContactController extends Controller
 
             $mailTo = Setting::where(['key' => 'email'])->first();
 
-            if ($mailTo !== null) {
-                if ($mailTo->language()) {
-                    Mail::to($mailTo->language()->value)->send(new ContactEmail($data));
-                }
+            if (($mailTo !== null) && $mailTo->language()) {
+                Mail::to($mailTo->language()->value)->send(new ContactEmail($data));
             }
 
         }

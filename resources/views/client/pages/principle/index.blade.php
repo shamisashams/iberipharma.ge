@@ -9,25 +9,25 @@
     <section class="every_showcase principle">
         <div class="overlay">
             <div class="wrapper content">
-                <div class="path">Home - Principle</div>
-                <div class="title">Principle</div>
+                <div class="path">@lang('client.home') - @lang('client.principle')</div>
+                <div class="title">@lang('client.principle')</div>
             </div>
         </div>
     </section>
 
     <section class="principle_section wrapper flex">
-        <img src="img/other/2.png" alt="">
+        <img src="/client/img/other/2.png" alt="">
         <div class="right">
             <div class="all_titles">
-                <div class="s">principles</div>
-                <div class="l">Our principles</div>
+                <div class="s">@lang('client.principles')</div>
+                <div class="l">@lang('client.our_principles')</div>
             </div>
-            <p class="para">First ask people what they need, and then give it to them.</p>
-            <p class="para">This is not an advertising slogan of our company or a quote. This is an extremely simple rule that we follow in everything we do. Many people know it, but this does not mean at all that it is easy to apply when it comes to business. Why?
+            <p class="para">@lang('client.principle_section_1')</p>
+            <p class="para">@lang('client.principle_section_2')
             </p>
-            <p class="para">This approach is not for everyone. Some people don't understand that it is possible to combine commercial success and true customer care that has nothing to do with empty advertising promises. Business success is a measure of your sincerity in offering the market something worthwhile.
+            <p class="para">@lang('client.principle_section_3')
             </p>
-            <p class="para">Many are already aware of this. As a result, a healthy business develops, which also benefits society.</p>
+            <p class="para">@lang('client.principle_section_4')</p>
         </div>
     </section>
 @endsection

@@ -10,8 +10,8 @@
     <section class="every_showcase certificates">
         <div class="overlay">
             <div class="wrapper content">
-                <div class="path">Home - Certificates</div>
-                <div class="title">Certificates</div>
+                <div class="path">@lang('client.home') - @lang('client.certificates')</div>
+                <div class="title">@lang('client.certificates')</div>
             </div>
         </div>
     </section>

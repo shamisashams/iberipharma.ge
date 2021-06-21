@@ -3,37 +3,11 @@
     <div class="brand-sidebar">
         <h1 class="logo-wrapper">
             <a class="brand-logo darken-1" href="{{asset('/')}}">
-                @if(!empty($configData['mainLayoutType']) && isset($configData['mainLayoutType']))
-                    @if($configData['mainLayoutType']=== 'vertical-modern-menu')
-                        <img class="hide-on-med-and-down" src="{{asset($configData['largeScreenLogo'])}}"
-                             alt="materialize logo"/>
-                        <img class="show-on-medium-and-down hide-on-med-and-up"
-                             src="{{asset($configData['smallScreenLogo'])}}"
-                             alt="materialize logo"/>
-
-                    @elseif($configData['mainLayoutType']=== 'vertical-menu-nav-dark')
-                        <img src="{{asset($configData['smallScreenLogo'])}}" alt="materialize logo"/>
-
-                    @elseif($configData['mainLayoutType']=== 'vertical-gradient-menu')
-                        <img class="show-on-medium-and-down hide-on-med-and-up"
-                             src="{{asset($configData['largeScreenLogo'])}}"
-                             alt="materialize logo"/>
-                        <img class="hide-on-med-and-down" src="{{asset($configData['smallScreenLogo'])}}"
-                             alt="materialize logo"/>
-
-                    @elseif($configData['mainLayoutType']=== 'vertical-dark-menu')
-                        <img class="show-on-medium-and-down hide-on-med-and-up"
-                             src="{{asset($configData['largeScreenLogo'])}}"
-                             alt="materialize logo"/>
-                        <img class="hide-on-med-and-down" src="{{asset($configData['smallScreenLogo'])}}"
-                             alt="materialize logo"/>
-                    @endif
-                @endif
                 <span class="logo-text hide-on-med-and-down">
           @if(!empty ($configData['templateTitle']) && isset($configData['templateTitle']))
                         {{$configData['templateTitle']}}
                     @else
-                        Materialize
+                        Derufa
                     @endif
         </span>
             </a>

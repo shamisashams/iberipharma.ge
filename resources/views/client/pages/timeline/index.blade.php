@@ -1,36 +1,22 @@
 @extends('client.layout.site')
 @section('subhead')
-    <title>@lang('client.about_us_meta_title')</title>
+    <title>@lang('client.timeline_meta_title')</title>
     <meta name="description"
-          content="@lang('client.about_us_meta_description')">
+          content="@lang('client.timeline_meta_description')">
 @endsection
 
 @section('wrapper')
-    <section class="every_showcase about">
+    <section class="every_showcase timeline">
         <div class="overlay">
             <div class="wrapper content">
-                <div class="path">Home - About</div>
-                <div class="title">About us</div>
+                <div class="path">@lang('client.home') - @lang('client.timeline')</div>
+                <div class="title">@lang('client.timeline')</div>
             </div>
         </div>
     </section>
 
-    <div class="about_us">
-        <section class="learn_more wrapper flex">
-            <div class="img">
-                <img src="img/about/1.png" alt="">
-                <div class="circle roboto">Founded <br> in 1998</div>
-            </div>
-            <div class="right">
-                <div class="all_titles">
-                    <div class="s">@lang('client.learn_more_about')</div>
-                    <div class="l">@lang('client.Get_to_Know_About')</div>
-                </div>
-                <div class="experience">@lang('client.We_have_23+_years_of_experiences')</div>
-                <p class="para">@lang('client.about_us_description')</p>
-            </div>
-        </section>
-        <section class="company_history wrapper">
+    <section class="timeline_section wrapper">
+        <section class="company_history">
             <div class="all_titles">
                 <div class="s">@lang('client.company_history')</div>
                 <div class="l">@lang('client.timeline')</div>
@@ -183,33 +169,5 @@
                 </div>
             </div>
         </section>
-        <img src="/client/img/about/p1.png" alt="" class="pattern1">
-        <img src="/client/img/about/p2.png" alt="" class="pattern2">
-    </div>
-
-    <section class="company_certificate wrapper">
-        <div class="flex">
-            <div class="all_titles">
-                <div class="s">@lang('client.learn_more_about')</div>
-                <div class="l">@lang('client.Get_to_Know_About')</div>
-            </div>
-            <a href="{{locale_route('client.certificate.index')}}" class="see_more">@lang('client.see_more')</a>
-        </div>
-        <div class="slide">
-            <button id="prev_certify"><img src="/client/img/icons/slide/prev.png" alt=""></button>
-            @foreach($certificates as $certificate)
-            @endforeach
-            <div class="company_certificate_slide">
-                <div class="certify">
-                    <img src="{{url(count($certificate->files)? $certificate->files[0]->path.'/'.$certificate->files[0]->title : '')}}" alt="">
-                    <div class="cap roboto">
-                        {{$certificate->language(app()->getLocale())? $certificate->language(app()->getLocale())->title: $certificate->language()->title}}
-                    </div>
-                </div>
-
-            </div>
-            <button id="next_certify"><img src="/client/img/icons/slide/next.png" alt=""></button>
-        </div>
     </section>
-
 @endsection

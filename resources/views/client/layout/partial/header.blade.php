@@ -15,7 +15,7 @@
                     @endforeach
                 </div>
             </div>
-            <a href="{{locale_route('client.project.index')}}" class="nav_link">Projects</a>
+            <a href="{{locale_route('client.project.index')}}" class="nav_link">@lang('client.projects')</a>
             <a href="{{locale_route('portfolio.index')}}" class="nav_link">
                 @lang('client.portfolios')
             </a>
