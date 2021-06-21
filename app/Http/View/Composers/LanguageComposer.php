@@ -39,14 +39,23 @@ class LanguageComposer
         $gphone = Setting::where('key','phone')->first();
         $ginstagram = Setting::where('key','instagram')->first();
         $gfacebook = Setting::where('key','facebook')->first();
+
+        $gaddress2 = Setting::where('key','address2')->first();
+        $gemail2 = Setting::where('key','email2')->first();
+        $gphone2 = Setting::where('key','phone2')->first();
+
+
         $view->with('localizations', $this->languageItems())
             ->with('activeLanguage', $activeLanguage ? $activeLanguage->id : null)
             ->with('gcategories', $categories)
             ->with('gaddress',$gaddress)
+            ->with('gaddress2',$gaddress2)
             ->with('ginstagram',$ginstagram)
             ->with('gfacebook',$gfacebook)
             ->with('gemail',$gemail)
             ->with('gphone',$gphone)
+            ->with('gemail2',$gemail2)
+            ->with('gphone2',$gphone2)
             ->with('defaultLanguage', $defaultLanguage ? $defaultLanguage->id : null);
     }
 

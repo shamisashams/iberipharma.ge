@@ -1004,9 +1004,9 @@ img {
 /* contact page */
 
 .contact_section {
-  align-items: flex-end;
+  align-items: flex-start;
   margin-top: 100px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
 
 .contact_section .left {
@@ -1019,22 +1019,6 @@ img {
   margin-top: 15px;
   margin-bottom: 35px;
   line-height: 26px;
-}
-
-.contact_section .left .title {
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 15px;
-  color: #2d2d2d;
-}
-
-.contact_section .left .address {
-  justify-content: flex-start;
-  margin-bottom: 15px;
-}
-
-.contact_section .left .address img {
-  margin-right: 10px;
 }
 
 .contact_section .form {
@@ -1084,96 +1068,45 @@ img {
 }
 
 .map_city {
+  align-items: flex-start;
   margin-bottom: 100px;
 }
 
-.map_city .map_city_flex {
-  margin-top: 50px;
-  align-items: flex-start;
-}
-
-.map_city .map_city_flex .map {
-  width: 69%;
-  height: 777px;
-  margin-right: 20px;
-  position: relative;
-}
-
-.map_city .map_city_flex .map .derufa-map {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.map_city .map_city_flex .map iframe {
-  width: 100%;
-  height: 100%;
-}
-
-.map_city .map_city_flex .all_cities {
-  width: 31%;
-  height: 777px;
+.map_city .offices {
+  padding: 50px;
+  padding-bottom: 100px;
   border: #dcdcdc 1px solid;
-  padding: 30px;
-  padding-bottom: 0;
-  position: relative;
-  overflow-y: scroll;
+  width: 50%;
+}
+.map_city .offices:first-child {
+  border-right: none;
 }
 
-/* width */
-.map_city .map_city_flex .all_cities::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-.map_city .map_city_flex .all_cities::-webkit-scrollbar-track {
-  background: #dedede;
-}
-
-/* Handle */
-.map_city .map_city_flex .all_cities::-webkit-scrollbar-thumb {
-  background: #fbcd8c;
-}
-
-/* Handle on hover */
-/* .map_city .map_city_flex .all_cities::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} */
-
-.map_city .map_city_flex .all_cities .select {
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 0;
-}
-
-.map_city .map_city_flex .all_cities .line {
-  padding-bottom: 10px;
-  border-bottom: #dcdcdc 1px solid;
-}
-
-.map_city .map_city_flex .all_cities .line .title {
+.map_city .offices .title {
+  font-size: 20px;
   font-weight: 500;
+  margin-bottom: 15px;
+  color: #2d2d2d;
 }
 
-.map_city .map_city_flex .all_cities .option {
-  padding: 15px 0;
-  width: 100%;
+.map_city .offices .address {
   justify-content: flex-start;
-  font-size: 14px;
+  margin-bottom: 15px;
   color: #707070;
-  white-space: nowrap;
 }
 
-.map_city .map_city_flex .all_cities .option img {
-  margin-right: 13px;
-}
-
-.map_city .map_city_flex .all_cities .option .b {
-  font-weight: 500;
-  color: #4d4d4d;
+.map_city .offices .address img {
   margin-right: 10px;
+}
+.map_city .offices .map {
+  width: 100%;
+  height: 335px;
+  margin-top: 40px;
+}
+
+.map_city .offices .map iframe {
+  width: 100%;
+  height: 100%;
 }
 
 /* salons page */
@@ -1921,7 +1854,7 @@ img {
 @media screen and (max-width: 900px) {
   .header .navbar {
     position: absolute;
-    right: -100%;
+    right: -20px;
     top: 100%;
     display: flex;
     flex-direction: column;
@@ -1933,10 +1866,12 @@ img {
     padding-top: 10px;
     z-index: 30;
     transition: 0.3s;
+    transform: scaleY(0);
+    transform-origin: top;
   }
 
   .header .navbar.out {
-    right: -50px;
+    transform: scaleY(1);
   }
 
   .header .navbar .nav_link {
@@ -2414,6 +2349,17 @@ img {
     margin-left: 0;
     margin-top: 30px;
   }
+
+  .map_city {
+    flex-direction: column;
+  }
+  .map_city .offices {
+    width: 100%;
+  }
+  .map_city .offices:first-child {
+    border: 1px solid #dcdcdc;
+    border-bottom: none;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -2446,6 +2392,20 @@ img {
     align-items: flex-end;
     margin-top: 60px;
     margin-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .map_city .offices {
+    padding: 20px;
+    padding-bottom: 30px;
+  }
+  .map_city .offices .map {
+    height: 210px;
+    margin-top: 28px;
+  }
+  .map_city .offices .address {
+    font-size: 13px;
   }
 }
 
