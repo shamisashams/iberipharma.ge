@@ -68,9 +68,7 @@
                 <img src="/client/img/projetcs/5.png" alt=""/>
                 <div class="the_frame"></div>
                 <div class="box_shadow"></div>
-                <a href="#">
-                    <button class="main_btn">@lang('client.view_all')</button>
-                </a>
+                <button onclick="location.href = '{{locale_route('client.project.index')}}'" class="main_btn">@lang('client.view_all')</button>
             </div>
         </div>
         @if(count($projects))
@@ -82,11 +80,10 @@
                              alt=""/>
                         <div class="the_frame"></div>
                         <div class="box_shadow"></div>
-                        <a href="#">
-                            <button class="main_btn large">
-                                {{$project->city->language(app()->getLocale())? $project->city->language(app()->getLocale())->title: $project->city->language()->title}}
-                            </button>
-                        </a>
+                        <button class="main_btn large"
+                                onclick="location.href = '{{locale_route('client.project.index')}}?city={{$project->city_id}}'">
+                            {{$project->city->language(app()->getLocale())? $project->city->language(app()->getLocale())->title: $project->city->language()->title}}
+                        </button>
                     </div>
                 @endforeach
             </div>

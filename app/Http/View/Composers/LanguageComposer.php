@@ -12,6 +12,7 @@ namespace App\Http\View\Composers;
 
 use App\Models\Category;
 use App\Models\Language;
+use App\Models\Setting;
 use Illuminate\View\View;
 
 /**
@@ -32,9 +33,20 @@ class LanguageComposer
         $defaultLanguage = Language::where('default', true)->first();
         $activeLanguage = Language::where('locale', $this->languageSlug())->first();
         $categories = Category::where('status',true)->get();
+
+        $gaddress = Setting::where('key','address')->first();
+        $gemail = Setting::where('key','email')->first();
+        $gphone = Setting::where('key','phone')->first();
+        $ginstagram = Setting::where('key','instagram')->first();
+        $gfacebook = Setting::where('key','facebook')->first();
         $view->with('localizations', $this->languageItems())
             ->with('activeLanguage', $activeLanguage ? $activeLanguage->id : null)
             ->with('gcategories', $categories)
+            ->with('gaddress',$gaddress)
+            ->with('ginstagram',$ginstagram)
+            ->with('gfacebook',$gfacebook)
+            ->with('gemail',$gemail)
+            ->with('gphone',$gphone)
             ->with('defaultLanguage', $defaultLanguage ? $defaultLanguage->id : null);
     }
 

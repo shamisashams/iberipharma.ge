@@ -2,62 +2,43 @@
     <div class="wrapper">
         <div class="footer_grid">
             <div class="categories">
-                <div class="title">Portfolios</div>
-                <a href="#" class="link">Category 1</a>
-                <a href="#" class="link">Category 2</a>
-                <a href="#" class="link">Category 3</a>
-                <a href="#" class="link">Category 4</a>
-                <a href="#" class="link">Category 5</a>
-                <a href="#" class="link">Category 6</a>
-                <a href="#" class="link">Category 7</a>
-                <a href="#" class="link">Category 8</a>
-                <a href="#" class="link">Category 9</a>
-                <a href="#" class="link">Category 10</a>
-                <a href="#" class="link">Category 11</a>
+                <div class="title">@lang('client.about_us')</div>
+                <a href="{{locale_route('sitemap.index')}}" class="link">
+                    @lang('client.sitemap')
+                </a>
+                <a href="{{locale_route('timeline.index')}}" class="link">
+                    @lang('client.timeline')
+                </a>
+                <a href="{{locale_route('principle.index')}}" class="link">
+                    @lang('client.principle')
+                </a>
+                <a href="{{locale_route('client.certificate.index')}}" class="link">
+                    @lang('client.certificates')
+                </a>
             </div>
             <div class="categories">
-                <div class="title">About us</div>
-                <a href="#" class="link">Category 1</a>
-                <a href="#" class="link">Category 2</a>
-                <a href="#" class="link">Category 3</a>
-                <a href="#" class="link">Category 4</a>
-                <a href="#" class="link">Category 5</a>
-            </div>
-            <div class="categories">
-                <div class="title">Projects</div>
-                <a href="#" class="link">Category 1</a>
-                <a href="#" class="link">Category 2</a>
-                <a href="#" class="link">Category 3</a>
-                <a href="#" class="link">Category 4</a>
-                <a href="#" class="link">Category 5</a>
-                <a href="#" class="link">Category 6</a>
-                <a href="#" class="link">Category 7</a>
-                <a href="#" class="link">Category 8</a>
-                <a href="#" class="link">Category 9</a>
-            </div>
-            <div class="categories">
-                <div class="title">Contact us</div>
-                <a href="#" class="link"><span class="light">Email:</span> info@email.com</a>
-                <a href="#" class="link"><span class="light">Address:</span> Georgia, Tbilisi - Vaja Phsvela</a>
-                <a href="#" class="link"><span class="light">Phone:</span> +995 555 555 555</a>
-                <a href="#" class="link"><span class="light">Phone:</span> +995 555 555 555</a>
+                <div class="title">@lang('client.contact_is')</div>
+                <a target="_blank" href="{{$gemail->language(app()->getLocale())? $gemail->language(app()->getLocale())->value: $gemail->language()->value}}" class="link"><span class="light">@lang('client.email'):</span>
+                    {{$gemail->language(app()->getLocale())? $gemail->language(app()->getLocale())->value: $gemail->language()->value}}
+                </a>
+                <a target="_blank" href="{{$gaddress->language(app()->getLocale())? $gaddress->language(app()->getLocale())->value: $gaddress->language()->value}}" class="link"><span class="light">@lang('client.address'):</span>
+                    {{$gaddress->language(app()->getLocale())? $gaddress->language(app()->getLocale())->value: $gaddress->language()->value}}
+                </a>
+                <a target="_blank" href="{{$gphone->language(app()->getLocale())? $gphone->language(app()->getLocale())->value: $gphone->language()->value}}" class="link"><span class="light">@lang('client.phone'):</span>
+                    {{$gphone->language(app()->getLocale())? $gphone->language(app()->getLocale())->value: $gphone->language()->value}}
+                </a>
             </div>
         </div>
-        <p class="paragraph">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem IpsumIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem IpsumIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum</div>
+        <p class="paragraph">@lang('client.it_is_a_long_established_fact_that_a_reader_will_be_distracted')</div>
     </p>
     <div class="social_privacy flex wrapper">
         <div class="social_media">
-            <a href="#">
-                <img src="img/icons/sm/ig.png" alt="">
+            <a target="_blank" href="{{$ginstagram->language(app()->getLocale())? $ginstagram->language(app()->getLocale())->value: $ginstagram->language()->value}}">
+                <img src="/client/img/icons/sm/ig.png" alt="">
             </a>
-            <a href="#">
-                <img src="img/icons/sm/fb.png" alt="">
+            <a target="_blank" href="{{$gfacebook->language(app()->getLocale())? $gfacebook->language(app()->getLocale())->value: $gfacebook->language()->value}}">
+                <img src="/client/img/icons/sm/fb.png" alt="">
             </a>
-        </div>
-        <div>
-            <a href="#" class="p_l">Privacy Preferences</a>
-            <a href="#" class="p_l">Terms & Condition</a>
-            <a href="#" class="p_l">Privacy Policy</a>
         </div>
     </div>
     <div class="bottom wrapper">
