@@ -23,7 +23,7 @@ use App\Http\Controllers\Client\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::prefix('{locale}')
+Route::prefix('{locale?}')
     ->middleware(['setlocale'])
     ->group(function () {
         Route::prefix('admin')->group(function () {

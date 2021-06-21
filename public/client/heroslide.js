@@ -1,7 +1,7 @@
 const heroSlide = document.querySelectorAll(".hero_slide");
 const slider = document.getElementById("slider_on_hero");
 const sliderDot = document.getElementById("dot_on_sliders");
-const currentSlide = slider.getElementsByClassName("current");
+const currentSlide = document.getElementsByClassName("current");
 const prevSlide = document.getElementById("prev_slide");
 const nextSlide = document.getElementById("next_slide");
 const heroDot = document.querySelectorAll(".hero_dot");
@@ -41,20 +41,22 @@ const goPrevSlide = () => {
   heroSlide[slideNumber].classList.add("current");
   heroDot[dotNumber].classList.add("clicked");
 };
-const goNextSlide = () => {
-  currentSlide[0].classList.remove("current");
-  clickedDot[0].classList.remove("clicked");
-  if ((slideNumber == heroSlide.length - 1, dotNumber == heroDot.length - 1)) {
-    slideNumber = 0;
-    dotNumber = 0;
-  } else {
-    slideNumber = slideNumber + 1;
-    dotNumber = dotNumber + 1;
-  }
-  heroSlide[slideNumber].classList.add("current");
-  heroDot[dotNumber].classList.add("clicked");
-};
 
+if (currentSlide) {
+  const goNextSlide = () => {
+    currentSlide[0].classList.remove("current");
+    clickedDot[0].classList.remove("clicked");
+    if ((slideNumber == heroSlide.length - 1, dotNumber == heroDot.length - 1)) {
+      slideNumber = 0;
+      dotNumber = 0;
+    } else {
+      slideNumber = slideNumber + 1;
+      dotNumber = dotNumber + 1;
+    }
+    heroSlide[slideNumber].classList.add("current");
+    heroDot[dotNumber].classList.add("clicked");
+  };
+}
 if ((prevSlide, nextSlide)) {
   prevSlide.addEventListener("click", function () {
     goPrevSlide();

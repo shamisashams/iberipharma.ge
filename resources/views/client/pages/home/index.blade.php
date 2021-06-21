@@ -68,7 +68,8 @@
                 <img src="/client/img/projetcs/5.png" alt=""/>
                 <div class="the_frame"></div>
                 <div class="box_shadow"></div>
-                <button onclick="location.href = '{{locale_route('client.project.index')}}'" class="main_btn">@lang('client.view_all')</button>
+                <button onclick="location.href = '{{locale_route('client.project.index')}}'"
+                        class="main_btn">@lang('client.view_all')</button>
             </div>
         </div>
         @if(count($projects))
