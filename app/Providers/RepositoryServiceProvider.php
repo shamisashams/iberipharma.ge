@@ -9,13 +9,16 @@
 
 namespace App\Providers;
 
+use App\Models\Certificate;
 use App\Repositories\AnswerRepositoryInterface;
 use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\CertificateRepositoryInterface;
 use App\Repositories\CityRepositoryInterface;
 use App\Repositories\Eloquent\AnswerRepository;
 use App\Repositories\Eloquent\Base\BaseRepository;
 use App\Repositories\Eloquent\Base\EloquentRepositoryInterface;
 use App\Repositories\Eloquent\CategoryRepository;
+use App\Repositories\Eloquent\CertificateRepository;
 use App\Repositories\Eloquent\CityRepository;
 use App\Repositories\Eloquent\FeatureRepository;
 use App\Repositories\Eloquent\LanguageRepository;
@@ -68,5 +71,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProductRepositoryInterface::class,ProductRepository::class);
         $this->app->bind(SliderRepositoryInterface::class,SliderRepository::class);
         $this->app->bind(SettingRepositoryInterface::class,SettingRepository::class);
+        $this->app->bind(CertificateRepositoryInterface::class,CertificateRepository::class);
     }
 }

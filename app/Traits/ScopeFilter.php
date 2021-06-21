@@ -150,6 +150,17 @@ trait ScopeFilter
         return $query->where('slug', 'like', '%' . $slug . '%');
     }
 
+    /**
+     * @param $query
+     * @param $slug
+     *
+     * @return mixed
+     */
+    public function scopeKey($query, $slug)
+    {
+        return $query->where('key', 'like', '%' . $slug . '%');
+    }
+
 
     /**
      * @param $query
@@ -161,6 +172,19 @@ trait ScopeFilter
     {
         return $query->whereHas('languages', function ($query) use ($title) {
             return $query->where('title', 'like', '%' . $title . '%');
+        });
+    }
+
+    /**
+     * @param $query
+     * @param $value
+     *
+     * @return mixed
+     */
+    public function scopeValueLanguage($query, $value)
+    {
+        return $query->whereHas('languages', function ($query) use ($value) {
+            return $query->where('value', 'like', '%' . $value . '%');
         });
     }
 

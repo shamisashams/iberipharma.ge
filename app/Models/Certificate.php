@@ -6,9 +6,10 @@ use App\Traits\ScopeFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Setting extends Model
+class Certificate extends Model
 {
     use HasFactory, softDeletes, ScopeFilter;
 
@@ -17,7 +18,7 @@ class Setting extends Model
      *
      * @var string
      */
-    protected $table = 'settings';
+    protected $table = 'certificates';
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +26,8 @@ class Setting extends Model
      * @var array
      */
     protected $fillable = [
-        'key',
+        'type',
+        'status'
     ];
 
     public function getFilterScopes(): array
@@ -35,29 +37,30 @@ class Setting extends Model
                 'hasParam' => true,
                 'scopeMethod' => 'id'
             ],
-            'key' => [
+            'status' => [
                 'hasParam' => true,
-                'scopeMethod' => 'key'
+                'scopeMethod' => 'status'
             ],
-            'value' => [
+            'title' => [
                 'hasParam' => true,
-                'scopeMethod' => 'valueLanguage'
+                'scopeMethod' => 'titleLanguage'
             ]
         ];
     }
 
+
     /**
-     * Return relationship city languages
+     * Return relationship project languages
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function languages(): HasMany
     {
-        return $this->hasMany(SettingLanguage::class, 'setting_id');
+        return $this->hasMany(CertificateLanguage::class, 'certificate_id');
     }
 
     /**
-     * Return relationship city language by language
+     * Return relationship project language by language
      *
      * @param string|null $locale
      *
@@ -69,5 +72,14 @@ class Setting extends Model
             $locale = app()->getLocale();
         }
         return $this->languages()->where('language_id', $locale)->first();
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function files(): MorphMany
+    {
+        return $this->morphMany(File::class, 'fileable');
     }
 }

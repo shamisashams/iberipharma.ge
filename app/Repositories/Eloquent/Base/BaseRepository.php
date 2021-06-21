@@ -160,9 +160,9 @@ class BaseRepository implements EloquentRepositoryInterface
     {
         $this->model = $this->findOrFail($id);
         // Delete old files if exist
-        if ($request->old_images && count($this->model->files)) {
+        if (count($this->model->files)) {
             foreach ($this->model->files as $file) {
-                if (!count($request->old_images)) {
+                if (!$request->old_images) {
                     $file->delete();
                     continue;
                 }

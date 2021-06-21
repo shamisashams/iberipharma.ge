@@ -34,7 +34,7 @@
                     <a href="{{locale_route('principle.index')}}" class="link">
                         @lang('client.principle')
                     </a>
-                    <a href="{{locale_route('certificate.index')}}" class="link">
+                    <a href="{{locale_route('client.certificate.index')}}" class="link">
                         @lang('client.certificates')
                     </a>
                 </div>

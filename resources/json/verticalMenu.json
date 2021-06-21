@@ -101,8 +101,15 @@
       "url": "setting.index",
       "name": "setting",
       "i18n": "setting",
-      "icon": "slideshow",
+      "icon": "brightness_low",
       "slug": "setting"
+    },
+    {
+      "url": "certificate.index",
+      "name": "certificate",
+      "i18n": "certificate",
+      "icon": "message",
+      "slug": "certificate"
     }
   ]
 }

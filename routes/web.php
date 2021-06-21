@@ -10,6 +10,7 @@
 use App\Http\Controllers\Admin\AnswerController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\LanguageController;
@@ -63,41 +64,45 @@ Route::prefix('{locale}')
                 Route::get('project/{project}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
 
                 // Product
-                Route::resource('product',ProductController::class);
+                Route::resource('product', ProductController::class);
                 Route::get('product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');
 
 
                 // Slider
-                Route::resource('slider',SliderController::class);
-                Route::get('slider/{slider}/destroy',[SliderController::class,'destroy'])->name('slider.destroy');
+                Route::resource('slider', SliderController::class);
+                Route::get('slider/{slider}/destroy', [SliderController::class, 'destroy'])->name('slider.destroy');
 
                 // City
                 Route::resource('setting', SettingController::class);
 
+                // Certificate
+                Route::resource('certificate', CertificateController::class);
+                Route::get('certificate/{certificate}/destroy', [CertificateController::class, 'destroy'])->name('certificate.destroy');
+
             });
         });
 
-        Route::get('',[HomeController::class,'index'])->name('home.index');
+        Route::get('', [HomeController::class, 'index'])->name('home.index');
 
-        Route::get('projects',[App\Http\Controllers\Client\ProjectController::class,'index'])->name('client.project.index');
+        Route::get('projects', [App\Http\Controllers\Client\ProjectController::class, 'index'])->name('client.project.index');
 
-        Route::get('catalog/{category}',[\App\Http\Controllers\Client\CatalogController::class,'index'])->name('catalog.index');
+        Route::get('catalog/{category}', [\App\Http\Controllers\Client\CatalogController::class, 'index'])->name('catalog.index');
 
-        Route::get('contact',[\App\Http\Controllers\Client\ContactController::class,'index'])->name('contact.index');
+        Route::get('contact', [\App\Http\Controllers\Client\ContactController::class, 'index'])->name('contact.index');
 
-        Route::get('about-us',[\App\Http\Controllers\Client\AboutController::class,'index'])->name('about.index');
+        Route::get('about-us', [\App\Http\Controllers\Client\AboutController::class, 'index'])->name('about.index');
 
-        Route::get('portfolio',[\App\Http\Controllers\Client\PorfolioController::class,'index'])->name('portfolio.index');
+        Route::get('portfolio', [\App\Http\Controllers\Client\PorfolioController::class, 'index'])->name('portfolio.index');
 
-        Route::get('salon',[\App\Http\Controllers\Client\SalonController::class,'index'])->name('salon.index');
+        Route::get('salon', [\App\Http\Controllers\Client\SalonController::class, 'index'])->name('salon.index');
 
-        Route::get('sitemap',[\App\Http\Controllers\Client\SitemapController::class,'index'])->name('sitemap.index');
+        Route::get('sitemap', [\App\Http\Controllers\Client\SitemapController::class, 'index'])->name('sitemap.index');
 
-        Route::get('timeline',[\App\Http\Controllers\Client\TimelineController::class,'index'])->name('timeline.index');
+        Route::get('timeline', [\App\Http\Controllers\Client\TimelineController::class, 'index'])->name('timeline.index');
 
-        Route::get('principle',[\App\Http\Controllers\Client\PrincipleController::class,'index'])->name('principle.index');
+        Route::get('principle', [\App\Http\Controllers\Client\PrincipleController::class, 'index'])->name('principle.index');
 
-        Route::get('certificate',[\App\Http\Controllers\Client\CertificateController::class,'index'])->name('certificate.index');
+        Route::get('certificate', [\App\Http\Controllers\Client\CertificateController::class, 'index'])->name('client.certificate.index');
 
 
     });
