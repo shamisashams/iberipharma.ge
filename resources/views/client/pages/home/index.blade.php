@@ -1,5 +1,8 @@
 @extends('client.layout.site')
 @section('subhead')
+    <title>@lang('client.home_meta_title')</title>
+    <meta name="description"
+          content="@lang('client.home_meta_description')">
 @endsection
 
 @section('wrapper')
