@@ -18,8 +18,8 @@
 
     <section class="certificate_body wrapper">
         <div class="all_titles">
-            <div class="s">@lang('client.Certificates')</div>
-            <div class="l">@lang('client.Certificates')</div>
+            <div class="s">@lang('client.certificates')</div>
+            <div class="l">@lang('client.certificates')</div>
         </div>
         <div class="main_certificates">
             @foreach($certificates as $certificate)
