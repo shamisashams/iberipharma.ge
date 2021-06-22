@@ -14,7 +14,7 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $projects = Project::where('status', true)->with(['city' => function ($query) {
+        $projects = Project::where('status', true)->whereHas('city')->with(['city' => function ($query) {
                 $query->where('status', true);
         }]);
 

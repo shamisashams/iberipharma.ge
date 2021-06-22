@@ -4,7 +4,6 @@
     <meta name="description"
           content="@lang('client.home_meta_description')">
 @endsection
-
 @section('wrapper')
     @if(count($sliders))
         <section class="hero_section" id="slider_on_hero">

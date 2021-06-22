@@ -20,7 +20,7 @@ class HomeController extends Controller
 
         $projects = Project::where('status', true)->with(['city' => function ($query) {
             $query->where('status', true);
-        }])->groupBy('city_id')->limit(6)->get();
+        }])->whereHas('city')->groupBy('city_id')->limit(6)->get();
 
         $categories = Category::where('status',true)->orderBy('position')->limit(4)->get();
 

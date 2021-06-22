@@ -204,10 +204,13 @@ class ProductController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(string $locale, int $id)
     {
-        //
+        if (!$this->productRepository->delete($id)) {
+            return redirect(locale_route('product.show', $id))->with('danger', 'Product not deleted.');
+        }
+        return redirect(locale_route('product.index'))->with('success', 'Product Deleted.');
     }
 }
