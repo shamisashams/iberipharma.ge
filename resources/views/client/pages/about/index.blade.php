@@ -198,7 +198,6 @@
         <div class="slide">
             <button id="prev_certify"><img src="/client/img/icons/slide/prev.png" alt=""></button>
             @foreach($certificates as $certificate)
-            @endforeach
             <div class="company_certificate_slide">
                 <div class="certify">
                     <img src="{{url(count($certificate->files)? $certificate->files[0]->path.'/'.$certificate->files[0]->title : '')}}" alt="">
@@ -208,6 +207,7 @@
                 </div>
 
             </div>
+            @endforeach
             <button id="next_certify"><img src="/client/img/icons/slide/next.png" alt=""></button>
         </div>
     </section>
