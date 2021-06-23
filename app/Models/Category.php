@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -111,9 +112,9 @@ class Category extends Model
      *
      * @return bool
      */
-    public function hasFeature($featureId):bool
+    public function hasFeature($featureId): bool
     {
-        return (bool)$this->features()->where('feature_id',$featureId)->count();
+        return (bool)$this->features()->where('feature_id', $featureId)->count();
     }
 
     /**
@@ -121,6 +122,14 @@ class Category extends Model
      */
     public function files(): MorphMany
     {
-        return $this->morphMany(File::class, 'fileable');
+        return $this->morphMany(File::class, 'fileable')->where('format','!=','pdf');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function pdf(): MorphOne
+    {
+        return $this->morphOne(File::class, 'fileable')->where('format', '=', 'pdf');
     }
 }

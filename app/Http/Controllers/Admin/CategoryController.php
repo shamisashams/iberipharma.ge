@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
+use App\Models\File;
 use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\FeatureRepositoryInterface;
@@ -41,7 +42,7 @@ class CategoryController extends Controller
     {
         // Initialize categoryRepository
         $this->categoryRepository = $categoryRepository;
-        $this->featureRepository =  $featureRepository;
+        $this->featureRepository = $featureRepository;
     }
 
     /**
@@ -104,7 +105,17 @@ class CategoryController extends Controller
             $category = $this->categoryRepository->saveFiles($category->id, $request);
         }
 
-
+        if ($request->hasFile('pdf')) {
+            $filename = date('Ymhs') . str_replace(' ', '', $request->file('pdf')->getClientOriginalName());
+            $destination = base_path() . '/storage/app/public/Category/' . $category->id;
+            $request->file('pdf')->move($destination, $filename);
+            $category->pdf()->create([
+                'title' => $filename,
+                'path' => 'storage/Category/' . $category->id,
+                'format' => $request->file('pdf')->getClientOriginalExtension(),
+                'type' => File::FILE_DEFAULT
+            ]);
+        }
         return redirect(locale_route('category.show', $category->id))->with('success', 'Category created.');
 
     }
@@ -160,6 +171,7 @@ class CategoryController extends Controller
      * @param \App\Http\Requests\Admin\CategoryRequest $request
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \ReflectionException
      */
     public function update(string $locale, int $id, CategoryRequest $request)
     {
@@ -173,10 +185,25 @@ class CategoryController extends Controller
             'features' => $request['features']
         ];
 
-        $this->categoryRepository->update($id, $data);
+        $category = $this->categoryRepository->update($id, $data);
 
         // Update Files
         $this->categoryRepository->saveFiles($id, $request);
+
+        if ($request->hasFile('pdf')) {
+            if ($category->pdf()) {
+                $category->pdf()->delete();
+            }
+            $filename = date('Ymhs') . str_replace(' ', '', $request->file('pdf')->getClientOriginalName());
+            $destination = base_path() . '/storage/app/public/Category/' . $category->id;
+            $request->file('pdf')->move($destination, $filename);
+            $category->pdf()->create([
+                'title' => $filename,
+                'path' => 'storage/Category/' . $category->id,
+                'format' => $request->file('pdf')->getClientOriginalExtension(),
+                'type' => File::FILE_DEFAULT
+            ]);
+        }
 
         return redirect(locale_route('category.show', $id))->with('success', 'Category Updated.');
 

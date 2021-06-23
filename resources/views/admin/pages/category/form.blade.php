@@ -6,6 +6,8 @@
 @section('vendor-style')
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/select2/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/select2/select2-materialize.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/flag-icon/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendors/dropify/css/dropify.min.css')}}">
 @endsection
 {{-- page style --}}
 @section('page-style')
@@ -112,27 +114,40 @@
                                         </span>
                         @endif
                     </div>
+                    <div>
+                        <h5>@lang('admin.pdf')</h5>
+                        <div class="input-field">
+                            <input
+                                    type="file"
+                                    id="input-file-events"
+                                    class="dropify"
+                                    name="pdf"
+                                    @if($category->pdf)
+                                    data-default-file="{{asset($category->pdf->path. '/'. $category->pdf->title)}}"
+                                    @endif
+                            />
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="input-field col s12">
                             {!! Form::submit($category->slug ? __('admin.update') : __('admin.create'),['class' => 'btn cyan waves-effect waves-light right']) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}
-
-
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
 
 {{-- vendor script --}}
 @section('vendor-script')
     <script src="{{asset('vendors/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('vendors/dropify/js/dropify.min.js')}}"></script>
 @endsection
 
 {{-- page script --}}
 @section('page-script')
     <script src="{{asset('js/scripts/form-select2.js')}}"></script>
+    <script src="{{asset('js/scripts/form-file-uploads.js')}}"></script>
 @endsection
