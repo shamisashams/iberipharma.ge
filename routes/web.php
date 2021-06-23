@@ -105,6 +105,7 @@ Route::prefix('{locale?}')
 
         Route::get('certificate', [\App\Http\Controllers\Client\CertificateController::class, 'index'])->name('client.certificate.index');
 
+        Route::get('video', [\App\Http\Controllers\Client\CertificateController::class, 'video'])->name('client.video.index');
 
     });
 

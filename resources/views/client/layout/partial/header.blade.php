@@ -16,6 +16,8 @@
                     @endforeach
                 </div>
             </div>
+            <a href="{{locale_route('client.video.index')}}"
+               class="nav_link {{Request::route()->getName()  === 'client.video.index'? 'on' : ''}}">@lang('client.videos')</a>
             <a href="{{locale_route('client.project.index')}}"
                class="nav_link {{Request::route()->getName()  === 'client.project.index'? 'on' : ''}}">@lang('client.projects')</a>
             <a href="{{locale_route('portfolio.index')}}"

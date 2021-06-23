@@ -21,4 +21,10 @@ class CertificateController extends Controller
             'fireCertificates' => $fireCertificates
         ]);
     }
+
+    public function video()
+    {
+        return view('client.pages.video.index', []);
+
+    }
 }

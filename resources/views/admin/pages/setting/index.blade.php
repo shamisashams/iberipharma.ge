@@ -11,10 +11,6 @@
             <div id="button-trigger" class="card card card-default scrollspy">
 
                 <div class="card-content">
-                    <a class="btn-floating btn-large primary-text gradient-shadow compose-email-trigger "
-                       href="{{locale_route('setting.create')}}">
-                        <i class="material-icons">add</i>
-                    </a>
                     <h4 class="card-value mt-2">@lang('admin.setting')</h4>
                     <div class="row">
                         <div class="col s12">

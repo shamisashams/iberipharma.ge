@@ -11,6 +11,12 @@
             <div class="wrapper content">
                 <div class="path">@lang('client.home') - @lang('client.catalog')</div>
                 <div class="title">@lang('client.catalog')</div>
+                <a href="#">
+                    <div class="dl_pdf flex">
+                        <img src="/client/img/icons/other/pdf.png" alt="">
+                        <div>@lang('client.download_pdf')</div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
