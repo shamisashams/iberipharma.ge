@@ -1,6 +1,7 @@
 <header class="header">
     <div class="header_content flex wrapper">
         <a href="{{locale_route('home.index')}}" class="logo">
+            <img style="width: 100px" src="/client/img/logo.png" alt=""/>
         </a>
         <div class="navbar">
             <a href="{{locale_route('home.index')}}"
