@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\SettingController;
@@ -56,8 +57,11 @@ Route::prefix('{locale?}')
                 Route::get('answer/{answer}/destroy', [AnswerController::class, 'destroy'])->name('answer.destroy');
 
                 // City
-                Route::resource('city', CityController::class);
-                Route::get('city/{city}/destroy', [CityController::class, 'destroy'])->name('city.destroy');
+//                Route::resource('city', CityController::class);
+//                Route::get('city/{city}/destroy', [CityController::class, 'destroy'])->name('city.destroy');
+
+                Route::resource('member', MemberController::class);
+                Route::get('member/{member}/destroy', [MemberController::class, 'destroy'])->name('member.destroy');
 
                 // Project
                 Route::resource('project', ProjectController::class);
