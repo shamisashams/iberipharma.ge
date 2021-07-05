@@ -7,7 +7,7 @@
           @if(!empty ($configData['templateTitle']) && isset($configData['templateTitle']))
                         {{$configData['templateTitle']}}
                     @else
-                        Derufa
+                        pharmacy
                     @endif
         </span>
             </a>
