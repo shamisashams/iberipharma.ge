@@ -42,7 +42,7 @@
                             <td>@lang('admin.feature'):</td>
                             <td>
                                 <a href="{{locale_route('feature.show',$answer->feature->id)}}">
-                                    {{$answer->feature->language(app()->getLocale())? substr($answer->feature->language(app()->getLocale())->title,0,15): substr($answer->feature->language()->title,0,15)}}
+                                    {{$answer->feature->language(app()->getLocale())? substr($answer->feature->language(app()->getLocale())->title,0,35): substr($answer->feature->language()->title,0,35)}}
                                 </a>
                             </td>
                         </tr>

@@ -53,33 +53,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>@lang('admin.search'):</td>
-                            <td>
-                                @if($feature->search)
-                                    <span class="chip green lighten-5 green-text">@lang('admin.active')</span>
-                                @else
-                                    <span class="chip red lighten-5 red-text">@lang('admin.not_active')</span>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
                             <td>@lang('admin.created_at')</td>
                             <td>{{\Carbon\Carbon::parse($feature->created_at)}}</td>
                         </tr>
                         <tr>
                             <td>@lang('admin.updated_at')</td>
                             <td>{{\Carbon\Carbon::parse($feature->updated_at)}}</td>
-                        </tr>
-                        <tr>
-                            <td>@lang('admin.categories')</td>
-                            <td>
-                                @foreach($feature->categories as $key =>$category)
-                                    <a href="{{locale_route('category.show',$category->id)}}">
-                                        {{$category->language(app()->getLocale())? substr($category->language(app()->getLocale())->title,0,15): substr($category->language()->title,0,15)}}
-                                        {{isset($feature->categories[$key +1]) ? ', ' : ''}}
-                                    </a>
-                                @endforeach
-                            </td>
                         </tr>
                         <tr>
                             <td>@lang('admin.answers')</td>

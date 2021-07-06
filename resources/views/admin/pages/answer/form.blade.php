@@ -25,8 +25,8 @@
                                     id="programmatic-single">
                                 <optgroup>
                                     @foreach($features as $feature)
-                                        <option value="{{$feature->id}}" selected>
-                                            {{$feature->language(app()->getLocale())? substr($feature->language(app()->getLocale())->title,0,15): substr($feature->language()->title,0,15)}}
+                                        <option value="{{$feature->id}}" {{$answer->feature_id === $feature->id ? 'selected' : ''}}>
+                                            {{$feature->language(app()->getLocale())? substr($feature->language(app()->getLocale())->title,0,55): substr($feature->language()->title,0,55)}}
                                         </option>
                                     @endforeach
                                 </optgroup>
@@ -77,7 +77,7 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            {!! Form::submit($answer->category_id ? __('admin.update') : __('admin.create'),['class' => 'btn cyan waves-effect waves-light right']) !!}
+                            {!! Form::submit($answer->feature_id ? __('admin.update') : __('admin.create'),['class' => 'btn cyan waves-effect waves-light right']) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}

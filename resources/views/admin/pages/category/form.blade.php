@@ -87,25 +87,25 @@
 
                         @endforeach
                     </div>
-                    <div class="input-field">
-                        <select class="select2-customize-result browser-default" multiple="multiple"
-                                id="select2-customize-result" name="features[]">
-                            <optgroup label="@lang('admin.features')">
-                                @foreach($features as $feature)
-                                    <option value="{{$feature->id}}" {{$category->hasFeature($feature->id) ? 'selected' : ''}}>
-                                        {{$feature->language(app()->getLocale()) ? substr($feature->language(app()->getLocale())->title,0,25) : substr($feature->language()->title,0,25)}}
-                                    </option>
-                                @endforeach
-                            </optgroup>
-                        </select>
-                        @error('categories.*')
-                        <small class="errorTxt4">
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                        </small>
-                        @enderror
-                    </div>
+{{--                    <div class="input-field">--}}
+{{--                        <select class="select2-customize-result browser-default" multiple="multiple"--}}
+{{--                                id="select2-customize-result" name="features[]">--}}
+{{--                            <optgroup label="@lang('admin.features')">--}}
+{{--                                @foreach($features as $feature)--}}
+{{--                                    <option value="{{$feature->id}}" {{$category->hasFeature($feature->id) ? 'selected' : ''}}>--}}
+{{--                                        {{$feature->language(app()->getLocale()) ? substr($feature->language(app()->getLocale())->title,0,25) : substr($feature->language()->title,0,25)}}--}}
+{{--                                    </option>--}}
+{{--                                @endforeach--}}
+{{--                            </optgroup>--}}
+{{--                        </select>--}}
+{{--                        @error('categories.*')--}}
+{{--                        <small class="errorTxt4">--}}
+{{--                            <div class="error">--}}
+{{--                                {{$message}}--}}
+{{--                            </div>--}}
+{{--                        </small>--}}
+{{--                        @enderror--}}
+{{--                    </div>--}}
                     <div class="form-group">
                         <div class="input-images"></div>
                         @if ($errors->has('images'))

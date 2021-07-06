@@ -24,7 +24,6 @@
                                     <tr>
                                         <th>@lang('admin.id')</th>
                                         <th>@lang('admin.status')</th>
-                                        <th>@lang('admin.search')</th>
                                         <th>@lang('admin.title')</th>
                                         <th>@lang('admin.actions')</th>
                                     </tr>
@@ -34,13 +33,6 @@
                                             <input type="number" name="id" onchange="this.form.submit()"
                                                    value="{{Request::get('id')}}"
                                                    class="validate {{$errors->has('id') ? '' : 'valid'}}">
-                                        </th>
-                                        <th>
-                                            <select class="form-control" name="search" onchange="this.form.submit()">
-                                                <option value="" {{Request::get('search') === '' ? 'selected' :''}}>@lang('admin.any')</option>
-                                                <option value="1" {{Request::get('search') === '1' ? 'selected' :''}}>@lang('admin.active')</option>
-                                                <option value="0" {{Request::get('search') === '0' ? 'selected' :''}}>@lang('admin.not_active')</option>
-                                            </select>
                                         </th>
                                         <th>
                                             <select class="form-control" name="status" onchange="this.form.submit()">
@@ -61,13 +53,6 @@
                                         @foreach($features as $feature)
                                             <tr>
                                                 <td>{{$feature->id}}</td>
-                                                <td>
-                                                    @if($feature->search)
-                                                        <span class="green-text">Active</span>
-                                                    @else
-                                                        <span class="red-text">Not active</span>
-                                                    @endif
-                                                </td>
                                                 <td>
                                                     @if($feature->status)
                                                         <span class="green-text">Active</span>

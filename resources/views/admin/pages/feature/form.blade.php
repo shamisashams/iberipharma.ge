@@ -50,13 +50,13 @@
                                 <span>{{__('admin.status')}}</span>
                             </label>
                         </div>
-                        <div class="col s12 mb-2">
-                            <label>
-                                <input type="checkbox" name="search"
-                                       value="true" {{$feature->search ? 'checked' : ''}}>
-                                <span>{{__('admin.search')}}</span>
-                            </label>
-                        </div>
+{{--                        <div class="col s12 mb-2">--}}
+{{--                            <label>--}}
+{{--                                <input type="checkbox" name="search"--}}
+{{--                                       value="true" {{$feature->search ? 'checked' : ''}}>--}}
+{{--                                <span>{{__('admin.search')}}</span>--}}
+{{--                            </label>--}}
+{{--                        </div>--}}
                         <ul class="tabs">
                             @foreach($languages as $key => $language)
                                 <li class="tab col ">
@@ -81,25 +81,25 @@
 
                         @endforeach
                     </div>
-                    <div class="input-field">
-                        <select class="select2-customize-result browser-default" multiple="multiple"
-                                id="select2-customize-result" name="categories[]">
-                            <optgroup label="@lang('admin.categories')">
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}" {{$feature->hasCategory($category->id) ? 'selected' : ''}}>
-                                        {{$category->language(app()->getLocale()) ? substr($category->language(app()->getLocale())->title,0,25) : substr($category->language()->title,0,25)}}
-                                    </option>
-                                @endforeach
-                            </optgroup>
-                        </select>
-                        @error('categories.*')
-                        <small class="errorTxt4">
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                        </small>
-                        @enderror
-                    </div>
+{{--                    <div class="input-field">--}}
+{{--                        <select class="select2-customize-result browser-default" multiple="multiple"--}}
+{{--                                id="select2-customize-result" name="categories[]">--}}
+{{--                            <optgroup label="@lang('admin.categories')">--}}
+{{--                                @foreach($categories as $category)--}}
+{{--                                    <option value="{{$category->id}}" {{$feature->hasCategory($category->id) ? 'selected' : ''}}>--}}
+{{--                                        {{$category->language(app()->getLocale()) ? substr($category->language(app()->getLocale())->title,0,25) : substr($category->language()->title,0,25)}}--}}
+{{--                                    </option>--}}
+{{--                                @endforeach--}}
+{{--                            </optgroup>--}}
+{{--                        </select>--}}
+{{--                        @error('categories.*')--}}
+{{--                        <small class="errorTxt4">--}}
+{{--                            <div class="error">--}}
+{{--                                {{$message}}--}}
+{{--                            </div>--}}
+{{--                        </small>--}}
+{{--                        @enderror--}}
+{{--                    </div>--}}
 
                     <div class="row">
                         <div class="input-field col s12">

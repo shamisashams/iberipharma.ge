@@ -42,7 +42,7 @@
                             <td>@lang('admin.category'):</td>
                             <td>
                                 <a href="{{locale_route('category.show',$product->category_id)}}">
-                                    {{$product->category->language(app()->getLocale())? substr($product->category->language(app()->getLocale())->title,0,15): substr($product->category->language()->title,0,15)}}
+                                    {{$product->category->language(app()->getLocale())? $product->category->language(app()->getLocale())->title: $product->category->language()->title}}
                                 </a>
                             </td>
                         </tr>
@@ -72,13 +72,13 @@
                             <tr>
                                 <td>
                                     <a href="{{locale_route('feature.show',$feature->feature->id)}}">
-                                        {{$feature->feature->language(app()->getLocale()) ? substr($feature->feature->language(app()->getLocale())->title,0,25) : substr($feature->feature->language()->title,0,25)}}
+                                        {{$feature->feature->language(app()->getLocale()) ? $feature->feature->language(app()->getLocale())->title : $feature->feature->language()->title}}
                                     </a>
                                 </td>
                                 <td>
                                     @foreach($feature->answers()->get() as $key =>$answer)
                                         <a href="{{locale_route('answer.show',$answer->id)}}">
-                                            {{$answer->language(app()->getLocale())? substr($answer->language(app()->getLocale())->title,0,15): substr($answer->language()->title,0,15)}}
+                                            {{$answer->language(app()->getLocale())? $answer->language(app()->getLocale())->title: $answer->language()->title}}
                                             {{isset($feature->answers[$key +1]) ? ', ' : ''}}
                                         </a>
                                     @endforeach

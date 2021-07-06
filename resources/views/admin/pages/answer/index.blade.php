@@ -61,7 +61,7 @@
                                                 <td>{{$answer->id}}</td>
                                                 <td>
                                                     @if($answer->feature)
-                                                        {{$answer->feature->language(app()->getLocale())? substr($answer->feature->language(app()->getLocale())->title,0,15): substr($answer->feature->language()->title,0,15)}}
+                                                        {{$answer->feature->language(app()->getLocale())? $answer->feature->language(app()->getLocale())->title: $answer->feature->language()->title}}
                                                     @endif
                                                 </td>
                                                 <td>
