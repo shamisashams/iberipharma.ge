@@ -98,7 +98,9 @@ class ProductController extends Controller
             'meta_keywords' => $request['meta_keywords'],
             'title' => $request['title'],
             'description' => $request['description'],
+            'content' => $request['content'],
             'price' => $request['price'],
+            'sale' => $request['sale'],
             'slug' => $request['slug'],
             'category_id' => $request['category_id'],
             'feature' => $request['feature'],
@@ -163,6 +165,7 @@ class ProductController extends Controller
             'method' => $method,
             'languages' => $this->activeLanguages(),
             'categories' => $this->categoryRepository->all(['*'],['features.languages','features.answers.languages']),
+            'features' => $this->featureRepository->all(['*'],['languages','answers.languages']),
         ]);
     }
 
@@ -182,7 +185,9 @@ class ProductController extends Controller
             'meta_keywords' => $request['meta_keywords'],
             'title' => $request['title'],
             'description' => $request['description'],
+            'content' => $request['content'],
             'price' => $request['price'],
+            'sale' => $request['sale'],
             'slug' => $request['slug'],
             'category_id' => $request['category_id'],
             'feature' => $request['feature'],

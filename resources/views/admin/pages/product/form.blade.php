@@ -77,11 +77,19 @@
                                             @enderror
                                         </div>
                                         <div class="input-field ">
-                                            <h5>{{__('admin.description')}}</h5>
+                                            <h5>{{__('admin.short_description')}}</h5>
                                             <br>
                                             <textarea id="description" class="ckeditor form-control"
                                                       name="description[{{$key}}]">
                                                     {!! $product->language($language->id) !== null ? $product->language($language->id)->description:  '' !!}
+                                                </textarea>
+                                        </div>
+                                        <div class="input-field ">
+                                            <h5>{{__('admin.description')}}</h5>
+                                            <br>
+                                            <textarea id="content" class="ckeditor form-control"
+                                                      name="content[{{$key}}]">
+                                                    {!! $product->language($language->id) !== null ? $product->language($language->id)->content:  '' !!}
                                                 </textarea>
                                         </div>
                                     </div>
@@ -113,6 +121,17 @@
                                     {!! Form::number('price',$product->price,['class' => 'validate '. $errors->has('price') ? '' : 'valid']) !!}
                                     {!! Form::label('price',__('admin.price')) !!}
                                     @error('price')
+                                    <small class="errorTxt4">
+                                        <div class="error">
+                                            {{$message}}
+                                        </div>
+                                    </small>
+                                    @enderror
+                                </div>
+                                <div class="input-field col s12">
+                                    {!! Form::number('sale',$product->sale,['class' => 'validate '. $errors->has('sale') ? '' : 'valid']) !!}
+                                    {!! Form::label('sale',__('admin.sale')) !!}
+                                    @error('sale')
                                     <small class="errorTxt4">
                                         <div class="error">
                                             {{$message}}
@@ -191,7 +210,7 @@
                                             @endif
                                             <div class="col">
                                                 <label for="feature[{{$feature->id}}][]">
-                                                    {{$feature->language(app()->getLocale()) ? substr($feature->language(app()->getLocale())->title,0,25) : substr($feature->language()->title,0,25)}}
+                                                    {{$feature->language(app()->getLocale()) ? $feature->language(app()->getLocale())->title : $feature->language()->title}}
                                                 </label>
                                             </div>
                                             <div class="input-field col s12">
@@ -205,7 +224,7 @@
                                                                     value="{{$answer->id}}"
                                                                     {{$product->hasFeatureAnswers($answer->id) ? 'selected' : ''}}
                                                             >
-                                                                {{$answer->language(app()->getLocale()) ? substr($answer->language(app()->getLocale())->title,0,25) : substr($answer->language()->title,0,25)}}
+                                                                {{$answer->language(app()->getLocale()) ?$answer->language(app()->getLocale())->title :$answer->language()->title}}
                                                             </option>
                                                         @endforeach
                                                     </optgroup>

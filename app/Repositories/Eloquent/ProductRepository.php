@@ -48,7 +48,8 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 'category_id' => $attributes['category_id'],
                 'status' => $attributes['status'],
                 'slug' => $attributes['slug'],
-                'price' => $attributes['price']
+                'price' => $attributes['price'],
+                'sale' => $attributes['sale'],
             ];
 
             $this->model = parent::create($data);
@@ -63,6 +64,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                     'meta_keywords' => $attributes['meta_keywords'][$language['id']],
                     'title' => $attributes['title'][$language['id']],
                     'description' => $attributes['description'][$language['id']],
+                    'content' => $attributes['content'][$language['id']],
                 ];
             }
 
@@ -104,7 +106,8 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 'category_id' => $data['category_id'],
                 'status' => $data['status'],
                 'slug' => $data['slug'],
-                'price' => $data['price']
+                'price' => $data['price'],
+                'sale' => $data['sale'],
             ];
 
             $this->model = parent::update($id, $attributes);
@@ -117,6 +120,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                         'meta_keywords' => $data['meta_keywords'][$language['id']],
                         'title' => $data['title'][$language['id']],
                         'description' => $data['description'][$language['id']],
+                        'content' => $data['content'][$language['id']],
                     ]);
                 }
             }

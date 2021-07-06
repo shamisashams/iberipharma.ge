@@ -42,7 +42,8 @@ class ProductRequest extends FormRequest
 
         $data = [
             'slug' => [$isRequired, 'alpha_dash', Rule::unique('products', 'slug')->ignore($this->product)],
-            'price' => $isRequired.'|numeric'
+            'price' => $isRequired.'|numeric',
+            'sale' => 'nullable|numeric'
         ];
 
         if ($this->method !== 'GET') {
@@ -50,7 +51,8 @@ class ProductRequest extends FormRequest
             $data ['meta_description.' . $defaultLanguage->id] = 'required|string|max:255';
             $data ['meta_keywords.' . $defaultLanguage->id] = 'required|string|max:1024';
             $data ['title.' . $defaultLanguage->id] = 'required|string|max:255';
-            $data ['description.' . $defaultLanguage->id] = 'nullable|string|max:255';
+            $data ['description.' . $defaultLanguage->id] = 'nullable|string';
+            $data ['content.' . $defaultLanguage->id] = 'nullable|string';
             $data['category_id'] = 'required|numeric|exists:categories,id';
         }
         return $data;

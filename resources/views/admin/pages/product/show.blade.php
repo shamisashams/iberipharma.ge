@@ -59,6 +59,12 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>@lang('admin.sale'):</td>
+                            <td>
+                                {{$product->sale/100}}
+                            </td>
+                        </tr>
+                        <tr>
                             <td>@lang('admin.status'):</td>
                             <td>
                                 @if($product->status)
@@ -135,8 +141,12 @@
                                         <td>{{$language->title}}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('admin.description'):</td>
+                                        <td>@lang('admin.short_description'):</td>
                                         <td>{{$language->description}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@lang('admin.description'):</td>
+                                        <td>{{$language->content}}</td>
                                     </tr>
                                     <tr>
                                         <td>@lang('admin.content'):</td>

@@ -61,7 +61,7 @@
                                                 <td>{{$product->id}}</td>
                                                 <td>
                                                     @if($product->category)
-                                                        {{$product->category->language(app()->getLocale())? substr($product->category->language(app()->getLocale())->title,0,15): substr($product->category->language()->title,0,15)}}
+                                                        {{$product->category->language(app()->getLocale())? $product->category->language(app()->getLocale())->title: $product->category->language()->title}}
                                                     @endif
                                                 </td>
                                                 <td>

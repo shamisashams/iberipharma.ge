@@ -49,7 +49,8 @@ class Product extends Model
         'category_id',
         'slug',
         'status',
-        'price'
+        'price',
+        'sale'
     ];
 
     public function getFilterScopes(): array
