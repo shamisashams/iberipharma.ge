@@ -44,8 +44,8 @@ class WellnessRequest extends FormRequest
         ];
 
         if ($this->method !== 'GET') {
-            $data ['name.' . $defaultLanguage->id] = 'required|string|max:255';
-            $data ['content.' . $defaultLanguage->id] = 'required|string|max:255';
+            $data ['name.' . $defaultLanguage->id] = 'required|string';
+            $data ['content.' . $defaultLanguage->id] = 'required|string';
         }
         return $data;
     }

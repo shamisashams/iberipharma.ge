@@ -6,88 +6,279 @@
 @endsection
 @section('wrapper')
     @if(count($sliders))
-        <section class="hero_section" id="slider_on_hero">
+        <section class="hero_section" id="hero_slider">
             @foreach($sliders as $key =>$slider)
-                <div class="slides hero_slide {{$key === 0 ? 'current' : ''}} {{!isset($sliders[$key+1]) ? 'last' : ''}}"
+                <div class="hero_slide transition {{$key === 0 ? 'current' : ''}} {{!isset($sliders[$key+1]) ? 'last' : ''}}"
                      style="{{$slider->file ? 'background: url('. $slider->file->path.'/'.$slider->file->title.')': 'background: url()'}}"
                 >
                     <div class="slide_content wrapper">
-                        <div class="title roboto">
+                        <div class="top transition">
                             {{$slider->language(app()->getLocale())? $slider->language(app()->getLocale())->title: $slider->language()->title}}
                         </div>
-                        <p class="paragraph">
+                        <div class="main transition medium">
                             {{$slider->language(app()->getLocale())? $slider->language(app()->getLocale())->description: $slider->language()->description}}
-                        </p>
+                        </div>
                     </div>
                 </div>
 
             @endforeach
-            <button class="arr" id="prev_slide">
-                <img src="/client/img/icons/slide/prev.png" alt=""/>
+            <button class="arrow flex center" id="prev_hero">
+                <img src="/client/img/icons/arrows/1.png" alt=""/>
             </button>
-            <button class="arr" id="next_slide">
-                <img src="/client/img/icons/slide/next.png" alt=""/>
+            <button class="arrow flex center" id="next_hero">
+                <img
+                        style="transform: rotate(180deg)"
+                        src="/client/img/icons/arrows/1.png"
+                        alt=""
+                />
             </button>
-            <div class="dots" id="dot_on_sliders">
-                @foreach($sliders as $key => $slider)
-                    <button class="hero_dot {{$key === 0 ? 'clicked' : ''}}"></button>
-                @endforeach
-            </div>
         </section>
     @endif
-    @if(count($categories))
-        <section class="secsec_grid">
-            <div class="wrapper grid">
-                @foreach($categories as $category)
-                    <div class="item_img">
-                        <img src="{{url($category->files? $category->files[0]->path.'/'.$category->files[0]->title : '')}}"
-                             alt=""/>
-                        <div class="the_frame"></div>
-                        <div class="box_shadow"></div>
-                        <div class="item_content">
-                            <div class="color">
-                                {{$category->language(app()->getLocale())? $category->language(app()->getLocale())->title: $category->language()->title}}
+    <section class="showcase_bottom_box wrapper flex blue_bg">
+        <div class="item flex center">
+            <img src="/client/img/icons/other/1.png" alt="" />
+            <div class="title medium">@lang('client.products_link')</div>
+            <div class="para roboto">
+                @lang('client.products_link_description')
+            </div>
+            <a href="#" class="main_btn">@lang('client.see_more')</a>
+        </div>
+        <div class="border"></div>
+        <div class="item flex center">
+            <img src="/client/img/icons/other/2.png" alt="" />
+            <div class="title medium">@lang('client.locations_link')</div>
+            <div class="para roboto">
+                @lang('client.locations_description')
+            </div>
+            <a href="#" class="main_btn">@lang('client.see_more')</a>
+        </div>
+        <div class="border"></div>
+        <div class="item flex center">
+            <img src="/client/img/icons/other/3.png" alt="" />
+            <div class="title medium">@lang('client.contact_link')</div>
+            <div class="para roboto">
+                @lang('client.contact_description')
+            </div>
+            <a href="#" class="main_btn">@lang('client.see_more')</a>
+        </div>
+    </section>
+
+    <section class="aboutus_section_home wrapper flex">
+        <div class="div">
+            <div class="main_titles">
+                <div class="s">@lang('client.who_are_we')</div>
+                <div class="l2">@lang('client.who_are_we_description')</div>
+            </div>
+            <div class="para paragraph">
+                @lang('client.who_are_we_content')
+            </div>
+            <div class="main_titles">
+                <div class="s">@lang('client.company_history')</div>
+                <div class="l2">@lang('client.timeline')</div>
+            </div>
+            <div class="tiny_timeline the_history_timeline">
+                <div class="history_line">
+                    <div class="dashed">
+                        <div class="year_pin">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
                             </div>
-                            <a href="{{locale_route('catalog.index',$category->slug)}}">
-                                <button class="main_btn">
-                                    @lang('client.see_all_collection')
-                                </button>
-                            </a>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="year_pin upsidedown">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="year_pin">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="year_pin upsidedown">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
                         </div>
                     </div>
-                @endforeach
-            </div>
-        </section>
-    @endif
-
-    <section class="finished_projects wrapper flex">
-        <div class="left">
-            <div class="head roboto">@lang('client.finished') <span>@lang('client.projects')</span></div>
-            <div class="view_all">
-                <img src="/client/img/projetcs/5.png" alt=""/>
-                <div class="the_frame"></div>
-                <div class="box_shadow"></div>
-                <button onclick="location.href = '{{locale_route('client.project.index')}}'"
-                        class="main_btn">@lang('client.view_all')</button>
+                </div>
+                <div class="history_line">
+                    <div class="dashed">
+                        <div class="year_pin">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="year_pin upsidedown">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="year_pin">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="year_pin upsidedown">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="history_line">
+                    <div class="dashed">
+                        <div class="year_pin">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="year_pin upsidedown">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="year_pin">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="year_pin upsidedown">
+                            <div class="circle flex center">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="year roboto dark_text">2001</div>
+                            <div class="event roboto">lorem ipsum</div>
+                            <div class="history_dropdown">
+                                <img src="/client/img/other/1.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        @if(count($projects))
-            <div class="grid">
-
-                @foreach($projects as $project)
-                    <div class="finished_grid">
-                        <img src="{{count($project->files) ? $project->files[0]->path . '/'. $project->files[0]->title : ''}}"
-                             alt=""/>
-                        <div class="the_frame"></div>
-                        <div class="box_shadow"></div>
-                        <button class="main_btn large"
-                                onclick="location.href = '{{locale_route('client.project.index')}}?city={{$project->city_id}}'">
-                            {{$project->city->language(app()->getLocale())? $project->city->language(app()->getLocale())->title: $project->city->language()->title}}
-                        </button>
+        <div class="img">
+            <img src="/client/img/home/1.png" alt="" />
+        </div>
+    </section>
+    <section class="mission_vision wrapper flex">
+        <div class="img"><img src="/client/img/home/2.png" alt="" /></div>
+        <div class="div">
+            <div class="flex">
+                <div>
+                    <div class="main_titles">
+                        <div class="l2">@lang('client.home_mission')</div>
                     </div>
+                    <div class="paragraph">
+                        @lang('client.home_mission_content')
+                    </div>
+                </div>
+                <a href="mission.html" class="more main_color">@lang('client.view_more')</a>
+            </div>
+            <div class="flex right">
+                <div>
+                    <div class="main_titles">
+                        <div class="l2">@lang('client.home_vision')</div>
+                    </div>
+                    <div class="paragraph">
+                        @lang('client.home_vision_content')
+                    </div>
+                </div>
+                <a href="vision.html" class="more main_color">@lang('client.view_more')</a>
+            </div>
+        </div>
+    </section>
+    <section class="wellness_blog">
+        <div class="wrapper content">
+            <div class="head flex">
+                <div class="dark_text medium">@lang('client.wellness_blog')</div>
+                <a href="wellness-blog.html" class="more main_color">@lang('client.view_more')</a>
+            </div>
+            <div class="wellness_blog_slider flex">
+                @foreach($wellnesses as $wellness)
+                    <div class="item">
+                        <div class="img">
+                            <img src="{{url(count($wellness->files)? $wellness->files[0]->path.'/'.$wellness->files[0]->title : '')}}" alt="" />
+                            <div class="date roboto flex center">
+                                <div>{{\Carbon\Carbon::parse($wellness->created_at)->format('Y-m-d')}}</div>
+                            </div>
+                        </div>
+                        <div class="dark_text medium">
+                            {{$wellness->language(app()->getLocale())? $wellness->language(app()->getLocale())->title: $wellness->language()->title}}
+                        </div>
+                        <div class="roboto">
+                            {!! $wellness->language(app()->getLocale())? $wellness->language(app()->getLocale())->content: $wellness->language()->content !!}
+                        </div>
+                        <a href="blog-detail.html" class="more main_color">@lang('client.view_more')</a>
+                    </div>
+
                 @endforeach
             </div>
-        @endif
-
+        </div>
+        <button class="arrow ylw flex center" id="prev_blog">
+            <img src="/client/img/icons/arrows/1.png" alt="" />
+        </button>
+        <button class="arrow ylw flex center" id="next_blog">
+            <img
+                    style="transform: rotate(180deg)"
+                    src="/client/img/icons/arrows/1.png"
+                    alt=""
+            />
+        </button>
     </section>
+
 @endsection
