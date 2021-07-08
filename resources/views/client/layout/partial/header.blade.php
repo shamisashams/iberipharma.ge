@@ -6,8 +6,8 @@
         <div class="navbar flex center">
             <a href="{{locale_route('home.index')}}" class="nav_link transition {{Request::route()->getName()  === 'home.index'? 'on' : ''}}">@lang('client.home')</a>
             <a href="{{locale_route('product.index')}}" class="nav_link transition {{Request::route()->getName()  === 'product.index'? 'on' : ''}}">@lang('client.products')</a>
-            <div class="nav_link transition">
-                News
+            <div class="nav_link transition {{Request::route()->getName()  === 'news.index'? 'on' : ''}}">
+                @lang('client.news')
                 <svg
                         class="transition"
                         xmlns="http://www.w3.org/2000/svg"
@@ -22,9 +22,9 @@
                             transform="translate(-7.993 -4.999)"
                     />
                 </svg>
-                <div class="dropdown transition">
+                <div class="dropdown transition" >
                     <a href="wellness-blog.html">Wellness Blog</a>
-                    <a href="news.html">News</a>
+                    <a href="{{locale_route('news.index')}}">@lang('client.news')</a>
                 </div>
             </div>
             <a href="locations.html" class="nav_link transition">Locations</a>

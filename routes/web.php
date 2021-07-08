@@ -12,12 +12,10 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CertificateController;
-use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TranslationController;
@@ -102,21 +100,8 @@ Route::prefix('{locale?}')
 
         Route::match(['get','post'],'contact', [\App\Http\Controllers\Client\ContactController::class, 'index'])->name('contact.index');
 
-        Route::get('about-us', [\App\Http\Controllers\Client\AboutController::class, 'index'])->name('about.index');
 
-        Route::get('portfolio', [\App\Http\Controllers\Client\PorfolioController::class, 'index'])->name('portfolio.index');
-
-//        Route::get('salon', [\App\Http\Controllers\Client\SalonController::class, 'index'])->name('salon.index');
-
-//        Route::get('sitemap', [\App\Http\Controllers\Client\SitemapController::class, 'index'])->name('sitemap.index');
-
-        Route::get('timeline', [\App\Http\Controllers\Client\TimelineController::class, 'index'])->name('timeline.index');
-
-        Route::get('principle', [\App\Http\Controllers\Client\PrincipleController::class, 'index'])->name('principle.index');
-
-        Route::get('certificate', [\App\Http\Controllers\Client\CertificateController::class, 'index'])->name('client.certificate.index');
-
-        Route::get('video', [\App\Http\Controllers\Client\CertificateController::class, 'video'])->name('client.video.index');
+        Route::get('news',[\App\Http\Controllers\Client\NewsController::class,'index'])->name('news.index');
 
     });
 
