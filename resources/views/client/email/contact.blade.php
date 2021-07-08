@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pharmacy</title>
+    <title>ibpharma</title>
     <!--<link type="image/x-icon" rel="icon" href="images/icon.ico">-->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

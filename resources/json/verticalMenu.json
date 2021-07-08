@@ -39,14 +39,21 @@
       "url": "blog.index",
       "name": "news",
       "i18n": "news",
-      "icon": "news",
+      "icon": "assignment",
       "slug": "news"
+    },
+    {
+      "url": "wellness.index",
+      "name": "wellness",
+      "i18n": "wellness",
+      "icon": "assignment",
+      "slug": "wellness"
     },
     {
       "url": "member.index",
       "name": "member",
       "i18n": "member",
-      "icon": "user",
+      "icon": "account_box",
       "slug": "member"
     },
     {

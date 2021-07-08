@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TranslationController;
+use App\Http\Controllers\Admin\WellnessController;
 use App\Http\Controllers\Client\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,6 +67,9 @@ Route::prefix('{locale?}')
 
                 Route::resource('blog', BlogController::class);
                 Route::get('blog/{blog}/destroy', [BlogController::class, 'destroy'])->name('blog.destroy');
+
+                Route::resource('wellness', WellnessController::class);
+                Route::get('wellness/{wellness}/destroy', [WellnessController::class, 'destroy'])->name('wellness.destroy');
 
                 // Project
 //                Route::resource('project', ProjectController::class);

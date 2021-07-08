@@ -18,9 +18,9 @@
     <section class="salons_content wrapper">
         <div class="all_titles">
             <div class="s">@lang('client.salons')</div>
-            <div class="l">@lang('client.pharmacy_showrooms_and_dealerships')</div>
+            <div class="l">@lang('client.ibpharma_showrooms_and_dealerships')</div>
         </div>
-        <p class="para">@lang("client.pharmacy_products_can_be_purchased_from_one_of_the_company's_partners.")</p>
+        <p class="para">@lang("client.ibpharma_products_can_be_purchased_from_one_of_the_company's_partners.")</p>
         <div class="map">@lang('client.maps')</div>
     </section>
 

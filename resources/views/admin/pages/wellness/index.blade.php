@@ -2,7 +2,7 @@
 @extends('admin.layout.contentLayoutMaster')
 
 {{-- page title --}}
-@section('title',__('admin.blog'))
+@section('title',__('admin.wellness'))
 
 
 @section('content')
@@ -12,10 +12,10 @@
 
                 <div class="card-content">
                     <a class="btn-floating btn-large primary-text gradient-shadow compose-email-trigger "
-                       href="{{locale_route('blog.create')}}">
+                       href="{{locale_route('wellness.create')}}">
                         <i class="material-icons">add</i>
                     </a>
-                    <h4 class="card-title mt-2">@lang('admin.blog')</h4>
+                    <h4 class="card-title mt-2">@lang('admin.wellness')</h4>
                     <div class="row">
                         <div class="col s12">
                             <form class="mr-0 p-0">
@@ -49,23 +49,23 @@
                                         <th></th>
                                     </tr>
                                     <tbody>
-                                    @if($blogs)
-                                        @foreach($blogs as $blog)
+                                    @if($wellnesses)
+                                        @foreach($wellnesses as $wellness)
                                             <tr>
-                                                <td>{{$blog->id}}</td>
+                                                <td>{{$wellness->id}}</td>
                                                 <td>
-                                                    @if($blog->feature)
-                                                        {{$blog->feature->language(app()->getLocale())? $blog->feature->language(app()->getLocale())->title: $blog->feature->language()->title}}
+                                                    @if($wellness->feature)
+                                                        {{$wellness->feature->language(app()->getLocale())? $wellness->feature->language(app()->getLocale())->title: $wellness->feature->language()->title}}
                                                     @endif
                                                 </td>
                                                 <td>
                                                     <div class="row">
                                                         <div class="col s12">
                                                             <ul class="tabs">
-                                                                @foreach($blog->languages as $key => $language)
+                                                                @foreach($wellness->languages as $key => $language)
                                                                     @if(isset($languages[$language->language_id]))
                                                                         <li class="tab ">
-                                                                            <a href="#cat-{{$blog->id}}-{{$language->language_id}}">
+                                                                            <a href="#cat-{{$wellness->id}}-{{$language->language_id}}">
                                                                                 {{$languages[$language->language_id]->locale}}
                                                                             </a>
                                                                         </li>
@@ -74,9 +74,9 @@
                                                             </ul>
                                                         </div>
                                                         <div class="col sm12 mt-2">
-                                                            @foreach($blog->languages as $key => $language)
+                                                            @foreach($wellness->languages as $key => $language)
                                                                 @if(isset($languages[$language->language_id]))
-                                                                    <div id="cat-{{$blog->id}}-{{$language->language_id}}"
+                                                                    <div id="cat-{{$wellness->id}}-{{$language->language_id}}"
                                                                          class="">
                                                                         {{$language->name}}
                                                                     </div>
@@ -86,14 +86,14 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a href="{{locale_route('blog.show',$blog->id)}}">
+                                                    <a href="{{locale_route('wellness.show',$wellness->id)}}">
                                                         <i class="material-icons">remove_red_eye</i>
                                                     </a>
-                                                    <a href="{{locale_route('blog.edit',$blog->id)}}"
+                                                    <a href="{{locale_route('wellness.edit',$wellness->id)}}"
                                                        class="pl-3">
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    <a href="{{locale_route('blog.destroy',$blog->id)}}"
+                                                    <a href="{{locale_route('wellness.destroy',$wellness->id)}}"
                                                        onclick="return confirm('Are you sure?')" class="pl-3">
                                                         <i class="material-icons">delete</i>
                                                     </a>
@@ -104,7 +104,7 @@
                                     </tbody>
                                 </table>
                             </form>
-                            {{ $blogs->appends(request()->input())->links('admin.vendor.pagination.material') }}
+                            {{ $wellnesses->appends(request()->input())->links('admin.vendor.pagination.material') }}
                         </div>
                     </div>
                 </div>

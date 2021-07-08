@@ -30,6 +30,7 @@ use App\Repositories\Eloquent\ProjectRepository;
 use App\Repositories\Eloquent\SettingRepository;
 use App\Repositories\Eloquent\SliderRepository;
 use App\Repositories\Eloquent\TranslationRepository;
+use App\Repositories\Eloquent\WellnessRepository;
 use App\Repositories\FeatureRepositoryInterface;
 use App\Repositories\LanguageRepositoryInterface;
 use App\Repositories\MemberRepositoryInterface;
@@ -38,6 +39,7 @@ use App\Repositories\ProjectRepositoryInterface;
 use App\Repositories\SettingRepositoryInterface;
 use App\Repositories\SliderRepositoryInterface;
 use App\Repositories\TranslationRepositoryInterface;
+use App\Repositories\WellnessRepositoryInterface;
 use Carbon\Laravel\ServiceProvider;
 
 /**
@@ -78,6 +80,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(CertificateRepositoryInterface::class,CertificateRepository::class);
         $this->app->bind(MemberRepositoryInterface::class,MemberRepository::class);
         $this->app->bind(BlogRepositoryInterface::class,BlogRepository::class);
-
+        $this->app->bind(WellnessRepositoryInterface::class,WellnessRepository::class);
     }
 }
