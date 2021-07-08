@@ -9,6 +9,7 @@
 
 use App\Http\Controllers\Admin\AnswerController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\CityController;
@@ -63,9 +64,12 @@ Route::prefix('{locale?}')
                 Route::resource('member', MemberController::class);
                 Route::get('member/{member}/destroy', [MemberController::class, 'destroy'])->name('member.destroy');
 
+                Route::resource('blog', BlogController::class);
+                Route::get('blog/{blog}/destroy', [BlogController::class, 'destroy'])->name('blog.destroy');
+
                 // Project
-                Route::resource('project', ProjectController::class);
-                Route::get('project/{project}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
+//                Route::resource('project', ProjectController::class);
+//                Route::get('project/{project}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
 
                 // Product
                 Route::resource('product', ProductController::class);

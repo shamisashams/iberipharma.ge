@@ -11,12 +11,14 @@ namespace App\Providers;
 
 use App\Models\Certificate;
 use App\Repositories\AnswerRepositoryInterface;
+use App\Repositories\BlogRepositoryInterface;
 use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\CertificateRepositoryInterface;
 use App\Repositories\CityRepositoryInterface;
 use App\Repositories\Eloquent\AnswerRepository;
 use App\Repositories\Eloquent\Base\BaseRepository;
 use App\Repositories\Eloquent\Base\EloquentRepositoryInterface;
+use App\Repositories\Eloquent\BlogRepository;
 use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\Eloquent\CertificateRepository;
 use App\Repositories\Eloquent\CityRepository;
@@ -75,5 +77,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(SettingRepositoryInterface::class,SettingRepository::class);
         $this->app->bind(CertificateRepositoryInterface::class,CertificateRepository::class);
         $this->app->bind(MemberRepositoryInterface::class,MemberRepository::class);
+        $this->app->bind(BlogRepositoryInterface::class,BlogRepository::class);
+
     }
 }

@@ -29,13 +29,6 @@
       "slug": "answer"
     },
     {
-      "url": "project.index",
-      "name": "project",
-      "i18n": "project",
-      "icon": "apps",
-      "slug": "project"
-    },
-    {
       "url": "slider.index",
       "name": "slider",
       "i18n": "slider",
@@ -43,11 +36,11 @@
       "slug": "slider"
     },
     {
-      "url": "certificate.index",
-      "name": "certificate",
-      "i18n": "certificate",
-      "icon": "message",
-      "slug": "certificate"
+      "url": "blog.index",
+      "name": "news",
+      "i18n": "news",
+      "icon": "news",
+      "slug": "news"
     },
     {
       "url": "member.index",

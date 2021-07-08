@@ -9,32 +9,30 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\CityRequest;
-use App\Http\Requests\Admin\MemberRequest;
-use App\Repositories\CityRepositoryInterface;
-use App\Repositories\MemberRepositoryInterface;
+use App\Http\Requests\Admin\BlogRequest;
+use App\Repositories\BlogRepositoryInterface;
 
 /**
  * Class CityController
  * @package App\Http\Controllers\Admin
  */
-class MemberController extends Controller
+class BlogController extends Controller
 {
 
 
     /**
      * @var \App\Repositories\CityRepositoryInterface
      */
-    private $memberRepository;
+    private $blogRepository;
 
     /**
      * CityController constructor.
      *
      * @param \App\Repositories\CityRepositoryInterface $cityRepository
      */
-    public function __construct(MemberRepositoryInterface $memberRepository) {
+    public function __construct(BlogRepositoryInterface $blogRepository) {
         // initialize memberRepository
-        $this->memberRepository = $memberRepository;
+        $this->blogRepository = $blogRepository;
     }
 
     /**
@@ -42,10 +40,10 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(MemberRequest $request)
+    public function index(BlogRequest $request)
     {
-        return view('admin.pages.member.index', [
-            'members' => $this->memberRepository->getData($request),
+        return view('admin.pages.blog.index', [
+            'blogs' => $this->blogRepository->getData($request),
             'languages' => $this->activeLanguages()
         ]);
     }
@@ -57,13 +55,13 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $member = $this->memberRepository->model;
+        $blog = $this->blogRepository->model;
 
-        $url = locale_route('member.store', [], false);
+        $url = locale_route('blog.store', [], false);
         $method = 'POST';
 
-        return view('admin.pages.member.form', [
-            'member' => $member,
+        return view('admin.pages.blog.form', [
+            'blog' => $blog,
             'url' => $url,
             'method' => $method,
             'languages' => $this->activeLanguages(),
@@ -77,22 +75,23 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(MemberRequest $request)
+    public function store(BlogRequest $request)
     {
         $data = [
             'name' => $request['name'],
-            'position' => $request['position'],
+            'content' => $request['content'],
+            'status' => (bool)$request['status'],
             'languages' => $this->activeLanguages(),
         ];
 
-        $member = $this->memberRepository->create($data);
+        $blog = $this->blogRepository->create($data);
 
         // Save Files
         if ($request->hasFile('images')) {
-            $blog = $this->memberRepository->saveFiles($member->id, $request);
+            $blog = $this->blogRepository->saveFiles($blog->id, $request);
         }
 
-        return redirect(locale_route('member.show', $member->id))->with('success', 'Member created.');
+        return redirect(locale_route('blog.show', $blog->id))->with('success', 'Blog created.');
     }
 
     /**
@@ -106,10 +105,10 @@ class MemberController extends Controller
      */
     public function show(string $locale, int $id)
     {
-        $member = $this->memberRepository->findOrFail($id);
+        $blog = $this->blogRepository->findOrFail($id);
 
-        return view('admin.pages.member.show',[
-            'member' => $member,
+        return view('admin.pages.blog.show',[
+            'blog' => $blog,
             'languages' => $this->activeLanguages()
         ]);
     }
@@ -123,14 +122,14 @@ class MemberController extends Controller
      */
     public function edit(string $locale, int $id)
     {
-        $member = $this->memberRepository->findOrfail($id);
+        $blog = $this->blogRepository->findOrfail($id);
 
-        $url = locale_route('member.update', $id, false);
+        $url = locale_route('blog.update', $id, false);
 
         $method = 'PUT';
 
-        return view('admin.pages.member.form', [
-            'member' => $member,
+        return view('admin.pages.blog.form', [
+            'blog' => $blog,
             'url' => $url,
             'method' => $method,
             'languages' => $this->activeLanguages(),
@@ -147,19 +146,20 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(string $locale,int $id,MemberRequest $request)
+    public function update(string $locale,int $id,BlogRequest $request)
     {
         $data = [
             'name' => $request['name'],
-            'position' => $request['position'],
+            'content' => $request['content'],
+            'status' => (bool)$request['status'],
             'languages' => $this->activeLanguages(),
         ];
 
-        $member = $this->memberRepository->update($id,$data);
+        $blog = $this->blogRepository->update($id,$data);
 
         // Update Files
-        $this->memberRepository->saveFiles($id, $request);
-        return redirect(locale_route('member.show', $member->id))->with('success', 'Member updated.');
+        $this->blogRepository->saveFiles($id, $request);
+        return redirect(locale_route('blog.show', $blog->id))->with('success', 'Blog updated.');
     }
 
     /**
@@ -172,8 +172,8 @@ class MemberController extends Controller
      */
     public function destroy(string $locale, int $id)
     {
-        if (!$this->memberRepository->delete($id)) {
-            return redirect(locale_route('member.show', $id))->with('danger', 'Member not deleted.');
+        if (!$this->blogRepository->delete($id)) {
+            return redirect(locale_route('blog.show', $id))->with('danger', 'Blog not deleted.');
         }
-        return redirect(locale_route('member.index'))->with('success', 'Member Deleted.');    }
+        return redirect(locale_route('blog.index'))->with('success', 'Blog Deleted.');    }
 }

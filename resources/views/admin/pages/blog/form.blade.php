@@ -1,17 +1,16 @@
 {{-- extend layout --}}
 @extends('admin.layout.contentLayoutMaster')
 {{-- page title --}}
-@section('title', $member->created_at ? __('admin.member-update') : 'admin.member-create')
-
+@section('title', $blog->created_at ? __('admin.blog-update') : 'admin.blog-create')
 
 @section('content')
     <div class="row">
         <div class="col s12 m6 l6">
             <div id="basic-form" class="card card card-default scrollspy">
                 <div class="card-content">
-                    <input name="old-images[]" id="old_images" hidden disabled value="{{$member->files}}">
-                    <h4 class="card-title">{{$member->created_at ? __('admin.member-update') : __('admin.member-create')}}</h4>
-                    {!! Form::model($member,['url' => $url, 'method' => $method,'files' => true]) !!}
+                    <input name="old-images[]" id="old_images" hidden disabled value="{{$blog->files}}">
+                    <h4 class="card-title">{{$blog->created_at ? __('admin.blog-update') : __('admin.blog-create')}}</h4>
+                    {!! Form::model($blog,['url' => $url, 'method' => $method,'files' => true]) !!}
                     <div class="row">
                         <ul class="tabs">
                             @foreach($languages as $key => $language)
@@ -23,7 +22,7 @@
                         @foreach($languages as $key => $language)
                             <div id="lang-{{$key}}" class="col s12  mt-5">
                                 <div class="input-field ">
-                                    {!! Form::text('name['.$key.']',$member->language($language->id) !== null ? $member->language($language->id)->name:  '',['class' => 'validate '. $errors->has('name.*') ? '' : 'valid']) !!}
+                                    {!! Form::text('name['.$key.']',$blog->language($language->id) !== null ? $blog->language($language->id)->name:  '',['class' => 'validate '. $errors->has('name.*') ? '' : 'valid']) !!}
                                     {!! Form::label('name['.$key.']',__('admin.name')) !!}
                                     @error('name.*')
                                     <small class="errorTxt4">
@@ -34,19 +33,25 @@
                                     @enderror
                                 </div>
                                 <div class="input-field ">
-                                    {!! Form::text('position['.$key.']',$member->language($language->id) !== null ? $member->language($language->id)->position:  '',['class' => 'validate '. $errors->has('position.*') ? '' : 'valid']) !!}
-                                    {!! Form::label('position['.$key.']',__('admin.position')) !!}
-                                    @error('position.*')
-                                    <small class="errorTxt4">
-                                        <div class="error">
-                                            {{$message}}
-                                        </div>
-                                    </small>
-                                    @enderror
+                                    <h5>{{__('admin.content')}}</h5>
+                                    <br>
+                                    <textarea id="content" class="ckeditor form-control"
+                                              name="content[{{$key}}]">
+                                                    {!! $blog->language($language->id) !== null ? $blog->language($language->id)->content:  '' !!}
+                                                </textarea>
                                 </div>
                             </div>
                         @endforeach
                     </div>
+                    <div class="col s12 mb-2">
+                        <label>
+                            <input type="checkbox" name="status"
+                                   value="true" {{$blog->status ? 'checked' : ''}}>
+                            <span>{{__('admin.status')}}</span>
+                        </label>
+                    </div>
+                    <br>
+                    <br>
                     <div class="form-group">
                         <div class="input-images"></div>
                         @if ($errors->has('images'))
@@ -57,7 +62,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            {!! Form::submit($member->created_at ? __('admin.update') : __('admin.create'),['class' => 'btn cyan waves-effect waves-light right']) !!}
+                            {!! Form::submit($blog->created_at ? __('admin.update') : __('admin.create'),['class' => 'btn cyan waves-effect waves-light right']) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}
@@ -67,6 +72,7 @@
             </div>
         </div>
     </div>
+    <script src="{{asset('../admin/ckeditor/ckeditor.js')}}"></script>
 
 @endsection
 
