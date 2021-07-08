@@ -13,34 +13,27 @@ class CatalogController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(Request $request, string $locale, string $slug)
+    public function index(Request $request, string $locale)
     {
-        $category = Category::where(['slug' => $slug, 'status' => true])->with(['features' => function ($query) {
-            $query->where('search', true);
-        }, 'features.answers' => function ($query) {
-            $query->where('status', true);
-        }])->firstOrFail();
+        $products = Product::where([
+            'status' => true
+        ]);
 
-        $products = Product::where(['status' => true, 'category_id' => $category->id]);
-
-        if ($request->filled('feature')) {
-            foreach ($request->feature as $key => $answers){
-                $products = $products->whereHas('features', function (Builder $query) use ($key, $answers) {
-                    $answerIds= json_encode(array_keys($answers));
-                    $query->where('feature_id', $key)
-                        ->whereRaw('JSON_CONTAINS(answers,\''.$answerIds.'\')');
-                });
-            }
+        if ($request->get('category')) {
+            $products = $products->where('category_id',$request->get('category'));
         }
+        $categories = Category::where('status', true)->get();
+
 
         return view('client.pages.catalog.index', [
             'products' => $products->paginate(12),
-            'category' => $category
+            'categories' => $categories
         ]);
     }
 
-    public function show(Request $request, string $locale, string $slug) {
-        $product = Product::with('features')->where(['status' => true,'slug' => $slug])->firstOrFail();
+    public function show(Request $request, string $locale, string $slug)
+    {
+        $product = Product::with('features')->where(['status' => true, 'slug' => $slug])->firstOrFail();
 
         return view('client.pages.catalog.show', [
             'product' => $product,

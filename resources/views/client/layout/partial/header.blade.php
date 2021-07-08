@@ -1,11 +1,11 @@
 <header class="header">
     <div class="header_content wrapper flex">
-        <a href="index.html" class="logo">
-            <img src="img/logo/1.png" alt="" />
+        <a href="{{locale_route('home.index')}}" class="logo">
+            <img src="/client/img/logo/1.png" alt="" />
         </a>
         <div class="navbar flex center">
-            <a href="index.html" class="nav_link transition on">Home</a>
-            <a href="products.html" class="nav_link transition">Products</a>
+            <a href="{{locale_route('home.index')}}" class="nav_link transition {{Request::route()->getName()  === 'home.index'? 'on' : ''}}">@lang('client.home')</a>
+            <a href="{{locale_route('product.index')}}" class="nav_link transition {{Request::route()->getName()  === 'product.index'? 'on' : ''}}">@lang('client.products')</a>
             <div class="nav_link transition">
                 News
                 <svg

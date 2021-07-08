@@ -2714,3 +2714,31 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+.products_body .filters {
+  white-space: nowrap;
+  width: 253px;
+  border-bottom: #dcdcdc 1px solid;
+  padding-bottom: 30px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.products_body .filters .product_filter {
+  margin-bottom: 10px;
+  color: #808080;
+  display: block;
+  opacity: 0;
+}
+.products_body .filters label {
+  transition: 0.3s;
+  cursor: pointer;
+}
+.products_body .filters .product_filter:checked + label {
+  font-weight: bold;
+  color: #2d2d2d;
+}
+.products_body .filters .exclusive {
+  color: #f9a11c;
+  font-weight: bold;
+}

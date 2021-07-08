@@ -6,68 +6,73 @@
 @endsection
 
 @section('wrapper')
-    <section class="every_showcase catalog">
-        <div class="overlay">
-            <div class="wrapper content">
-                <div class="path">@lang('client.home') - @lang('client.catalog')</div>
-                <div class="title">@lang('client.catalog')</div>
-                @if($category->pdf)
-                    <a target="_blank" href="/{{$category->pdf->path.'/'.$category->pdf->title}}">
-                        <div class="dl_pdf flex">
-                            <img src="/client/img/icons/other/pdf.png" alt="">
-                            <div>@lang('client.download_pdf')</div>
-                        </div>
-                    </a>
-                @endif
-            </div>
+    <section class="main_showcase blue_bg">
+        <div class="wrapper flex">
+            <div class="path">Home - About Us - Products</div>
+            <div class="page_name">Products</div>
         </div>
     </section>
 
-    <section class="catalog_section flex wrapper">
-        <form class="filter_bar">
-            @foreach($category->features as $feature)
-                <div class="box">
-                    <div class="title">
-                        {{$feature->language(app()->getLocale())? $feature->language(app()->getLocale())->title: $feature->language()->title}}
-                    </div>
-                    @foreach($feature->answers as $answer)
-                        <div class="option">
-                            <input type="checkbox"
-                                   onchange="this.form.submit()" name="feature[{{$feature->id}}][{{$answer->id}}]"
-                                   id="box{{$feature->id}}_{{$answer->id}}"
-                                   value="{{$answer->id}}"
-                            @if(isset(Request::get('feature')[$feature->id]))
-                                {{in_array($answer->id,Request::get('feature')[$feature->id]) ? 'checked' : ''}}
-                                    @endif
-                            >
-                            <label for="box{{$feature->id}}_{{$answer->id}}">
-                                {{$answer->language(app()->getLocale())? $answer->language(app()->getLocale())->title: $answer->language()->title}}
-                            </label>
-                        </div>
-                    @endforeach
-                </div>
+    <section class="products_body flex wrapper">
+        <form class="filters">
+            <div class="title medium dark_text">@lang('client.category')</div>
+            @foreach($categories as $category)
+                <input
+                        class="product_filter {{Request::get('category') == $category->id ? 'active' : ''}}"
+                        {{Request::get('category') == $category->id ? 'checked' : ''}}
+                        type="radio"
+                        name="category"
+                        onchange="this.form.submit()"
+                        id="product_filter_{{$category->id}}"
+                        value="{{$category->id}}"
+                />
+                <label for="product_filter_{{$category->id}}">
+                    {{$category->language(app()->getLocale())? $category->language(app()->getLocale())->title: $category->language()->title}}
+                </label>
             @endforeach
         </form>
+        <div class="div">
+            <div class="head flex">
+                <div class="dark_text medium">
 
-        <div class="cgsec">
-            <div class="catalog_grid">
+                </div>
+            </div>
+            <div class="product_grid active">
                 @foreach($products as $product)
-                    <a href="{{locale_route('catalog.show',$product->slug)}}" class="catalog_item">
-                        <div class="img flex">
-                            <img src="{{url(count($product->files)? $product->files[0]->path.'/'.$product->files[0]->title : '')}}"
-                                 alt="">
-                        </div>
-                        <div class="cap flex">
-                            <div>
-                                {{$product->language(app()->getLocale())? $product->language(app()->getLocale())->title: $product->language()->title}}
+                    <a href="product-detail.html">
+                        <div class="product_item exclusive_product">
+                            <div class="img flex center">
+                                <img src="{{url(count($product->files)? $product->files[0]->path.'/'.$product->files[0]->title : '')}}"
+                                     alt=""/>
                             </div>
-                            <div>${{number_format($product->price/100)}}</div>
+                            <div class="cap">
+                                <div class="name dark_text medium">
+                                    {{$product->language(app()->getLocale())? $product->language(app()->getLocale())->title: $product->language()->title}}
+                                </div>
+                                <div class="price flex center">
+                                    @if($product->sale)
+                                        <div class="dark_text bold">{{$product->sale/100}} ლ</div>
+                                        <div class="off" style="text-decoration: line-through">
+                                            {{$product->price/100}} ლ
+                                        </div>
+                                    @else
+                                        <div class="dark_text bold">{{$product->price/100}} ლ</div>
+                                    @endif
+                                </div>
+                            </div>
+                            @if($product->sale)
+                                <div class=" percent bold abs flex center">
+                                    -{{round(($product->price-$product->sale)/$product->price * 100)}}%
+                                </div>
+                            @endif
                         </div>
                     </a>
+
 
                 @endforeach
             </div>
             {{ $products->appends(request()->input())->links('client.pagination') }}
+
         </div>
     </section>
 @endsection
