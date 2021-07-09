@@ -23,12 +23,12 @@ class NewsController extends Controller
         ]);
     }
 
-    public function show(Request $request, string $locale, string $slug)
+    public function show(Request $request, string $locale, string $id)
     {
-        $product = Product::with('features')->where(['status' => true, 'slug' => $slug])->firstOrFail();
+        $new = Blog::where(['status' => true, 'id' => $id])->firstOrFail();
 
-        return view('client.pages.catalog.show', [
-            'product' => $product,
+        return view('client.pages.news.show', [
+            'new' => $new,
         ]);
     }
 

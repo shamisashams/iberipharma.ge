@@ -13,36 +13,6 @@
             <div class="page_name">{{$product->language(app()->getLocale())? $product->language(app()->getLocale())->title: $product->language()->title}}</div>
         </div>
     </section>
-
-    {{--    <section class="product_title_section">--}}
-    {{--        <div class="flex">--}}
-    {{--            <div class="img">--}}
-    {{--                <img src="{{url(count($product->files)? $product->files[0]->path.'/'.$product->files[0]->title : '')}}" alt="">--}}
-    {{--            </div>--}}
-    {{--            <div class="info">--}}
-    {{--                <div class="title">{{$product->language(app()->getLocale())? $product->language(app()->getLocale())->title: $product->language()->title}}</div>--}}
-    {{--                <div class="title">{{number_format($product->price/100)}}</div>--}}
-    {{--                @foreach($product->features as $feature)--}}
-    {{--                    <p class="p"><b>--}}
-    {{--                            {{$feature->feature->language(app()->getLocale())? $feature->feature->language(app()->getLocale())->title: $feature->feature->language()->title}}--}}
-
-    {{--                        </b>--}}
-    {{--                        @foreach($feature->answers()->get() as $key => $answer)--}}
-    {{--                            @if($key > 0)--}}
-    {{--                                ,--}}
-    {{--                            @endif--}}
-    {{--                        {{$answer->language(app()->getLocale())? $answer->language(app()->getLocale())->title: $answer->language()->title}}--}}
-    {{--                        @endforeach--}}
-    {{--                    </p>--}}
-    {{--                @endforeach--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--        <div class="description">--}}
-    {{--            <div class="title">@lang('client.description')</div>--}}
-    {{--            <p class="p">{{$product->language(app()->getLocale())? $product->language(app()->getLocale())->description: $product->language()->description}}</p>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
-
     <section class="product_detail_body wrapper">
         <div class="flex">
             <div class="product_view">

@@ -32,7 +32,7 @@
                         <div class="roboto">
                             {!! $new->language(app()->getLocale())? substr($new->language(app()->getLocale())->content,0,70): substr($new->language()->content,0,70) !!}
                         </div>
-                        <a href="news-detail.html">
+                        <a href="{{locale_route('client.news.show',$new->id)}}">
                             <button class="main_btn">@lang('client.see_more')</button>
                         </a>
                     </div>

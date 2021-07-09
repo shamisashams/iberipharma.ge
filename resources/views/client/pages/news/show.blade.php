@@ -1,50 +1,36 @@
 @extends('client.layout.site')
 @section('subhead')
-    <title>{{$product->language(app()->getLocale())? $product->language(app()->getLocale())->meta_title: $product->language()->meta_title}}</title>
+    <title>@lang('client.news_detail_meta_title')</title>
     <meta name="description"
-          content="{{$product->language(app()->getLocale())? $product->language(app()->getLocale())->meta_description: $product->language()->meta_description}}">
+          content="@lang('client.news_detail_meta_description')">
 @endsection
 
 @section('wrapper')
-    <section class="every_showcase product_title">
-        <div class="overlay">
-            <div class="wrapper content">
-                <div class="path">@lang('client.home') - @lang('client.catalog')
-                    - {{$product->language(app()->getLocale())? $product->language(app()->getLocale())->title: $product->language()->title}}
-                </div>
-                <div class="title">
-                    {{$product->language(app()->getLocale())? $product->language(app()->getLocale())->title: $product->language()->title}}
-                </div>
+    <section class="main_showcase blue_bg">
+        <div class="wrapper flex">
+            <div class="path">@lang('client.home') - @lang('client.news') - @lang('client.news_detail')</div>
+            <div class="page_name">
+                {{$new->language(app()->getLocale())? $new->language(app()->getLocale())->name: $new->language()->name}}
             </div>
         </div>
     </section>
 
-    <section class="product_title_section">
-        <div class="flex">
-            <div class="img">
-                <img src="{{url(count($product->files)? $product->files[0]->path.'/'.$product->files[0]->title : '')}}" alt="">
+    <section class="wellness_blog_detail news_detail wrapper">
+        <div class="img">
+            <img src="{{url(count($new->files)? $new->files[0]->path.'/'.$new->files[0]->title : '')}}" alt="">
+            <div class="date flex roboto">
+                <img src="/client/img/icons/other/clock2.png" alt=""/>
+                <div>{{\Carbon\Carbon::parse($new->created_at)->format('Y-m-d')}}</div>
             </div>
-            <div class="info">
-                <div class="title">{{$product->language(app()->getLocale())? $product->language(app()->getLocale())->title: $product->language()->title}}</div>
-                <div class="title">{{number_format($product->price/100)}}</div>
-                @foreach($product->features as $feature)
-                    <p class="p"><b>
-                            {{$feature->feature->language(app()->getLocale())? $feature->feature->language(app()->getLocale())->title: $feature->feature->language()->title}}
+        </div>
+        <div class="title bold dark_text">
+            {{$new->language(app()->getLocale())? $new->language(app()->getLocale())->name: $new->language()->name}}
+        </div>
+        {!! $new->language(app()->getLocale())? $new->language(app()->getLocale())->content: $new->language()->content !!}
 
-                        </b>
-                        @foreach($feature->answers()->get() as $key => $answer)
-                            @if($key > 0)
-                                ,
-                            @endif
-                        {{$answer->language(app()->getLocale())? $answer->language(app()->getLocale())->title: $answer->language()->title}}
-                        @endforeach
-                    </p>
-                @endforeach
-            </div>
-        </div>
-        <div class="description">
-            <div class="title">@lang('client.description')</div>
-            <p class="p">{{$product->language(app()->getLocale())? $product->language(app()->getLocale())->description: $product->language()->description}}</p>
-        </div>
+        <a class="flex center dark_text back" href="{{locale_route('news.index')}}">
+            <img class="transition" src="/client/img/icons/arrows/pb.png" alt=""/>
+            <p>@lang('client.back_to_news')</p>
+        </a>
     </section>
 @endsection
