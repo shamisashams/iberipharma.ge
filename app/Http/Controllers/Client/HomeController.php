@@ -30,29 +30,31 @@ class HomeController extends Controller
 
     public function vision()
     {
-
         return view('client.pages.home.vision', [
         ]);
     }
 
     public function value()
     {
-
         return view('client.pages.home.value', [
         ]);
     }
 
     public function mission()
     {
-
         return view('client.pages.home.mission', [
         ]);
     }
 
     public function company()
     {
-
         return view('client.pages.home.company', [
+        ]);
+    }
+
+    public function location()
+    {
+        return view('client.pages.home.location', [
         ]);
     }
 }

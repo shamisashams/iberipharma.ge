@@ -101,6 +101,8 @@ Route::prefix('{locale?}')
 
         Route::get('company_history', [HomeController::class, 'company'])->name('home.company');
 
+        Route::get('locations', [HomeController::class, 'location'])->name('home.location');
+
 
 
         Route::get('products', [\App\Http\Controllers\Client\CatalogController::class, 'index'])->name('client.product.index');
