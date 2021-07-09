@@ -55,11 +55,11 @@
                     />
                 </svg>
                 <div class="dropdown transition">
-                    <a href="mission.html">Mission</a>
-                    <a href="vision.html">Vision</a>
-                    <a href="company-history.html">Company History</a>
-                    <a href="values.html">Values</a>
-                    <a href="team.html">Team</a>
+                    <a href="{{locale_route('home.mission')}}">@lang('client.mission')</a>
+                    <a href="{{locale_route('home.vision')}}">@lang('client.vision')</a>
+                    <a href="{{locale_route('home.company')}}">@lang('client.company_history')</a>
+                    <a href="{{locale_route('home.value')}}">@lang('client.values')</a>
+                    <a href="{{locale_route('client.member.index')}}">@lang('client.team')</a>
                 </div>
             </div>
             <a href="contact.html" class="nav_link transition">Contact Us</a>

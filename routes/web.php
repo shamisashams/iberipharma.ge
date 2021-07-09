@@ -94,6 +94,14 @@ Route::prefix('{locale?}')
 
         Route::get('', [HomeController::class, 'index'])->name('home.index');
 
+        Route::get('vision', [HomeController::class, 'vision'])->name('home.vision');
+        Route::get('values', [HomeController::class, 'value'])->name('home.value');
+
+        Route::get('mission', [HomeController::class, 'mission'])->name('home.mission');
+
+        Route::get('company_history', [HomeController::class, 'company'])->name('home.company');
+
+
 
         Route::get('products', [\App\Http\Controllers\Client\CatalogController::class, 'index'])->name('client.product.index');
         Route::get('products/{product}/show', [\App\Http\Controllers\Client\CatalogController::class, 'show'])->name('client.product.show');
@@ -106,6 +114,9 @@ Route::prefix('{locale?}')
 
         Route::get('wellness',[\App\Http\Controllers\Client\WellnessController::class,'index'])->name('client.wellness.index');
         Route::get('news/{wellness}/show',[\App\Http\Controllers\Client\WellnessController::class,'show'])->name('client.wellness.show');
+
+        Route::get('members',[\App\Http\Controllers\Client\TeamController::class,'index'])->name('client.member.index');
+
 
     });
 

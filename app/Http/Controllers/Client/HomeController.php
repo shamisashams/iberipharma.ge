@@ -27,4 +27,32 @@ class HomeController extends Controller
             'wellnesses' => $wellnesses,
         ]);
     }
+
+    public function vision()
+    {
+
+        return view('client.pages.home.vision', [
+        ]);
+    }
+
+    public function value()
+    {
+
+        return view('client.pages.home.value', [
+        ]);
+    }
+
+    public function mission()
+    {
+
+        return view('client.pages.home.mission', [
+        ]);
+    }
+
+    public function company()
+    {
+
+        return view('client.pages.home.company', [
+        ]);
+    }
 }

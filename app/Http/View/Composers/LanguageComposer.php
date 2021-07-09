@@ -32,36 +32,19 @@ class LanguageComposer
     {
         $defaultLanguage = Language::where('default', true)->first();
         $activeLanguage = Language::where('locale', $this->languageSlug())->first();
-        $categories = Category::where('status',true)->get();
 
-        $gaddress = Setting::where('key','address')->first();
         $gemail = Setting::where('key','email')->first();
         $gphone = Setting::where('key','phone')->first();
         $ginstagram = Setting::where('key','instagram')->first();
         $gfacebook = Setting::where('key','facebook')->first();
 
-        $gaddress2 = Setting::where('key','address2')->first();
-        $gemail2 = Setting::where('key','email2')->first();
-        $gphone2 = Setting::where('key','phone2')->first();
-        $gaddress3 = Setting::where('key','address3')->first();
-        $gemail3 = Setting::where('key','email3')->first();
-        $gphone3 = Setting::where('key','phone3')->first();
-
 
         $view->with('localizations', $this->languageItems())
             ->with('activeLanguage', $activeLanguage ? $activeLanguage->id : null)
-            ->with('gcategories', $categories)
-            ->with('gaddress',$gaddress)
-            ->with('gaddress2',$gaddress2)
-            ->with('gaddress3',$gaddress3)
             ->with('ginstagram',$ginstagram)
             ->with('gfacebook',$gfacebook)
             ->with('gemail',$gemail)
             ->with('gphone',$gphone)
-            ->with('gemail2',$gemail2)
-            ->with('gemail3',$gemail3)
-            ->with('gphone2',$gphone2)
-            ->with('gphone3',$gphone3)
             ->with('defaultLanguage', $defaultLanguage ? $defaultLanguage->id : null);
     }
 
