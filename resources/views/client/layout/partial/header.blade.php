@@ -8,7 +8,15 @@
                class="nav_link transition {{Request::route()->getName()  === 'home.index'? 'on' : ''}}">@lang('client.home')</a>
             <a href="{{locale_route('client.product.index')}}"
                class="nav_link transition {{Request::route()->getName()  === 'client.product.index'? 'on' : ''}}">@lang('client.products')</a>
-            <div class="nav_link transition {{(Request::route()->getName()  === 'news.index' || Request::route()->getName()  === 'client.wellness.index')? 'on' : ''}}">
+            <div class="nav_link transition {{(Request::route()->getName()  === 'news.index'
+                            || Request::route()->getName()  === 'client.wellness.index'
+                            || Request::route()->getName()  === 'client.wellness.show'
+                            || Request::route()->getName()  === 'client.news.show'
+
+                            )? 'on' : ''}}
+                            ||
+                    "
+            >
                 @lang('client.news')
                 <svg
                         class="transition"

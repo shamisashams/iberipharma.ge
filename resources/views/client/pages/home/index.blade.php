@@ -261,7 +261,7 @@
                             {{$wellness->language(app()->getLocale())? $wellness->language(app()->getLocale())->title: $wellness->language()->title}}
                         </div>
                         <div class="roboto">
-                            {!! $wellness->language(app()->getLocale())? $wellness->language(app()->getLocale())->content: $wellness->language()->content !!}
+                            {!! $wellness->language(app()->getLocale())? substr($wellness->language(app()->getLocale())->content,0,120): substr($wellness->language()->content,0,120) !!}...
                         </div>
                         <a href="blog-detail.html" class="more main_color">@lang('client.view_more')</a>
                     </div>

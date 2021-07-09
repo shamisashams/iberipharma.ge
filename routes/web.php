@@ -105,6 +105,7 @@ Route::prefix('{locale?}')
         Route::get('news/{blog}/show',[\App\Http\Controllers\Client\NewsController::class,'show'])->name('client.news.show');
 
         Route::get('wellness',[\App\Http\Controllers\Client\WellnessController::class,'index'])->name('client.wellness.index');
+        Route::get('news/{wellness}/show',[\App\Http\Controllers\Client\WellnessController::class,'show'])->name('client.wellness.show');
 
     });
 

@@ -28,7 +28,7 @@
                             {!! $wellness->language(app()->getLocale())? substr($wellness->language(app()->getLocale())->content,0,170): substr($wellness->language()->content,0,170) !!}
 
                         </div>
-                        <a href="blog-detail.html">
+                        <a href="{{locale_route('client.wellness.show',$wellness->id)}}">
                             <button class="main_btn">@lang('client.see_more')</button>
                         </a>
                     </div>
