@@ -1,12 +1,14 @@
 <header class="header">
     <div class="header_content wrapper flex">
         <a href="{{locale_route('home.index')}}" class="logo">
-            <img src="/client/img/logo/1.png" alt="" />
+            <img src="/client/img/logo/1.png" alt=""/>
         </a>
         <div class="navbar flex center">
-            <a href="{{locale_route('home.index')}}" class="nav_link transition {{Request::route()->getName()  === 'home.index'? 'on' : ''}}">@lang('client.home')</a>
-            <a href="{{locale_route('product.index')}}" class="nav_link transition {{Request::route()->getName()  === 'product.index'? 'on' : ''}}">@lang('client.products')</a>
-            <div class="nav_link transition {{Request::route()->getName()  === 'news.index'? 'on' : ''}}">
+            <a href="{{locale_route('home.index')}}"
+               class="nav_link transition {{Request::route()->getName()  === 'home.index'? 'on' : ''}}">@lang('client.home')</a>
+            <a href="{{locale_route('client.product.index')}}"
+               class="nav_link transition {{Request::route()->getName()  === 'client.product.index'? 'on' : ''}}">@lang('client.products')</a>
+            <div class="nav_link transition {{(Request::route()->getName()  === 'news.index' || Request::route()->getName()  === 'client.wellness.index')? 'on' : ''}}">
                 @lang('client.news')
                 <svg
                         class="transition"
@@ -22,8 +24,8 @@
                             transform="translate(-7.993 -4.999)"
                     />
                 </svg>
-                <div class="dropdown transition" >
-                    <a href="wellness-blog.html">Wellness Blog</a>
+                <div class="dropdown transition">
+                    <a href="{{locale_route('client.wellness.index')}}">@lang('client.wellness_blog')</a>
                     <a href="{{locale_route('news.index')}}">@lang('client.news')</a>
                 </div>
             </div>

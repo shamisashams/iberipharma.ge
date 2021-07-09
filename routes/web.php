@@ -95,13 +95,15 @@ Route::prefix('{locale?}')
         Route::get('', [HomeController::class, 'index'])->name('home.index');
 
 
-        Route::get('products', [\App\Http\Controllers\Client\CatalogController::class, 'index'])->name('product.index');
-        Route::get('catalog/show}', [\App\Http\Controllers\Client\CatalogController::class, 'show'])->name('catalog.show');
+        Route::get('products', [\App\Http\Controllers\Client\CatalogController::class, 'index'])->name('client.product.index');
+        Route::get('products/{product}/show', [\App\Http\Controllers\Client\CatalogController::class, 'show'])->name('client.product.show');
 
         Route::match(['get','post'],'contact', [\App\Http\Controllers\Client\ContactController::class, 'index'])->name('contact.index');
 
 
         Route::get('news',[\App\Http\Controllers\Client\NewsController::class,'index'])->name('news.index');
+
+        Route::get('wellness',[\App\Http\Controllers\Client\WellnessController::class,'index'])->name('client.wellness.index');
 
     });
 
