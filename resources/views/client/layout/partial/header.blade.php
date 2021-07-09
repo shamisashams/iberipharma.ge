@@ -7,12 +7,11 @@
             <a href="{{locale_route('home.index')}}"
                class="nav_link transition {{Request::route()->getName()  === 'home.index'? 'on' : ''}}">@lang('client.home')</a>
             <a href="{{locale_route('client.product.index')}}"
-               class="nav_link transition {{Request::route()->getName()  === 'client.product.index'? 'on' : ''}}">@lang('client.products')</a>
+               class="nav_link transition {{(Request::route()->getName()  === 'client.product.index' || Request::route()->getName()  === 'client.product.show')? 'on' : ''}}">@lang('client.products')</a>
             <div class="nav_link transition {{(Request::route()->getName()  === 'news.index'
                             || Request::route()->getName()  === 'client.wellness.index'
                             || Request::route()->getName()  === 'client.wellness.show'
                             || Request::route()->getName()  === 'client.news.show'
-
                             )? 'on' : ''}}
                             ||
                     "
@@ -37,9 +36,18 @@
                     <a href="{{locale_route('news.index')}}">@lang('client.news')</a>
                 </div>
             </div>
-            <a href="locations.html" class="nav_link transition">Locations</a>
-            <div class="nav_link transition">
-                About Us
+            <a href="{{locale_route('home.location')}}" class="nav_link transition {{Request::route()->getName()  === 'home.location'? 'on' : ''}}">@lang('client.locations')</a>
+            <div class="nav_link transition {{(Request::route()->getName()  === 'home.mission'
+                            || Request::route()->getName()  === 'home.company'
+                            || Request::route()->getName()  === 'home.vision'
+                            || Request::route()->getName()  === 'home.value'
+                            || Request::route()->getName()  === 'client.member.index'
+                            )? 'on' : ''}}
+                    ||
+"
+
+            >
+                @lang('client.about_us')
                 <svg
                         class="transition"
                         xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +70,7 @@
                     <a href="{{locale_route('client.member.index')}}">@lang('client.team')</a>
                 </div>
             </div>
-            <a href="contact.html" class="nav_link transition">Contact Us</a>
+            <a href="{{locale_route('contact.index')}}" class="nav_link transition {{Request::route()->getName()  === 'contact.index'? 'on' : ''}}">@lang('client.contact_us')</a>
         </div>
         <div class="languages nav_link transition dark_text4">
             ENG
