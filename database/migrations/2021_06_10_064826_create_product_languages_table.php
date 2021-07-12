@@ -26,10 +26,10 @@ class CreateProductLanguagesTable extends Migration
             $table->index(['product_id', 'language_id']);
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
-            $table->string('meta_keywords')->nullable();
+            $table->longText('meta_keywords')->nullable();
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
-            $table->string('content')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('content')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

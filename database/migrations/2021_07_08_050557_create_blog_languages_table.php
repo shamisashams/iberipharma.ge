@@ -24,8 +24,8 @@ class CreateBlogLanguagesTable extends Migration
             $table->foreignId('blog_id')->constrained('blogs');
             $table->foreignId('language_id')->constrained('languages');
             $table->index(['blog_id','language_id']);
-            $table->string('name')->nullable();
-            $table->string('content')->nullable();
+            $table->longText('name')->nullable();
+            $table->longText('content')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

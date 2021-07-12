@@ -24,8 +24,8 @@ class CreateSliderLanguagesTable extends Migration
             $table->foreignId('slider_id')->constrained('sliders');
             $table->foreignId('language_id')->constrained('languages');
             $table->index(['slider_id','language_id']);
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('title')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -18,8 +18,8 @@ class CreateWellnessLanguagesTable extends Migration
             $table->foreignId('wellness_id')->constrained('wellnesses');
             $table->foreignId('language_id')->constrained('languages');
             $table->index(['wellness_id','language_id']);
-            $table->string('name')->nullable();
-            $table->string('content')->nullable();
+            $table->longText('name')->nullable();
+            $table->longText('content')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
