@@ -146,11 +146,11 @@
                                     </tr>
                                     <tr>
                                         <td>@lang('admin.description'):</td>
-                                        <td>{{$language->content}}</td>
+                                        <td>{!! $language->description !!}</td>
                                     </tr>
                                     <tr>
                                         <td>@lang('admin.content'):</td>
-                                        <td>{{$language->content}}</td>
+                                        <td>{!! $language->content !!}</td>
                                     </tr>
                                     <tr>
                                         <td>@lang('admin.created_at')</td>
