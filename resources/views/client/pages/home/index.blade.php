@@ -41,7 +41,7 @@
             <div class="para roboto">
                 @lang('client.products_link_description')
             </div>
-            <a href="#" class="main_btn">@lang('client.see_more')</a>
+            <a href="{{locale_route('client.product.index')}}" class="main_btn">@lang('client.see_more')</a>
         </div>
         <div class="border"></div>
         <div class="item flex center">
@@ -50,7 +50,7 @@
             <div class="para roboto">
                 @lang('client.locations_description')
             </div>
-            <a href="#" class="main_btn">@lang('client.see_more')</a>
+            <a href="{{locale_route('home.location')}}" class="main_btn">@lang('client.see_more')</a>
         </div>
         <div class="border"></div>
         <div class="item flex center">
@@ -59,7 +59,7 @@
             <div class="para roboto">
                 @lang('client.contact_description')
             </div>
-            <a href="#" class="main_btn">@lang('client.see_more')</a>
+            <a href="{{locale_route('contact.index')}}" class="main_btn">@lang('client.see_more')</a>
         </div>
     </section>
 
@@ -90,7 +90,7 @@
                         @lang('client.home_mission_content')
                     </div>
                 </div>
-                <a href="mission.html" class="more main_color">@lang('client.view_more')</a>
+                <a href="{{locale_route('home.mission')}}" class="more main_color">@lang('client.view_more')</a>
             </div>
             <div class="flex right">
                 <div>
@@ -101,7 +101,7 @@
                         @lang('client.home_vision_content')
                     </div>
                 </div>
-                <a href="vision.html" class="more main_color">@lang('client.view_more')</a>
+                <a href="{{locale_route('home.vision')}}" class="more main_color">@lang('client.view_more')</a>
             </div>
         </div>
     </section>
@@ -109,7 +109,7 @@
         <div class="wrapper content">
             <div class="head flex">
                 <div class="dark_text medium">@lang('client.wellness_blog')</div>
-                <a href="wellness-blog.html" class="more main_color">@lang('client.view_more')</a>
+                <a href="{{locale_route('client.wellness.index')}}" class="more main_color">@lang('client.view_more')</a>
             </div>
             <div class="wellness_blog_slider flex">
                 @foreach($wellnesses as $wellness)
@@ -126,7 +126,7 @@
                         <div class="roboto">
                             {!! $wellness->language(app()->getLocale())? substr($wellness->language(app()->getLocale())->content,0,120): substr($wellness->language()->content,0,120) !!}...
                         </div>
-                        <a href="blog-detail.html" class="more main_color">@lang('client.view_more')</a>
+                        <a href="{{locale_route('client.wellness.show',$wellness->id)}}" class="more main_color">@lang('client.view_more')</a>
                     </div>
 
                 @endforeach

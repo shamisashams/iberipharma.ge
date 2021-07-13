@@ -6,37 +6,6 @@
         <div class="navbar flex center">
             <a href="{{locale_route('home.index')}}"
                class="nav_link transition {{Request::route()->getName()  === 'home.index'? 'on' : ''}}">@lang('client.home')</a>
-            <a href="{{locale_route('client.product.index')}}"
-               class="nav_link transition {{(Request::route()->getName()  === 'client.product.index' || Request::route()->getName()  === 'client.product.show')? 'on' : ''}}">@lang('client.products')</a>
-            <div class="nav_link transition {{(Request::route()->getName()  === 'news.index'
-                            || Request::route()->getName()  === 'client.wellness.index'
-                            || Request::route()->getName()  === 'client.wellness.show'
-                            || Request::route()->getName()  === 'client.news.show'
-                            )? 'on' : ''}}
-                            ||
-                    "
-            >
-                @lang('client.news')
-                <svg
-                        class="transition"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="6.335"
-                        height="12.673"
-                        viewBox="0 0 6.335 12.673"
-                >
-                    <path
-                            id="Path_12"
-                            data-name="Path 12"
-                            d="M9.044,17.671a.905.905,0,0,0,.706-.335l4.372-5.431a.905.905,0,0,0,0-1.149L9.6,5.326A.906.906,0,0,0,8.2,6.484l4.046,4.851-3.91,4.851a.905.905,0,0,0,.706,1.484Z"
-                            transform="translate(-7.993 -4.999)"
-                    />
-                </svg>
-                <div class="dropdown transition">
-                    <a href="{{locale_route('client.wellness.index')}}">@lang('client.wellness_blog')</a>
-                    <a href="{{locale_route('news.index')}}">@lang('client.news')</a>
-                </div>
-            </div>
-            <a href="{{locale_route('home.location')}}" class="nav_link transition {{Request::route()->getName()  === 'home.location'? 'on' : ''}}">@lang('client.locations')</a>
             <div class="nav_link transition {{(Request::route()->getName()  === 'home.mission'
                             || Request::route()->getName()  === 'home.company'
                             || Request::route()->getName()  === 'home.vision'
@@ -70,6 +39,37 @@
                     <a href="{{locale_route('client.member.index')}}">@lang('client.team')</a>
                 </div>
             </div>
+            <a href="{{locale_route('client.product.index')}}"
+               class="nav_link transition {{(Request::route()->getName()  === 'client.product.index' || Request::route()->getName()  === 'client.product.show')? 'on' : ''}}">@lang('client.products')</a>
+            <div class="nav_link transition {{(Request::route()->getName()  === 'news.index'
+                            || Request::route()->getName()  === 'client.wellness.index'
+                            || Request::route()->getName()  === 'client.wellness.show'
+                            || Request::route()->getName()  === 'client.news.show'
+                            )? 'on' : ''}}
+                            ||
+                    "
+            >
+                @lang('client.blog')
+                <svg
+                        class="transition"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="6.335"
+                        height="12.673"
+                        viewBox="0 0 6.335 12.673"
+                >
+                    <path
+                            id="Path_12"
+                            data-name="Path 12"
+                            d="M9.044,17.671a.905.905,0,0,0,.706-.335l4.372-5.431a.905.905,0,0,0,0-1.149L9.6,5.326A.906.906,0,0,0,8.2,6.484l4.046,4.851-3.91,4.851a.905.905,0,0,0,.706,1.484Z"
+                            transform="translate(-7.993 -4.999)"
+                    />
+                </svg>
+                <div class="dropdown transition">
+                    <a href="{{locale_route('client.wellness.index')}}">@lang('client.wellness')</a>
+                    <a href="{{locale_route('news.index')}}">@lang('client.news')</a>
+                </div>
+            </div>
+            <a href="{{locale_route('home.location')}}" class="nav_link transition {{Request::route()->getName()  === 'home.location'? 'on' : ''}}">@lang('client.locations')</a>
             <a href="{{locale_route('contact.index')}}" class="nav_link transition {{Request::route()->getName()  === 'contact.index'? 'on' : ''}}">@lang('client.contact_us')</a>
         </div>
         <div class="languages nav_link transition dark_text4">

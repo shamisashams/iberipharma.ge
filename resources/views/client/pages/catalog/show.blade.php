@@ -41,17 +41,6 @@
                 <div class="name bold dark_text">
                     {!! $product->language(app()->getLocale())? $product->language(app()->getLocale())->title: $product->language()->title !!}
                 </div>
-                <div class="price flex center">
-                    @if($product->sale)
-                        <div class="dark_text bold">{{$product->sale/100}}ლ</div>
-                        <div style="text-decoration: line-through">{{$product->price/100}}</div>
-                        <div class="off main_color">-{{round(($product->price-$product->sale)/$product->price * 100)}}
-                            %
-                        </div>
-                    @else
-                        {{$product->price/100}} ლ
-                    @endif
-                </div>
                 <div>
                     @foreach($product->features as $feature)
                         <div>

@@ -17,7 +17,7 @@ class CatalogController extends Controller
     {
         $products = Product::where([
             'status' => true
-        ]);
+        ])->orderBy('created_at','DESC');
 
         if ($request->get('category')) {
             $products = $products->where('category_id',$request->get('category'));

@@ -50,22 +50,10 @@
                                     <div class="name dark_text medium">
                                         {{$product->language(app()->getLocale())? $product->language(app()->getLocale())->title: $product->language()->title}}
                                     </div>
-                                    <div class="price flex center">
-                                        @if($product->sale)
-                                            <div class="dark_text bold">{{$product->sale/100}} ლ</div>
-                                            <div class="off" style="text-decoration: line-through">
-                                                {{$product->price/100}} ლ
-                                            </div>
-                                        @else
-                                            <div class="dark_text bold">{{$product->price/100}} ლ</div>
-                                        @endif
-                                    </div>
+                                    @if($product->category->vip)
+                                        <div class="exclusive_sign abs">@lang('client.exclusive')</div>
+                                    @endif
                                 </div>
-                                @if($product->sale)
-                                    <div class=" percent bold abs flex center">
-                                        -{{round(($product->price-$product->sale)/$product->price * 100)}}%
-                                    </div>
-                                @endif
                             </div>
                         </a>
 

@@ -1,8 +1,8 @@
 @extends('client.layout.site')
 @section('subhead')
-    <title>{{$product->language(app()->getLocale())? $product->language(app()->getLocale())->meta_title: $product->language()->meta_title}}</title>
+    <title>@lang('client.wellness_detail_meta_title')</title>
     <meta name="description"
-          content="{{$product->language(app()->getLocale())? $product->language(app()->getLocale())->meta_description: $product->language()->meta_description}}">
+          content="@lang('client.wellness_detail_meta_description')">
 @endsection
 
 @section('wrapper')
@@ -26,9 +26,8 @@
             {{$wellness->language(app()->getLocale())? $wellness->language(app()->getLocale())->name: $wellness->language()->name}}
         </div>
         {!! $wellness->language(app()->getLocale())? $wellness->language(app()->getLocale())->content: $wellness->language()->content !!}
-
         <a class="flex center dark_text back" href="{{locale_route('client.wellness.index')}}">
-            <img class="transition" src="/client/img/icons/arrows/pb.png" alt=""/>
+{{--            <img class="transition" src="/client/img/icons/arrows/pb.png" alt=""/>--}}
             <p>@lang('client.back_to_wellness')</p>
         </a>
     </section>
