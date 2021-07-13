@@ -100,6 +100,11 @@ class AnswerRepository extends BaseRepository implements AnswerRepositoryInterfa
                     $this->model->language($language['id'])->update([
                         'title' => $data['title'][$language['id']],
                     ]);
+                } else {
+                    $this->model->language($language['id'])->create([
+                        'language_id' => $language['id'],
+                        'title' => $data['title'][$language['id']],
+                    ]);
                 }
             }
 

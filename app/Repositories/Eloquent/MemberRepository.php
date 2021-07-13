@@ -91,6 +91,12 @@ class MemberRepository extends BaseRepository implements MemberRepositoryInterfa
                         'name' => $data['name'][$language['id']],
                         'position' => $data['position'][$language['id']],
                     ]);
+                } else {
+                    $this->model->language($language['id'])->create([
+                        'language_id' => $language['id'],
+                        'name' => $data['name'][$language['id']],
+                        'position' => $data['position'][$language['id']],
+                    ]);
                 }
             }
 

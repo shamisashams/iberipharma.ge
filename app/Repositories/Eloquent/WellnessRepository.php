@@ -99,6 +99,12 @@ class WellnessRepository extends BaseRepository implements WellnessRepositoryInt
                         'name' => $data['name'][$language['id']],
                         'content' => $data['content'][$language['id']],
                     ]);
+                } else {
+                    $this->model->language($language['id'])->create([
+                        'language_id' => $language['id'],
+                        'name' => $data['name'][$language['id']],
+                        'content' => $data['content'][$language['id']],
+                    ]);
                 }
             }
 

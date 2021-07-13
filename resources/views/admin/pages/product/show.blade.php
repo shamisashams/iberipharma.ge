@@ -19,7 +19,11 @@
                 </div>
             </div>
             <div class="col s12 m5 quick-action-btns display-flex justify-content-end align-items-center pt-2">
-                <a href="{{locale_route('product.edit',$product->id)}}" class="btn-small indigo">
+                <a class="btn-floating btn-large primary-text gradient-shadow compose-email-trigger "
+                   href="{{locale_route('product.create')}}">
+                    <i class="material-icons">add</i>
+                </a>
+                <a href="{{locale_route('product.edit',$product->id)}}" class="btn-small indigo ml-3">
                     @lang('admin.edit')
                 </a>
                 <a class="btn-small -settings waves-effect -light -btn right ml-3"
