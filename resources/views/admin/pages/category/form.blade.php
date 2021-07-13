@@ -106,28 +106,28 @@
 {{--                        </small>--}}
 {{--                        @enderror--}}
 {{--                    </div>--}}
-                    <div class="form-group">
-                        <div class="input-images"></div>
-                        @if ($errors->has('images'))
-                            <span class="help-block">
-                                            {{ $errors->first('images') }}
-                                        </span>
-                        @endif
-                    </div>
-                    <div>
-                        <h5>@lang('admin.pdf')</h5>
-                        <div class="input-field">
-                            <input
-                                    type="file"
-                                    id="input-file-events"
-                                    class="dropify"
-                                    name="pdf"
-                                    @if($category->pdf)
-                                    data-default-file="{{asset($category->pdf->path. '/'. $category->pdf->title)}}"
-                                    @endif
-                            />
-                        </div>
-                    </div>
+{{--                    <div class="form-group">--}}
+{{--                        <div class="input-images"></div>--}}
+{{--                        @if ($errors->has('images'))--}}
+{{--                            <span class="help-block">--}}
+{{--                                            {{ $errors->first('images') }}--}}
+{{--                                        </span>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                    <div>--}}
+{{--                        <h5>@lang('admin.pdf')</h5>--}}
+{{--                        <div class="input-field">--}}
+{{--                            <input--}}
+{{--                                    type="file"--}}
+{{--                                    id="input-file-events"--}}
+{{--                                    class="dropify"--}}
+{{--                                    name="pdf"--}}
+{{--                                    @if($category->pdf)--}}
+{{--                                    data-default-file="{{asset($category->pdf->path. '/'. $category->pdf->title)}}"--}}
+{{--                                    @endif--}}
+{{--                            />--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div class="row">
                         <div class="input-field col s12">
                             {!! Form::submit($category->slug ? __('admin.update') : __('admin.create'),['class' => 'btn cyan waves-effect waves-light right']) !!}

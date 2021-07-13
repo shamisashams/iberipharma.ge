@@ -8,8 +8,8 @@
 @section('wrapper')
     <section class="main_showcase blue_bg">
         <div class="wrapper flex">
-            <div class="path">Home - About Us - Products</div>
-            <div class="page_name">Products</div>
+            <div class="path">@lang('client.home') -  @lang('client.products')</div>
+            <div class="page_name">@lang('client.products')</div>
         </div>
     </section>
 

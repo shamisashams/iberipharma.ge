@@ -54,6 +54,13 @@
                                             <tr>
                                                 <td>{{$blog->id}}</td>
                                                 <td>
+                                                    @if($blog->status)
+                                                        <span class="green-text">@lang('admin.active')</span>
+                                                    @else
+                                                        <span class="red-text">@lang('admin.not_active')</span>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     @if($blog->feature)
                                                         {{$blog->feature->language(app()->getLocale())? $blog->feature->language(app()->getLocale())->title: $blog->feature->language()->title}}
                                                     @endif

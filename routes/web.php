@@ -31,7 +31,7 @@ Route::prefix('{locale?}')
             Route::get('login', [LoginController::class, 'loginView'])->name('loginView');
             Route::post('login', [LoginController::class, 'login'])->name('login');
 
-            Route::redirect('', 'admin/language');
+            Route::redirect('', 'admin/product');
 
             Route::middleware('auth')->group(function () {
                 Route::get('logout', [LoginController::class, 'logout'])->name('logout');

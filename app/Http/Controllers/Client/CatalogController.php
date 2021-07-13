@@ -22,7 +22,7 @@ class CatalogController extends Controller
         if ($request->get('category')) {
             $products = $products->where('category_id',$request->get('category'));
         }
-        $categories = Category::where('status', true)->get();
+        $categories = Category::where('status', true)->orderBy('position','ASC')->get();
 
 
         return view('client.pages.catalog.index', [

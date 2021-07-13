@@ -54,6 +54,13 @@
                                             <tr>
                                                 <td>{{$wellness->id}}</td>
                                                 <td>
+                                                    @if($wellness->status)
+                                                        <span class="green-text">@lang('admin.active')</span>
+                                                    @else
+                                                        <span class="red-text">@lang('admin.not_active')</span>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     @if($wellness->feature)
                                                         {{$wellness->feature->language(app()->getLocale())? $wellness->feature->language(app()->getLocale())->title: $wellness->feature->language()->title}}
                                                     @endif
