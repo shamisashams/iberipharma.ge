@@ -72,6 +72,10 @@
                     <img src="/client/img/icons/contact/3.png" alt="" />
                     <div class="roboto">{{$gemail->language(app()->getLocale())? $gemail->language(app()->getLocale())->value: $gemail->language()->value}}</div>
                 </a>
+                <a href="" class="flex address">
+                    <img src="/client/img/icons/contact/3.png" alt="" />
+                    <div class="roboto">{{$gemail2->language(app()->getLocale())? $gemail2->language(app()->getLocale())->value: $gemail2->language()->value}}</div>
+                </a>
             </div>
             <div class="form">
                 <div class="grid">

@@ -117,28 +117,28 @@
                                     </small>
                                     @enderror
                                 </div>
-                                <div class="input-field col s12">
-                                    {!! Form::number('price',$product->price,['class' => 'validate '. $errors->has('price') ? '' : 'valid']) !!}
-                                    {!! Form::label('price',__('admin.price')) !!}
-                                    @error('price')
-                                    <small class="errorTxt4">
-                                        <div class="error">
-                                            {{$message}}
-                                        </div>
-                                    </small>
-                                    @enderror
-                                </div>
-                                <div class="input-field col s12">
-                                    {!! Form::number('sale',$product->sale,['class' => 'validate '. $errors->has('sale') ? '' : 'valid']) !!}
-                                    {!! Form::label('sale',__('admin.sale')) !!}
-                                    @error('sale')
-                                    <small class="errorTxt4">
-                                        <div class="error">
-                                            {{$message}}
-                                        </div>
-                                    </small>
-                                    @enderror
-                                </div>
+{{--                                <div class="input-field col s12">--}}
+{{--                                    {!! Form::number('price',$product->price,['class' => 'validate '. $errors->has('price') ? '' : 'valid']) !!}--}}
+{{--                                    {!! Form::label('price',__('admin.price')) !!}--}}
+{{--                                    @error('price')--}}
+{{--                                    <small class="errorTxt4">--}}
+{{--                                        <div class="error">--}}
+{{--                                            {{$message}}--}}
+{{--                                        </div>--}}
+{{--                                    </small>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
+{{--                                <div class="input-field col s12">--}}
+{{--                                    {!! Form::number('sale',$product->sale,['class' => 'validate '. $errors->has('sale') ? '' : 'valid']) !!}--}}
+{{--                                    {!! Form::label('sale',__('admin.sale')) !!}--}}
+{{--                                    @error('sale')--}}
+{{--                                    <small class="errorTxt4">--}}
+{{--                                        <div class="error">--}}
+{{--                                            {{$message}}--}}
+{{--                                        </div>--}}
+{{--                                    </small>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
                                 <div class="col s12 mb-2">
                                     <label>
                                         <input type="checkbox" name="status"

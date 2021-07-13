@@ -42,8 +42,8 @@ class ProductRequest extends FormRequest
 
         $data = [
             'slug' => [$isRequired, 'alpha_dash', Rule::unique('products', 'slug')->ignore($this->product)],
-            'price' => $isRequired.'|numeric',
-            'sale' => 'nullable|numeric'
+//            'price' => $isRequired.'|numeric',
+//            'sale' => 'nullable|numeric'
         ];
 
         if ($this->method !== 'GET') {
