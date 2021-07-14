@@ -2,6 +2,8 @@
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
+var_dump($_SERVER['REMOTE_ADDR']);
+exit();
 
 define('LARAVEL_START', microtime(true));
 
