@@ -2,7 +2,8 @@
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
-var_dump($_SERVER['REMOTE_ADDR']);
+echo 'Coming soon...';
+
 exit();
 
 define('LARAVEL_START', microtime(true));
