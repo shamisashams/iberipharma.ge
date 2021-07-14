@@ -33,6 +33,9 @@
                         <div class="roboto medium pos">
                             {!! $member->language(app()->getLocale())? $member->language(app()->getLocale())->position: $member->language()->position !!}
                         </div>
+                        <div class="roboto medium pos" style="margin-top: 2px">
+                            {!! $member->language(app()->getLocale())? $member->language(app()->getLocale())->contact: $member->language()->contact !!}
+                        </div>
                     </div>
                 </div>
             @endforeach

@@ -44,6 +44,17 @@
                                     </small>
                                     @enderror
                                 </div>
+                                <div class="input-field ">
+                                    {!! Form::text('contact['.$key.']',$member->language($language->id) !== null ? $member->language($language->id)->contact:  '',['class' => 'validate '. $errors->has('contact.*') ? '' : 'valid']) !!}
+                                    {!! Form::label('contact['.$key.']',__('admin.contact')) !!}
+                                    @error('contact.*')
+                                    <small class="errorTxt4">
+                                        <div class="error">
+                                            {{$message}}
+                                        </div>
+                                    </small>
+                                    @enderror
+                                </div>
                             </div>
                         @endforeach
                     </div>

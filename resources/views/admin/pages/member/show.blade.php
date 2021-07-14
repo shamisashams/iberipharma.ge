@@ -80,6 +80,10 @@
                                         <td>{{$language->position}}</td>
                                     </tr>
                                     <tr>
+                                        <td>@lang('admin.contact'):</td>
+                                        <td>{{$language->contact}}</td>
+                                    </tr>
+                                    <tr>
                                         <td>@lang('admin.created_at')</td>
                                         <td>{{\Carbon\Carbon::parse($language->created_at)}}</td>
                                     </tr>

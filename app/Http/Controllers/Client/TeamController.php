@@ -16,7 +16,7 @@ class TeamController extends Controller
      */
     public function index(Request $request, string $locale)
     {
-        $members = Member::get();
+        $members = Member::orderBy('created_at','DESC')->get();
 
         return view('client.pages.member.index', [
             'members' => $members,

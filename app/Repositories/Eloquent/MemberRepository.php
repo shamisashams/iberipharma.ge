@@ -57,6 +57,7 @@ class MemberRepository extends BaseRepository implements MemberRepositoryInterfa
                     'language_id' => $language['id'],
                     'name' => $attributes['name'][$language['id']],
                     'position' => $attributes['position'][$language['id']],
+                    'contact' => $attributes['contact'][$language['id']],
                 ];
             }
             $this->model->languages()->createMany($memberLanguages);
@@ -90,12 +91,14 @@ class MemberRepository extends BaseRepository implements MemberRepositoryInterfa
                     $this->model->language($language['id'])->update([
                         'name' => $data['name'][$language['id']],
                         'position' => $data['position'][$language['id']],
+                        'contact' => $data['contact'][$language['id']],
                     ]);
                 } else {
                     $this->model->language($language['id'])->create([
                         'language_id' => $language['id'],
                         'name' => $data['name'][$language['id']],
                         'position' => $data['position'][$language['id']],
+                        'contact' => $data['contact'][$language['id']],
                     ]);
                 }
             }

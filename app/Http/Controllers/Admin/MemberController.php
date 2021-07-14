@@ -82,6 +82,7 @@ class MemberController extends Controller
         $data = [
             'name' => $request['name'],
             'position' => $request['position'],
+            'contact' => $request['contact'],
             'languages' => $this->activeLanguages(),
         ];
 
@@ -152,6 +153,7 @@ class MemberController extends Controller
         $data = [
             'name' => $request['name'],
             'position' => $request['position'],
+            'contact' => $request['contact'],
             'languages' => $this->activeLanguages(),
         ];
 

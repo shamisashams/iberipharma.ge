@@ -26,6 +26,7 @@ class MemberLanguage extends Model
         'member_id',
         'language_id',
         'name',
-        'position'
+        'position',
+        'contact'
     ];
 }
