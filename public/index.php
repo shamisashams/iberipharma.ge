@@ -2,9 +2,16 @@
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
-echo 'Coming soon...';
 
-exit();
+$ips = [
+    '149.3.23.245',
+    '85.117.62.171'
+];
+
+if (in_array($_SERVER['REMOTE_ADDR'], $ips)) {
+    echo 'Coming soon...';
+    exit();
+}
 
 define('LARAVEL_START', microtime(true));
 
