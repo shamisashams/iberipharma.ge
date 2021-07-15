@@ -8,7 +8,7 @@ $ips = [
     '85.117.62.171'
 ];
 
-if (in_array($_SERVER['REMOTE_ADDR'], $ips)) {
+if (!in_array($_SERVER['REMOTE_ADDR'], $ips)) {
     echo 'Coming soon...';
     exit();
 }
