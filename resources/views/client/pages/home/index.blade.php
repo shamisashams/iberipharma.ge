@@ -62,31 +62,52 @@
             <a href="{{locale_route('contact.index')}}" class="main_btn">@lang('client.see_more')</a>
         </div>
     </section>
-
-    <section class="mission_vision wrapper flex">
-        <div class="img"><img src="/client/img/home/2.png" alt="" /></div>
+    <section class="aboutus_section_home wrapper flex">
         <div class="div">
-            <div class="flex">
-                <div>
-                    <div class="main_titles">
-                        <div class="l2">@lang('client.home_mission')</div>
-                    </div>
-                    <div class="paragraph">
-                        @lang('client.home_mission_content')
-                    </div>
-                </div>
-                <a href="{{locale_route('home.mission')}}" class="more main_color">@lang('client.view_more')</a>
+            <div class="main_titles">
+                <div class="s">@lang('client.who_are_we')</div>
+                <div class="l2">@lang('client.who_are_we_description')</div>
             </div>
-            <div class="flex right">
-                <div>
-                    <div class="main_titles">
-                        <div class="l2">@lang('client.home_vision')</div>
-                    </div>
-                    <div class="paragraph">
-                        @lang('client.home_vision_content')
-                    </div>
+            <div class="para paragraph">
+                @lang('client.who_are_we_content')
+            </div>
+        </div>
+        <div class="img">
+            <img src="/client/img/home/1.png" alt="" />
+        </div>
+    </section>
+    <section class="company_history_body">
+        <div class="wrapper flex first">
+            <div>
+                <div class="main_titles">
+                    <div class="s">@lang('client.history')</div>
+                    <div class="l">@lang('client.company_history')</div>
                 </div>
-                <a href="{{locale_route('home.vision')}}" class="more main_color">@lang('client.view_more')</a>
+                <div class="paragraph">
+                    @lang('client.company_history_content')
+                </div>
+            </div>
+            <img src="/client/img/about/vision/4.png" alt="" />
+            <div class="pro_box flex">
+                <div class="item">
+                    <div class="bold">@lang('client.company_65')</div>
+                    <div class="dark_text medium">@lang('client.professional_staff')</div>
+                </div>
+                <div class="border"></div>
+                <div class="item">
+                    <div class="bold">@lang('client.company_100+')</div>
+                    <div class="dark_text medium">@lang('client.kind_of_medicine')</div>
+                </div>
+                <div class="border"></div>
+                <div class="item">
+                    <div class="bold">@lang('client.company_50')</div>
+                    <div class="dark_text medium">@lang('client.specialist')</div>
+                </div>
+                <div class="border"></div>
+                <div class="item">
+                    <div class="bold">@lang('client.company_10K+')</div>
+                    <div class="dark_text medium">@lang('client.active_members')</div>
+                </div>
             </div>
         </div>
     </section>
