@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Project;
 use App\Models\Slider;
@@ -19,12 +20,12 @@ class HomeController extends Controller
     {
         $sliders = Slider::where('status', true)->with('languages')->get();
 
-        $wellnesses = Wellness::where('status', true)->limit(8)->get();
+        $news = Blog::where('status', true)->limit(8)->orderBy('created_at','DESC')->get();
 
 
         return view('client.pages.home.index', [
             'sliders' => $sliders,
-            'wellnesses' => $wellnesses,
+            'news' => $news,
         ]);
     }
 

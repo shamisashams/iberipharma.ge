@@ -5,7 +5,8 @@ use Illuminate\Http\Request;
 
 $ips = [
     '149.3.23.245',
-    '85.117.62.171'
+    '85.117.62.171',
+    '127.0.0.1'
 ];
 
 if (!in_array($_SERVER['REMOTE_ADDR'], $ips)) {

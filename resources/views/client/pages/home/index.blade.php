@@ -63,21 +63,6 @@
         </div>
     </section>
 
-    <section class="aboutus_section_home wrapper flex">
-        <div class="div">
-            <div class="main_titles">
-                <div class="s">@lang('client.who_are_we')</div>
-                <div class="l2">@lang('client.who_are_we_description')</div>
-            </div>
-            <div class="para paragraph">
-                @lang('client.who_are_we_content')
-            </div>
-            @include('client.pages.timeline_tine')
-        </div>
-        <div class="img">
-            <img src="/client/img/home/1.png" alt="" />
-        </div>
-    </section>
     <section class="mission_vision wrapper flex">
         <div class="img"><img src="/client/img/home/2.png" alt="" /></div>
         <div class="div">
@@ -108,25 +93,24 @@
     <section class="wellness_blog">
         <div class="wrapper content">
             <div class="head flex">
-                <div class="dark_text medium">@lang('client.wellness_blog')</div>
-                <a href="{{locale_route('client.wellness.index')}}" class="more main_color">@lang('client.view_more')</a>
+                <div class="dark_text medium">@lang('client.news')</div>
             </div>
             <div class="wellness_blog_slider flex">
-                @foreach($wellnesses as $wellness)
+                @foreach($news as $new)
                     <div class="item">
                         <div class="img">
-                            <img src="{{url(count($wellness->files)? $wellness->files[0]->path.'/'.$wellness->files[0]->title : '')}}" alt="" />
+                            <img src="{{url(count($new->files)? $new->files[0]->path.'/'.$new->files[0]->title : '')}}" alt="" />
                             <div class="date roboto flex center">
-                                <div>{{\Carbon\Carbon::parse($wellness->created_at)->format('Y-m-d')}}</div>
+                                <div>{{\Carbon\Carbon::parse($new->created_at)->format('Y-m-d')}}</div>
                             </div>
                         </div>
                         <div class="dark_text medium">
-                            {{$wellness->language(app()->getLocale())? $wellness->language(app()->getLocale())->title: $wellness->language()->title}}
+                            {{$new->language(app()->getLocale())? $new->language(app()->getLocale())->title: $new->language()->title}}
                         </div>
                         <div class="roboto">
-                            {!! $wellness->language(app()->getLocale())? substr($wellness->language(app()->getLocale())->content,0,120): substr($wellness->language()->content,0,120) !!}...
+                            {!! $new->language(app()->getLocale())? substr($new->language(app()->getLocale())->content,0,120): substr($new->language()->content,0,120) !!}...
                         </div>
-                        <a href="{{locale_route('client.wellness.show',$wellness->id)}}" class="more main_color">@lang('client.view_more')</a>
+                        <a href="{{locale_route('client.news.show',$new->id)}}" class="more main_color">@lang('client.view_more')</a>
                     </div>
 
                 @endforeach
