@@ -71,7 +71,7 @@ class Product extends Model
             'title' => [
                 'hasParam' => true,
                 'scopeMethod' => 'titleLanguage'
-            ]
+            ],
         ];
     }
 
@@ -97,6 +97,7 @@ class Product extends Model
 
     /**
      *  Return if has answer to product
+     *
      * @param array|string $answers
      *
      * @return bool
@@ -143,7 +144,7 @@ class Product extends Model
     public function scopeCategoryLanguage($query, $title)
     {
         return $query->whereHas('category', function ($query) use ($title) {
-            return $query->titleLanguage($title);
+            return $query->where('title', 'like', '%' . $title . '%');;
         });
     }
 

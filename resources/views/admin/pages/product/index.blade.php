@@ -23,7 +23,7 @@
                                     <thead>
                                     <tr>
                                         <th>@lang('admin.id')</th>
-                                        <th>@lang('admin.city')</th>
+                                        <th>@lang('admin.category')</th>
                                         <th>@lang('admin.status')</th>
                                         <th>@lang('admin.title')</th>
                                         <th>@lang('admin.actions')</th>
