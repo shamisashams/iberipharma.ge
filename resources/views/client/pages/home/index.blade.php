@@ -9,7 +9,7 @@
         <section class="hero_section" id="hero_slider">
             @foreach($sliders as $key =>$slider)
                 <div class="hero_slide transition {{$key === 0 ? 'current' : ''}} {{!isset($sliders[$key+1]) ? 'last' : ''}}"
-                     style="{{$slider->file ? 'background: url('. $slider->file->path.'/'.$slider->file->title.')': 'background: url()'}}"
+                     style="{{$slider->file ? 'background: url('. $slider->file->path.'/'.$slider->file->title.')': 'background: url()'}} "
                 >
                     <div class="slide_content wrapper">
                         <div class="top transition">
