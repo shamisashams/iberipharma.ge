@@ -79,18 +79,21 @@
                                         <div class="input-field ">
                                             <h5>{{__('admin.short_description')}}</h5>
                                             <br>
-                                            <textarea id="description" class="ckeditor form-control"
-                                                      name="description[{{$key}}]">
-                                                    {!! $product->language($language->id) !== null ? $product->language($language->id)->description:  '' !!}
-                                                </textarea>
+
+                                            {!! Form::textarea('description['.$key.']',$product->language($language->id) !== null ? $product->language($language->id)->description:  '',['class' => 'ckeditor form-control validate '. ($errors->has('description.*') ? '' : 'valid')]) !!}
+{{--                                            <textarea id="description" class="ckeditor form-control"--}}
+{{--                                                      name="description[{{$key}}]">--}}
+{{--                                                    {!! $product->language($language->id) !== null ? $product->language($language->id)->description:  '' !!}--}}
+{{--                                                </textarea>--}}
                                         </div>
                                         <div class="input-field ">
                                             <h5>{{__('admin.description')}}</h5>
                                             <br>
-                                            <textarea id="content" class="ckeditor form-control"
-                                                      name="content[{{$key}}]">
-                                                    {!! $product->language($language->id) !== null ? $product->language($language->id)->content:  '' !!}
-                                                </textarea>
+                                            {!! Form::textarea('content['.$key.']',$product->language($language->id) !== null ? $product->language($language->id)->content:  '',['class' => 'ckeditor form-control validate '. ($errors->has('content.*') ? '' : 'valid')]) !!}
+{{--                                            <textarea id="content" class="ckeditor form-control"--}}
+{{--                                                      name="content[{{$key}}]">--}}
+{{--                                                    {!! $product->language($language->id) !== null ? $product->language($language->id)->content:  '' !!}--}}
+{{--                                                </textarea>--}}
                                         </div>
                                     </div>
                                 @endforeach
@@ -179,7 +182,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="input-field col s12">
-                                                    <select class="select2-customize-result browser-default"
+                                                    <select class="select2 browser-default"
                                                             multiple="multiple"
                                                             id="select2-customize-result-{{$feature->id}}"
                                                             name="feature[{{$feature->id}}][]">
@@ -214,7 +217,7 @@
                                                 </label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <select class="select2-customize-result browser-default"
+                                                <select class="select2 browser-default"
                                                         multiple="multiple"
                                                         id="select2-customize-result-{{$feature->id}}"
                                                         name="feature[{{$feature->id}}][]">
