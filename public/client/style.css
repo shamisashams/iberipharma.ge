@@ -1976,7 +1976,7 @@ img {
     }
     .hero_section .hero_slide .slide_content .main {
         font-size: 31px;
-        line-height: 55px;
+       line-height: 29px;
     }
     .hero_section .arrow {
         top: auto;
@@ -2013,10 +2013,6 @@ img {
     }
 }
 @media screen and (max-width: 450px) {
-    .hero_section .hero_slide .slide_content .main {
-        font-size: 38px;
-        line-height: 57px;
-    }
     .hero_section {
         height: 300px;
     }
