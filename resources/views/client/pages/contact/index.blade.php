@@ -18,7 +18,7 @@
     </section>
     {!! Form::open(['url' => locale_route('contact.index'),'method' =>'post',]) !!}
 
-    <section class="contact_section flex wrapper">
+    <!-- <section class="contact_section flex wrapper">
         <div class="left">
             <div class="all_titles">
                 <div class="s">@lang('client.contact_with_us')</div>
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-    </section>
+    </section> -->
     <section class="contact_body">
         <div class="map_showcase">
             <iframe
