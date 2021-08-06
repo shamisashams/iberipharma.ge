@@ -1998,6 +1998,10 @@ img {
     .showcase_bottom_box {
         margin: 40px auto 60px auto;
     }
+    .showcase_bottom_box .item .para {
+        min-height: auto;
+        margin-bottom: 20px;
+    }
     .aboutus_section_home .para {
         margin-bottom: 60px;
     }
