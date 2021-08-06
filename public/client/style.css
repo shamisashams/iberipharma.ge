@@ -681,6 +681,7 @@ img {
     margin-bottom: 100px;
     position: relative;
     padding: 50px 0 122px 0;
+    overflow: hidden;
 }
 .wellness_blog .head {
     margin-bottom: 30px;
@@ -1779,6 +1780,7 @@ img {
         padding-top: 20px;
         border-bottom-left-radius: 10px;
         transition: 0.2s;
+        transform-origin: right;
     }
     .header_content .navbar.opened {
         right: -5%;
@@ -1966,6 +1968,13 @@ img {
     }
 }
 @media screen and (max-width: 800px) {
+    .hero_section {
+        height: 400px;
+    }
+    .hero_section .arrow {
+        top: auto;
+        bottom: 30px;
+    }
     .showcase_bottom_box {
         flex-direction: column-reverse;
         align-items: center;
@@ -2003,9 +2012,6 @@ img {
     .hero_section .hero_slide .slide_content .main {
         font-size: 38px;
         line-height: 57px;
-    }
-    .hero_section .arrow {
-        top: 60%;
     }
 }
 

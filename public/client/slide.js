@@ -29,6 +29,7 @@ $(".wellness_blog_slider").slick({
         {
             breakpoint: 1150,
             settings: {
+                centerMode: true,
                 slidesToShow: 3,
             },
         },
@@ -41,7 +42,6 @@ $(".wellness_blog_slider").slick({
         {
             breakpoint: 550,
             settings: {
-                centerMode: true,
                 slidesToShow: 1,
             },
         },
