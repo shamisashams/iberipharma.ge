@@ -1971,6 +1971,13 @@ img {
     .hero_section {
         height: 400px;
     }
+    .hero_section .hero_slide .slide_content {
+        margin-top: 100px;
+    }
+    .hero_section .hero_slide .slide_content .main {
+        font-size: 31px;
+        line-height: 55px;
+    }
     .hero_section .arrow {
         top: auto;
         bottom: 30px;
@@ -2000,18 +2007,14 @@ img {
     .mission_vision {
         margin-bottom: 60px;
     }
-    .hero_section .hero_slide .slide_content {
-        margin-top: 150px;
-    }
-    .hero_section .hero_slide .slide_content .main {
-        font-size: 48px;
-        line-height: 64px;
-    }
 }
 @media screen and (max-width: 450px) {
     .hero_section .hero_slide .slide_content .main {
         font-size: 38px;
         line-height: 57px;
+    }
+    .hero_section {
+        height: 300px;
     }
 }
 
