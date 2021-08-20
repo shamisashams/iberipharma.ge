@@ -157,7 +157,8 @@
                                             id="">
                                         <optgroup>
                                             @foreach($categories as $key => $category)
-                                                <option value="{{$category->id}}" {{$key === 0 ? 'selected' : ''}}>
+                                                <option
+                                                    value="{{$category->id}}" {{$key === 0 ||(!$product->category_id?old('category_id') == $category->id:"") || $category->id == $product->category_id ? 'selected' : ''}}>
                                                     {{$category->language(app()->getLocale())? $category->language(app()->getLocale())->title: $category->language()->title}}
                                                 </option>
                                             @endforeach
