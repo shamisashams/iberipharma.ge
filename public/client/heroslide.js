@@ -45,4 +45,4 @@ const interval = setInterval(function () {
         slideNumber = slideNumber + 1;
     }
     heroSlide[slideNumber].classList.add("current");
-}, 3000);
+}, 6000);

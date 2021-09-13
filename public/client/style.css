@@ -700,11 +700,14 @@ img {
     overflow: hidden;
     border-radius: 10px;
     margin-bottom: 15px;
+    width: 300px;
+    height: 200px;
 }
 .wellness_blog .img img {
     width: 100%;
     height: 100%;
     display: flex;
+    object-fit: cover;
 }
 .wellness_blog .img::after {
     width: 100%;
