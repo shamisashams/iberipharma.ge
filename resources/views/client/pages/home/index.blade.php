@@ -88,7 +88,7 @@
                 </div>
             </div>
             <img src="/client/img/about/vision/4.png" alt="" />
-            <div class="pro_box flex">
+            <!-- <div class="pro_box flex">
                 <div class="item">
                     <div class="bold">@lang('client.company_65')</div>
                     <div class="dark_text medium">@lang('client.professional_staff')</div>
@@ -108,7 +108,7 @@
                     <div class="bold">@lang('client.company_10K+')</div>
                     <div class="dark_text medium">@lang('client.active_members')</div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <section class="wellness_blog">

@@ -10,7 +10,6 @@
                             || Request::route()->getName()  === 'home.company'
                             || Request::route()->getName()  === 'home.vision'
                             || Request::route()->getName()  === 'home.value'
-                            || Request::route()->getName()  === 'client.member.index'
                             )? 'on' : ''}}
                     ||
 "
@@ -36,7 +35,6 @@
                     <a href="{{locale_route('home.vision')}}">@lang('client.vision')</a>
 {{--                    <a href="{{locale_route('home.company')}}">@lang('client.company_history')</a>--}}
                     <a href="{{locale_route('home.value')}}">@lang('client.values')</a>
-                    <a href="{{locale_route('client.member.index')}}">@lang('client.team')</a>
                 </div>
             </div>
             <a href="{{locale_route('client.product.index')}}"

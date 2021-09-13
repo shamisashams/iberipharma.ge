@@ -58,7 +58,7 @@
                     <div class="bold">@lang('client.Do_You_Have_Questions_?')</div>
                 </div>
                 <div class="paragraph">
-                    @lang('client.contact_description')
+                    <!--@lang('client.contact_description')-->
                 </div>
                 <a href="" class="flex address">
                     <img src="/client/img/icons/contact/1.png" alt="" />

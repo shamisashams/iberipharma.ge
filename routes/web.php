@@ -117,7 +117,7 @@ Route::prefix('{locale?}')
         Route::get('wellness',[\App\Http\Controllers\Client\WellnessController::class,'index'])->name('client.wellness.index');
         Route::get('wellness/{wellness}/show',[\App\Http\Controllers\Client\WellnessController::class,'show'])->name('client.wellness.show');
 
-        Route::get('members',[\App\Http\Controllers\Client\TeamController::class,'index'])->name('client.member.index');
+        // Route::get('members',[\App\Http\Controllers\Client\TeamController::class,'index'])->name('client.member.index');
 
 
     });
