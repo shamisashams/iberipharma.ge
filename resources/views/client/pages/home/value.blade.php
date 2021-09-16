@@ -28,7 +28,7 @@
             </div>
             <img src="/client/img/about/value/3.png" alt="" />
         </div>
-        <div class="flex">
+        <!-- <div class="flex">
             <img src="/client/img/about/value/2.png" alt="" />
             <div>
                 <div class="main_titles">
@@ -41,6 +41,6 @@
                     @lang('client.value_2_content')
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
 @endsection
