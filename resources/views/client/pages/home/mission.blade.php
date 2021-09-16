@@ -34,8 +34,6 @@
             <div>
                 <div class="main_titles">
                     <div class="l">
-                        @lang('client.mission_2_description')
-
                     </div>
                 </div>
                 <div class="paragraph">

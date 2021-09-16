@@ -8,7 +8,6 @@
                class="nav_link transition {{Request::route()->getName()  === 'home.index'? 'on' : ''}}">@lang('client.home')</a>
             <div class="nav_link transition {{(Request::route()->getName()  === 'home.mission'
                             || Request::route()->getName()  === 'home.company'
-                            || Request::route()->getName()  === 'home.vision'
                             || Request::route()->getName()  === 'home.value'
                             )? 'on' : ''}}
                     ||
@@ -32,7 +31,6 @@
                 </svg>
                 <div class="dropdown transition">
                     <a href="{{locale_route('home.mission')}}">@lang('client.mission')</a>
-                    <a href="{{locale_route('home.vision')}}">@lang('client.vision')</a>
 {{--                    <a href="{{locale_route('home.company')}}">@lang('client.company_history')</a>--}}
                     <a href="{{locale_route('home.value')}}">@lang('client.values')</a>
                 </div>

@@ -94,7 +94,7 @@ Route::prefix('{locale?}')
 
         Route::get('', [HomeController::class, 'index'])->name('home.index');
 
-        Route::get('vision', [HomeController::class, 'vision'])->name('home.vision');
+        // Route::get('vision', [HomeController::class, 'vision'])->name('home.vision');
         Route::get('values', [HomeController::class, 'value'])->name('home.value');
 
         Route::get('mission', [HomeController::class, 'mission'])->name('home.mission');
