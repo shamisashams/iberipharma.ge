@@ -74,7 +74,7 @@
             </div>
         </div>
         <div class="img">
-            <img src="/client/img/home/1.png" alt="" />
+            <img src="/client/img/home/4.jpg" alt="" />
         </div>
     </section>
     <section class="company_history_body">
@@ -88,7 +88,7 @@
                     @lang('client.company_history_content')
                 </div>
             </div>
-            <img src="/client/img/about/vision/4.png" alt="" />
+            <img src="/client/img/about/vision/5.jpg" alt="" />
             <!-- <div class="pro_box flex">
                 <div class="item">
                     <div class="bold">@lang('client.company_65')</div>

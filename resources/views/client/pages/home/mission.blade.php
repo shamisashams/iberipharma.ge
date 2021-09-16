@@ -14,7 +14,7 @@
 
     <section class="mission_body wrapper">
         <div class="flex">
-            <img src="/client/img/about/mission/1.png" alt="" />
+            <img src="/client/img/about/mission/3.jpg" alt="" />
             <div>
                 <div class="main_titles overflow">
                     <div class="s">@lang('client.mission_1_title')</div>
