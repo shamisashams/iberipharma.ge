@@ -26,7 +26,7 @@
 
                 </div>
             </div>
-            <img src="/client/img/about/value/1.png" alt="" />
+            <img src="/client/img/about/value/3.png" alt="" />
         </div>
         <div class="flex">
             <img src="/client/img/about/value/2.png" alt="" />
