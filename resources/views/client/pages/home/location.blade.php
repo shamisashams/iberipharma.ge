@@ -13,7 +13,7 @@
     </section>
     <section class="contact_body locations wrapper">
         <div class="main_titles">
-            <div class="s">@lang('client.locations')</div>
+            <!-- <div class="s">@lang('client.locations')</div> -->
             <div class="l">@lang('client.locations_description')</div>
         </div>
         <div class="cities">
@@ -30,9 +30,9 @@
             <button class="city_picks">@lang('client.gurjaani')</button>
         </div>
         <div class="each_city_content active">
-            <div class="paragraph">
+            <!-- <div class="paragraph">
                 @lang('client.locations_content')
-            </div>
+            </div> -->
             <div class="location_grid">
                 <div class="flex">
                     <svg

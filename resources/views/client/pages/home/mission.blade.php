@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex">
+        <!-- <div class="flex">
             <div>
                 <div class="main_titles">
                     <div class="l">
@@ -44,6 +44,6 @@
                 </div>
             </div>
             <img src="/client/img/about/mission/2.png" alt="" />
-        </div>
+        </div> -->
     </section>
 @endsection
