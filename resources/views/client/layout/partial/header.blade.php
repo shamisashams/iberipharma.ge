@@ -32,7 +32,7 @@
                 <div class="dropdown transition">
                     <a href="{{locale_route('home.mission')}}">@lang('client.mission')</a>
 {{--                    <a href="{{locale_route('home.company')}}">@lang('client.company_history')</a>--}}
-                    <a href="{{locale_route('home.value')}}">@lang('client.values')</a>
+                    <!-- <a href="{{locale_route('home.value')}}">@lang('client.values')</a> -->
                 </div>
             </div>
             <a href="{{locale_route('client.product.index')}}"
