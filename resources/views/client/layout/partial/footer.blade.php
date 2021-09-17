@@ -17,7 +17,7 @@
                     <img src="/client/img/icons/sm/2.png" alt="" />
                 </a>
                 <a target="_blank" href="{{$gtiktok->language(app()->getLocale())? $gtiktok->language(app()->getLocale())->value: $gtiktok->language()->value}}">
-                    <img style="width: 20px" src="/client/img/icons/sm/3.png" alt="" />
+                    <img style="width: 25px" src="/client/img/icons/sm/3.png" alt="" />
                 </a>
             </div>
         </div>
