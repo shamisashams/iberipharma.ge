@@ -87,7 +87,7 @@
                                     </tr>
                                     <tr>
                                         <td>@lang('admin.content'):</td>
-                                        <td>{{$language->content}}</td>
+                                        <td>{!! $language->content !!}</td>
                                     </tr>
                                     <tr>
                                         <td>@lang('admin.created_at')</td>
