@@ -39,12 +39,14 @@ class LanguageComposer
         $gphone = Setting::where('key','phone')->first();
         $ginstagram = Setting::where('key','instagram')->first();
         $gfacebook = Setting::where('key','facebook')->first();
+        $gtiktok = Setting::where('key','tiktok')->first();
 
 
         $view->with('localizations', $this->languageItems())
             ->with('activeLanguage', $activeLanguage ? $activeLanguage->id : null)
             ->with('ginstagram',$ginstagram)
             ->with('gfacebook',$gfacebook)
+            ->with('gtiktok',$gtiktok)
             ->with('gemail',$gemail)
             ->with('gemail2',$gemail2)
             ->with('gaddress',$gaddress)

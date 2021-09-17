@@ -35,10 +35,12 @@
                                 <div class="input-field ">
                                     <h5>{{__('admin.content')}}</h5>
                                     <br>
-                                    <textarea id="content" class="ckeditor form-control"
-                                              name="content[{{$key}}]">
-                                                    {!! $wellness->language($language->id) !== null ? $wellness->language($language->id)->content:  '' !!}
-                                                </textarea>
+                                    {!! Form::textarea('content['.$key.']', $wellness->language($language->id) !== null ? $wellness->language($language->id)->content:  '',['class' => 'form-control','id'=>'content-'.$language->locale]) !!}
+
+{{--                                    <textarea id="content-{{$language->locale}}" class="form-control"--}}
+{{--                                              name="content[{{$key}}]">--}}
+{{--                                                    {!! $wellness->language($language->id) !== null ? $wellness->language($language->id)->content:  '' !!}--}}
+{{--                                                </textarea>--}}
                                 </div>
                             </div>
                         @endforeach
@@ -72,7 +74,6 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('../admin/ckeditor/ckeditor.js')}}"></script>
 
 @endsection
 
@@ -81,7 +82,21 @@
     <script src="{{asset('vendors/select2/select2.full.min.js')}}"></script>
 @endsection
 
+
+
 {{-- page script --}}
 @section('page-script')
     <script src="{{asset('js/scripts/form-select2.js')}}"></script>
+
+    <script src="{{asset('../admin/ckeditor/ckeditor.js')}}"></script>
+
+    <script>
+        @foreach($languages as $key => $language)
+        CKEDITOR.replace('content-{{$language->locale}}', {
+            filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token(),'type'=>'wellness'])}}",
+            filebrowserUploadMethod: 'form'
+        });
+        @endforeach
+    </script>
+
 @endsection

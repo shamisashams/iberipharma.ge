@@ -4,7 +4,7 @@
             <a href="{{locale_route('home.index')}}" class="logo">
                 <img src="/client/img/logo/1.png" alt="" />
             </a>
-            <div class="para">
+            <div class="para" style="color:#f9a11c">
                 @lang('client.site_description')
             </div>
 
@@ -16,16 +16,19 @@
                 <a target="_blank" href="{{$gfacebook->language(app()->getLocale())? $gfacebook->language(app()->getLocale())->value: $gfacebook->language()->value}}">
                     <img src="/client/img/icons/sm/2.png" alt="" />
                 </a>
+                <a target="_blank" href="{{$gtiktok->language(app()->getLocale())? $gtiktok->language(app()->getLocale())->value: $gtiktok->language()->value}}">
+                    <img style="width: 20px" src="/client/img/icons/sm/3.png" alt="" />
+                </a>
             </div>
         </div>
-        <div class="column">
-            <div class="dark_text medium">Customer Service</div>
-            <a href="#" class="dark_text4 medium">Returns & Exchange</a>
-            <a href="#" class="dark_text4 medium">FAQ</a>
-            <a href="#" class="dark_text4 medium">Payment Methods</a>
-            <a href="#" class="dark_text4 medium">Size Guides</a>
-            <a href="#" class="dark_text4 medium">Contact Us</a>
-        </div>
+{{--        <div class="column">--}}
+{{--            <div class="dark_text medium">Customer Service</div>--}}
+{{--            <a href="#" class="dark_text4 medium">Returns & Exchange</a>--}}
+{{--            <a href="#" class="dark_text4 medium">FAQ</a>--}}
+{{--            <a href="#" class="dark_text4 medium">Payment Methods</a>--}}
+{{--            <a href="#" class="dark_text4 medium">Size Guides</a>--}}
+{{--            <a href="#" class="dark_text4 medium">Contact Us</a>--}}
+{{--        </div>--}}
     </div>
     <div class="footer_bottom">
         <div class="wrapper">

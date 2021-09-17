@@ -14,26 +14,25 @@
 "
 
             >
-                @lang('client.about_us')
-                <svg
-                        class="transition"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="6.335"
-                        height="12.673"
-                        viewBox="0 0 6.335 12.673"
-                >
-                    <path
-                            id="Path_12"
-                            data-name="Path 12"
-                            d="M9.044,17.671a.905.905,0,0,0,.706-.335l4.372-5.431a.905.905,0,0,0,0-1.149L9.6,5.326A.906.906,0,0,0,8.2,6.484l4.046,4.851-3.91,4.851a.905.905,0,0,0,.706,1.484Z"
-                            transform="translate(-7.993 -4.999)"
-                    />
-                </svg>
-                <div class="dropdown transition">
+{{--                @lang('client.about_us')--}}
+{{--                <svg--}}
+{{--                        class="transition"--}}
+{{--                        xmlns="http://www.w3.org/2000/svg"--}}
+{{--                        width="6.335"--}}
+{{--                        height="12.673"--}}
+{{--                        viewBox="0 0 6.335 12.673"--}}
+{{--                >--}}
+{{--                    <path--}}
+{{--                            id="Path_12"--}}
+{{--                            data-name="Path 12"--}}
+{{--                            d="M9.044,17.671a.905.905,0,0,0,.706-.335l4.372-5.431a.905.905,0,0,0,0-1.149L9.6,5.326A.906.906,0,0,0,8.2,6.484l4.046,4.851-3.91,4.851a.905.905,0,0,0,.706,1.484Z"--}}
+{{--                            transform="translate(-7.993 -4.999)"--}}
+{{--                    />--}}
+{{--                </svg>--}}
+
                     <a href="{{locale_route('home.mission')}}">@lang('client.mission')</a>
 {{--                    <a href="{{locale_route('home.company')}}">@lang('client.company_history')</a>--}}
                     <!-- <a href="{{locale_route('home.value')}}">@lang('client.values')</a> -->
-                </div>
             </div>
             <a href="{{locale_route('client.product.index')}}"
                class="nav_link transition {{(Request::route()->getName()  === 'client.product.index' || Request::route()->getName()  === 'client.product.show')? 'on' : ''}}">@lang('client.products')</a>
