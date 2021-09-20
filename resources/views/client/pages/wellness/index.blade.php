@@ -1,8 +1,8 @@
 @extends('client.layout.site')
 @section('subhead')
-    <title>@lang('client.catalog_meta_title')</title>
+    <title>@lang('client.wellness_meta_title')</title>
     <meta name="description"
-          content="@lang('client.catalog_meta_description')">
+          content="@lang('client.wellness_meta_description')">
 @endsection
 
 @section('wrapper')
