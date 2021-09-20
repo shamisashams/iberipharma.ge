@@ -99,7 +99,7 @@ Route::prefix('{locale?}')
         // Route::get('vision', [HomeController::class, 'vision'])->name('home.vision');
         Route::get('values', [HomeController::class, 'value'])->name('home.value');
 
-        Route::get('mission', [HomeController::class, 'mission'])->name('home.mission');
+        Route::get('founder', [HomeController::class, 'mission'])->name('home.mission');
 
         Route::get('company_history', [HomeController::class, 'company'])->name('home.company');
 
