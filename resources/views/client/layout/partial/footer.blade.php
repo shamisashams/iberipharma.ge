@@ -10,9 +10,9 @@
 
 
             <div class="social_media flex">
-                <a target="_blank" href="{{$ginstagram->language(app()->getLocale())? $ginstagram->language(app()->getLocale())->value: $ginstagram->language()->value}}">
-                    <img src="/client/img/icons/sm/1.png" alt="" />
-                </a>
+{{--                <a target="_blank" href="{{$ginstagram->language(app()->getLocale())? $ginstagram->language(app()->getLocale())->value: $ginstagram->language()->value}}">--}}
+{{--                    <img src="/client/img/icons/sm/1.png" alt="" />--}}
+{{--                </a>--}}
                 <a target="_blank" href="{{$gfacebook->language(app()->getLocale())? $gfacebook->language(app()->getLocale())->value: $gfacebook->language()->value}}">
                     <img src="/client/img/icons/sm/2.png" alt="" />
                 </a>
