@@ -198,9 +198,8 @@ class ProductController extends Controller
         $product = $this->productRepository->update($id,$data);
 
         // Save Files
-        if ($request->hasFile('images')) {
-            $product = $this->productRepository->saveFiles($product->id, $request);
-        }
+        $product = $this->productRepository->saveFiles($product->id, $request);
+
 
         return redirect(locale_route('product.show', $product->id))->with('success', 'Product updated.');
     }
