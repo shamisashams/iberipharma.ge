@@ -19,7 +19,6 @@
         <div class="cities">
             <button class="city_picks active">@lang('client.tbilisi')</button>
             <button class="city_picks">@lang('client.rustavi')</button>
-            <button class="city_picks">@lang('client.khashuri')</button>
             <button class="city_picks">@lang('client.gori')</button>
             <button class="city_picks">@lang('client.kutaisi')</button>
             <button class="city_picks">@lang('client.zestaponi')</button>
@@ -627,61 +626,6 @@
             <div class="map">
                 <iframe
                         src="https://www.google.com/maps/d/u/0/embed?mid=1UEnJ8CcIJgFofEyuRD840CS2NS-xwBHO"
-                        width="640"
-                        height="480"
-                ></iframe>
-            </div>
-        </div>
-        <div class="each_city_content">
-            <div class="paragraph">
-                @lang('client.location_description')
-            </div>
-            <div class="location_grid">
-                <div class="flex">
-                    <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="21"
-                            height="20"
-                            viewBox="0 0 21 20"
-                    >
-                        <g id="Layer_2" data-name="Layer 2" transform="translate(0 -0.5)">
-                            <g id="pin">
-                                <rect
-                                        id="Rectangle_196"
-                                        data-name="Rectangle 196"
-                                        width="21"
-                                        height="20"
-                                        transform="translate(0 0.5)"
-                                        fill="#f9a11c"
-                                        opacity="0"
-                                />
-                                <path
-                                        id="Path_20"
-                                        data-name="Path 20"
-                                        d="M10.833,2A6.833,6.833,0,0,0,4,8.765c0,4.68,6.022,9.891,6.278,10.113a.854.854,0,0,0,1.11,0c.3-.222,6.278-5.433,6.278-10.113A6.833,6.833,0,0,0,10.833,2Zm0,15.076c-1.426-1.358-5.125-5.125-5.125-8.311a5.125,5.125,0,1,1,10.25,0C15.958,11.925,12.26,15.718,10.833,17.076Z"
-                                        transform="translate(-0.583 -0.292)"
-                                        fill="#f9a11c"
-                                />
-                                <path
-                                        id="Path_21"
-                                        data-name="Path 21"
-                                        d="M11.49,6a2.99,2.99,0,1,0,2.99,2.99A2.99,2.99,0,0,0,11.49,6Zm0,4.271A1.281,1.281,0,1,1,12.771,8.99,1.281,1.281,0,0,1,11.49,10.271Z"
-                                        transform="translate(-1.24 -0.875)"
-                                        fill="#f9a11c"
-                                />
-                            </g>
-                        </g>
-                    </svg>
-                    <div>
-                        <span class="medium">@lang('client.georgia_khashuri')</span> @lang('client.ქ.ხაშური,_რუსთაველის_ქ.N59')
-                        <br />
-                        <span class="tel">@lang('client.579_372_897')</span>
-                    </div>
-                </div>
-            </div>
-            <div class="map">
-                <iframe
-                        src="https://www.google.com/maps/d/u/0/embed?mid=1eI7czyGOjuZE4rvriQbvaYc2MghYeNJK"
                         width="640"
                         height="480"
                 ></iframe>
