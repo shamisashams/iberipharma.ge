@@ -402,7 +402,7 @@
                         <span class="tel">@lang('client.571_209_895')</span>
                     </div>
                 </div>
-                <div class="flex">
+                <!-- <div class="flex">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="21"
@@ -442,7 +442,7 @@
                         <br />
                         <span class="tel">@lang('client.579_148_609')</span>
                     </div>
-                </div>
+                </div> -->
                 <div class="flex">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
