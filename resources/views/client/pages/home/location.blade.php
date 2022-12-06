@@ -952,7 +952,7 @@
                 @lang('client.location_description')
             </div>
             <div class="location_grid">
-                <div class="flex">
+                <!-- <div class="flex">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="21"
@@ -992,7 +992,7 @@
                         <br />
                         <span class="tel">@lang('client.571_036_758')</span>
                     </div>
-                </div>
+                </div> -->
                 <div class="flex">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
