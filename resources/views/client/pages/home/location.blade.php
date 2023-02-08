@@ -19,7 +19,7 @@
         <div class="cities">
             <button class="city_picks active">@lang('client.tbilisi')</button>
             <button class="city_picks">@lang('client.rustavi')</button>
-            <button class="city_picks">@lang('client.gori')</button>
+            <!-- <button class="city_picks">@lang('client.gori')</button> -->
             <button class="city_picks">@lang('client.kutaisi')</button>
             <button class="city_picks">@lang('client.zestaponi')</button>
             <button class="city_picks">@lang('client.senaki')</button>
@@ -631,7 +631,7 @@
                 ></iframe>
             </div>
         </div>
-        <div class="each_city_content">
+        <!-- <div class="each_city_content">
             <div class="paragraph">
                 @lang('client.location_description')
             </div>
@@ -685,13 +685,13 @@
                         height="480"
                 ></iframe>
             </div>
-        </div>
+        </div> -->
         <div class="each_city_content">
             <div class="paragraph">
                 @lang('client.location_description')
             </div>
             <div class="location_grid">
-                <div class="flex">
+                <!-- <div class="flex">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="21"
@@ -731,7 +731,7 @@
                         <br />
                         <span class="tel">@lang('client.579_030_332')</span>
                     </div>
-                </div>
+                </div> -->
                 <div class="flex">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
