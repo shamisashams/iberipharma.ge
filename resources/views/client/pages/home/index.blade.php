@@ -72,9 +72,9 @@
                 @lang('client.who_are_we_content')
             </div>
         </div>
-        <div class="img">
+        <!-- <div class="img">
             <img src="/client/img/home/4.jpg" alt="" />
-        </div>
+        </div> -->
     </section>
     <section class="company_history_body">
         <div class="wrapper flex first">
